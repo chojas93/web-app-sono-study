@@ -18,11 +18,17 @@
       },
       "package": "com.emergent.iosstudylocal.g428xq"
     },
-    "web": {
+        "web": {
       "bundler": "metro",
       "output": "single",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "name": "Sono Study",
+      "shortName": "SonoStudy",
+      "themeColor": "#000000",
+      "backgroundColor": "#000000",
+      "display": "standalone"
     },
+
     "plugins": [
       "expo-router",
       [
