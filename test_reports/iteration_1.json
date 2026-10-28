@@ -1,0 +1,37 @@
+{
+  "summary": "Frontend-only test of the offline Sono Study Expo app at a 390x844 viewport (web preview). Every requested flow works: the Home screen with 5 topic cards, overall progress, streak and a theme toggle that stays set after reload; the Topic screen's notes/mnemonics tabs, mark-as-read (topic % goes 0->2->5->2) and bookmarks; Flashcards (flip animation, Still learning/Know it moving the counter, the all/learning/new modes with correct counts 18/1/16, shuffle, bookmark, the deck-complete screen, review-learning empty state, show all); Quiz (Submit disabled until an option is picked, answers locked after submit, explanation, next, results with score and best, the missed-question list matching the wrong answers, retry, record saved to storage); the Saved tab (empty state, filter chips all/section/card/mnemonic, remove, open topic); the Progress tab (stats, per-topic bars, recent quizzes empty state, reset modal with cancel and confirm); and data kept after reload, plus dark mode on all screens. No page errors or red screen. No deprecated Expo packages and no SafeAreaView misuse found. Minor issues remain: correct quiz answers are biased toward option B, the flashcard shuffle button does not reset session counts, and white text on coral/green fails contrast.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Flashcard shuffle toggle", "issue": "The shuffle onPress resets the index but not the session counters (setSession). If you shuffle partway through, the Deck complete summary can show more known/learning cards than the deck holds. Reference: app/flashcards/[id].tsx:97-101", "testID": "shuffle-toggle-button", "priority": "LOW"},
+      {"component": "Quiz See results", "issue": "next() calls recordQuiz without a guard. A fast double tap on the last 'See results' could record the attempt twice (attempts and history duplicated). Reference: app/quiz/[id].tsx:48-52", "testID": "quiz-next-button", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Global (Home hero, Progress hero, Quiz results, primary/success buttons)", "issues": ["White text (#FFFFFF) on brandPrimary #E07A5F and on success #4EA86A is about 2.95:1 contrast. This fails WCAG AA for normal text such as the 16px result text and 14px labels. Use a darker coral/green or dark text."]},
+      {"screen": "Quiz content", "issues": ["Correct answers sit at a fixed position and options are not shuffled. Of 70 questions, 43 (61%) have the answer at index 1 (B), 16 at C, 9 at A and 2 at D, so always picking B scores about 61%. Shuffle the options per question (remap the answer index)."]},
+      {"screen": "Saved tab", "issues": ["'Open topic' on flashcard and mnemonic bookmarks opens the topic on the Notes tab, not the saved card or mnemonic (small UX gap)."]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": [".screenshots/home_light.png", ".screenshots/home_dark.png", ".screenshots/topic_notes.png", ".screenshots/fc_done.png", ".screenshots/quiz_results.png", ".screenshots/saved_list.png", ".screenshots/progress.png"],
+  "action_items": [
+    "Shuffle quiz options per question (and remap the answer index) to remove the bias toward B (61% of answers are B)",
+    "Reset session counts ({known:0, learning:0}) when the shuffle toggle is pressed in flashcards/[id].tsx",
+    "Guard recordQuiz against a double tap on the last 'See results' (e.g. return early if finished)",
+    "Improve contrast of white text on #E07A5F / #4EA86A (currently about 2.95:1)",
+    "Optional: when a mnemonic bookmark is opened from Saved, open the topic on the Mnemonics tab"
+  ],
+  "critical_code_review_comments": [
+    "progress.tsx: storage.setItem(KEY, JSON.stringify(state)) is stringified again by the storage util, so the stored value is double-encoded. It works but is redundant.",
+    "Reset also wipes bookmarks. This matches the modal text, but users may not expect it, so consider keeping bookmarks.",
+    "All files are under 220 lines, use StyleSheet via makeStyles, wrap text correctly and have testIDs on interactive elements."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (no backend by design)", "frontend": "100% of requested flows pass functionally; minor issues listed"},
+  "seed_data_creation": "None. Each test run cleared localStorage before starting.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Data is stored locally only (web: localStorage key sono_study_progress_v1, which is double JSON-encoded, and theme_pref). Clear localStorage before each run. Routes: /topic/{id}, /flashcards/{id}, /quiz/{id}, /bookmarks, /progress. There are several header-back-button elements in the DOM (stack), so use '>> visible=true'.",
+  "rca_of_issue": ""
+}

@@ -1,0 +1,204 @@
+{
+  "app_name": "slide-study-1",
+  "personality": "4 Tactile / Playful",
+  "personality_one_liner": "A vibrant, approachable, and highly tactile study companion that makes mastering sonography feel encouraging and manageable.",
+  "color": {
+    "light": {
+      "surface": "#FDFBF7",
+      "onSurface": "#1A1918",
+      "surfaceSecondary": "#F2EFE9",
+      "onSurfaceSecondary": "#1A1918",
+      "surfaceTertiary": "#E8E4DB",
+      "onSurfaceTertiary": "#4A4845",
+      "surfaceInverse": "#1A1918",
+      "onSurfaceInverse": "#FDFBF7",
+      "brand": "#E07A5F",
+      "onBrand": "#FFFFFF",
+      "brandPrimary": "#E07A5F",
+      "onBrandPrimary": "#FFFFFF",
+      "brandSecondary": "#F9C74F",
+      "onBrandSecondary": "#1A1918",
+      "brandTertiary": "#FAD7D4",
+      "onBrandTertiary": "#9A3923",
+      "muted": "#7A7773",
+      "success": "#4EA86A",
+      "onSuccess": "#FFFFFF",
+      "warning": "#F9C74F",
+      "onWarning": "#1A1918",
+      "error": "#E63946",
+      "onError": "#FFFFFF",
+      "info": "#8DB38B",
+      "onInfo": "#1A1918",
+      "border": "#E8E4DB",
+      "borderStrong": "#D6D0C4",
+      "divider": "#E8E4DB",
+      "topicOverview": "#D98A6C",
+      "topicLiver": "#FF9F43",
+      "topicGallbladder": "#4EA86A",
+      "topicPancreas": "#F9C74F",
+      "topicGITract": "#E07A5F"
+    },
+    "dark": {
+      "surface": "#181817",
+      "onSurface": "#FDFBF7",
+      "surfaceSecondary": "#242322",
+      "onSurfaceSecondary": "#FDFBF7",
+      "surfaceTertiary": "#302E2D",
+      "onSurfaceTertiary": "#D6D0C4",
+      "surfaceInverse": "#FDFBF7",
+      "onSurfaceInverse": "#1A1918",
+      "brand": "#E07A5F",
+      "onBrand": "#FFFFFF",
+      "brandPrimary": "#E07A5F",
+      "onBrandPrimary": "#FFFFFF",
+      "brandSecondary": "#F9C74F",
+      "onBrandSecondary": "#1A1918",
+      "brandTertiary": "#4A2A22",
+      "onBrandTertiary": "#FAD7D4",
+      "muted": "#9A9792",
+      "success": "#4EA86A",
+      "onSuccess": "#FFFFFF",
+      "warning": "#F9C74F",
+      "onWarning": "#1A1918",
+      "error": "#F25C69",
+      "onError": "#FFFFFF",
+      "info": "#8DB38B",
+      "onInfo": "#1A1918",
+      "border": "#302E2D",
+      "borderStrong": "#4A4845",
+      "divider": "#302E2D",
+      "topicOverview": "#D98A6C",
+      "topicLiver": "#FF9F43",
+      "topicGallbladder": "#4EA86A",
+      "topicPancreas": "#F9C74F",
+      "topicGITract": "#E07A5F"
+    }
+  },
+  "typography": {
+    "displayFontFamily": "Fredoka",
+    "textFontFamily": "Nunito",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24
+    }
+  },
+  "spacing": {
+    "rule": "Generous padding around chunky cards, prominent thumb-zones for CTAs. Let the empty space highlight the learning material.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": "2",
+  "navigation": "bottom_tabs",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": "true",
+    "do's": [
+      "Use on bottom tab bar",
+      "Use on sticky submit button container during quizzes",
+      "Modal scrims for explanations"
+    ],
+    "dont's": [
+      "Do not use on flashcards",
+      "Do not use on standard list rows"
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Home",
+      "purpose": "Dashboard to select the 5 sonography topics, view quick progress, and access bookmarks.",
+      "states": {
+        "loading": "Centered tactile spinner",
+        "empty": "No recent activity, start a topic! with a playful illustration.",
+        "error": "Failed to load progress, Retry button"
+      },
+      "layout": "Top section: Toggle for Dark/Light mode and Welcome message. Middle: Grid/List of 5 chunky cards (Overview, Liver, Gallbladder, Pancreas, GI Tract) utilizing their respective topic accent colors (brandTertiary-like backgrounds). Bottom: Quick stats (overall completion %)."
+    },
+    {
+      "name": "Topic Notes",
+      "purpose": "Read study notes and mnemonics for a selected topic.",
+      "states": {
+        "loading": "Skeleton text blocks",
+        "empty": "Notes coming soon",
+        "error": "Error loading notes, Retry"
+      },
+      "layout": "Sticky glass header with Topic Title and Bookmark action. Scrollable body text with generous line-height. Mnemonics presented in distinct, tinted pill-shaped callout blocks. Large text for easy reading."
+    },
+    {
+      "name": "Flashcards",
+      "purpose": "Interactive study via tap-to-flip or swipeable cards.",
+      "states": {
+        "loading": "Card outline skeleton",
+        "empty": "You've reviewed all cards! Reset deck button.",
+        "error": "Error loading cards"
+      },
+      "layout": "Single prominent card centered on screen with heavy shadow (tier 2) and large radius. Tap to flip (animated via reanimated). Bottom sticky area with two large pill buttons: 'Learning' (warning color) and 'Known' (success color). A progress bar pinned to the top."
+    },
+    {
+      "name": "MCQ Quiz",
+      "purpose": "Test knowledge with multiple-choice questions.",
+      "states": {
+        "loading": "Spinner",
+        "empty": "No questions available",
+        "error": "Error loading quiz"
+      },
+      "layout": "Question text at the top. 4 chunky tile-based options stacked vertically. Tapping an option highlights it (borderStrong or brand tint). Sticky primary 'Submit' button at the bottom (thumb zone). Upon submission, a bottom sheet slides up showing the explanation and 'Next Question' button."
+    },
+    {
+      "name": "Progress Dashboard",
+      "purpose": "Track learning statistics and overall completion.",
+      "states": {
+        "loading": "Skeleton charts",
+        "empty": "Start studying to see your progress!",
+        "error": "Error loading stats"
+      },
+      "layout": "Modular card-based system. Top: Overall completion circular progress or thick bar. Middle: Streak counter and recent quiz scores. Bottom: List of bookmarked notes or flashcards for quick resume."
+    }
+  ],
+  "images": {
+    "quiz_success": {
+      "url": "https://images.unsplash.com/photo-1515191107209-c28698631303?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxjZWxlYnJhdGlvbiUyMHN1Y2Nlc3N8ZW58MHx8fHwxNzkzMjA0MDEyfDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Silhouette of a person celebrating success against a sunset"
+    },
+    "study_empty": {
+      "url": "https://images.unsplash.com/photo-1663789049943-138e53774e2d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTJ8MHwxfHNlYXJjaHwxfHxzdHVkeSUyMGZsYXNoY2FyZHN8ZW58MHx8fHwxNzkzMjA0MDEyfDA&ixlib=rb-4.1.0&q=85",
+      "alt": "White paper on a white surface representing study materials"
+    }
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: The app must support both Light and Dark mode using the provided nested 'light' and 'dark' tokens in the color block. Implement an explicit in-app toggle (e.g., in the Home header or a Settings tab).",
+    "Use AsyncStorage or SQLite to save all user data locally: progress, flashcard states (known/learning), quiz scores, and bookmarks. Do NOT implement any backend or cloud syncing.",
+    "Utilize the 5 provided per-topic accent colors (topicOverview, topicLiver, etc.) to visually distinguish the 5 topics. Tint the topic cards on the Home screen and the callout backgrounds in the Topic Notes screen.",
+    "Implement the 'Tactile / Playful' visual style: use chunky cards with large border radii (lg/pill), prominent shadows (tier 2), and oversized touch targets.",
+    "For Flashcards, implement a flip animation using react-native-reanimated. Include 'Learning' and 'Known' actions that save the state locally and advance the deck.",
+    "For MCQ Quizzes, use tile-based selectable options and a sticky submit button anchored at the bottom (thumb-zone). Show explanations seamlessly in a @gorhom/bottom-sheet.",
+    "Mnemonics inside the Study Notes should stand out significantly—wrap them in visually distinct, tinted containers using the topic accent or brandTertiary, paired with a matching icon.",
+    "Ensure 'Nunito' is used for body text and 'Fredoka' for display headings, keeping font weights to a maximum of 500.",
+    "Apply 'expo-blur' (glass effect) to the bottom tab bar and any sticky headers covering scrollable content. Ensure foreground text over glass maintains high contrast."
+  ]
+}
