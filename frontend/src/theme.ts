@@ -46,6 +46,10 @@ const light = {
   topicAdrenal: "#F6AE2D",
   topicVasculature: "#F28482",
   topicChest: "#7FB7BE",
+  topicBiliary: "#8FC93A",
+  topicNeck: "#4CC9F0",
+  topicMale: "#6C9BD2",
+  topicMSK: "#E9A178",
   onTopic: "#1A1918",
 };
 
@@ -90,6 +94,10 @@ const dark: ThemeColors = {
   topicAdrenal: "#F6AE2D",
   topicVasculature: "#F28482",
   topicChest: "#7FB7BE",
+  topicBiliary: "#8FC93A",
+  topicNeck: "#4CC9F0",
+  topicMale: "#6C9BD2",
+  topicMSK: "#E9A178",
   onTopic: "#1A1918",
 };
 

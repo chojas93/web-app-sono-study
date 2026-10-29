@@ -163,4 +163,38 @@ export const media: Record<string, TopicMedia> = {
       { key: "rt_effusion", back: "Pleural effusion — anechoic fluid above the diaphragm." },
     ],
   },
+  biliary: {
+    sectionImages: [
+      { section: "Anatomy and Physiology", key: "biliary_2", caption: "Biliary tree anatomy (diagram)" },
+      { section: "Sonography of the Bile Ducts", key: "biliary_3", caption: "Bile duct sonography views" },
+      { section: "Sonography of the Bile Ducts", key: "biliary_4", caption: "Shotgun sign or parallel tube sign." },
+      { section: "Choledocholithiasis", key: "biliary_6", caption: "Choledocholithiasis — stone in the CBD" },
+      { section: "Choledocholithiasis", key: "biliary_7", caption: "Mirizzi syndrome" },
+      { section: "Pneumobilia", key: "biliary_8", caption: "Pneumobilia — bright echoes in bile ducts" }
+    ],
+    imageCards: [],
+  },
+  neck: {
+    sectionImages: [
+
+    ],
+    imageCards: [],
+  },
+  male: {
+    sectionImages: [
+      { section: "Vascular Anatomy of the Male Pelvis", key: "male_2", caption: "Male pelvis vascular anatomy (diagram)" },
+      { section: "Cryptorchidism", key: "male_4", caption: "Cryptorchidism — undescended testis" },
+      { section: "Testicular Torsion", key: "male_5", caption: "Testicular torsion — absent flow" },
+      { section: "Torsion of the Testicular Appendages", key: "male_6", caption: "Torsion of a testicular appendage" },
+      { section: "Hydrocele", key: "male_7", caption: "Hydrocele surrounding the testis" }
+    ],
+    imageCards: [],
+  },
+  msk: {
+    sectionImages: [
+      { section: "Tendonitis", key: "msk_7", caption: "Tendonitis with hyperemia" },
+      { section: "Tendon Rupture", key: "msk_8", caption: "Biceps tendon rupture" }
+    ],
+    imageCards: [],
+  },
 };

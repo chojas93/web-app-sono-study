@@ -1,23 +1,17 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { useRef, useState } from "react";
+import { Image } from "expo-image";
+import { useMemo, useRef, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
+import { buildQuiz, shuffle } from "@/src/data/quiz";
+import { slides } from "@/src/data/slides";
 import type { Question } from "@/src/data/types";
 import { useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
-
-function shuffle<T>(arr: T[]) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 function prepare(qs: Question[]) {
   return shuffle(qs).map((q) => {
@@ -27,13 +21,25 @@ function prepare(qs: Question[]) {
 }
 
 export default function QuizScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, topics: tp, count: cp, mode: mp } = useLocalSearchParams<{ id: string; topics?: string; count?: string; mode?: string }>();
   const topic = getTopic(id);
+  const isMock = id === "mock";
+  const config = useMemo(
+    () => ({
+      topicIds: isMock ? (tp ?? "").split(",").filter(Boolean) : [id],
+      count: Number(cp) || 20,
+      mode: (mp === "image" ? "image" : "mixed") as "image" | "mixed",
+    }),
+    [isMock, tp, id, cp, mp],
+  );
+  const recordId = isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : id;
+  const title = isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : "Quiz";
+  const subtitle = isMock ? `${config.topicIds.length} chapters` : (topic?.title ?? "");
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   const { colors } = useTheme();
   const { state, recordQuiz } = useProgress();
-  const [questions, setQuestions] = useState<Question[]>(() => prepare(topic?.quiz ?? []));
+  const [questions, setQuestions] = useState<Question[]>(() => prepare(buildQuiz(config)));
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -42,8 +48,15 @@ export default function QuizScreen() {
   const [finished, setFinished] = useState(false);
   const recorded = useRef(false);
 
-  if (!topic) return <StackHeader title="Topic not found" />;
-  const accent = colors[topic.colorKey];
+  if (!topic && !isMock) return <StackHeader title="Topic not found" />;
+  if (questions.length === 0)
+    return (
+      <View style={styles.root} testID="quiz-empty">
+        <StackHeader title={title} subtitle={subtitle} />
+        <Text style={[styles.explain, { padding: spacing.xl, textAlign: "center" }]}>No questions available for this selection yet.</Text>
+      </View>
+    );
+  const accent = topic ? colors[topic.colorKey] : colors.brandPrimary;
   const q = questions[index];
   const total = questions.length;
 
@@ -57,7 +70,7 @@ export default function QuizScreen() {
     if (index + 1 >= total) {
       if (recorded.current) return;
       recorded.current = true;
-      recordQuiz(topic.id, score, total);
+      recordQuiz(recordId, score, total);
       setFinished(true);
       return;
     }
@@ -66,7 +79,7 @@ export default function QuizScreen() {
     setSubmitted(false);
   };
   const retry = () => {
-    setQuestions(prepare(topic.quiz));
+    setQuestions(prepare(buildQuiz(config)));
     setIndex(0);
     setSelected(null);
     setSubmitted(false);
@@ -78,10 +91,10 @@ export default function QuizScreen() {
 
   if (finished) {
     const pct = Math.round((score / total) * 100);
-    const best = state.quizzes[topic.id]?.best ?? score;
+    const best = state.quizzes[recordId]?.best ?? score;
     return (
       <View style={styles.root} testID="quiz-results">
-        <StackHeader title="Results" subtitle={topic.title} />
+        <StackHeader title="Results" subtitle={isMock ? "Mock exam" : subtitle} />
         <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xl }]}>
           <Animated.View entering={FadeInDown} style={[styles.resultCard, { backgroundColor: pct >= 70 ? colors.success : colors.brandPrimary }]}>
             <Ionicons name={pct >= 70 ? "trophy" : "school"} size={44} color={colors.onSuccess} />
@@ -102,7 +115,7 @@ export default function QuizScreen() {
             </View>
           ))}
           <Button testID="quiz-retry-button" label="Retry quiz" icon="refresh" onPress={retry} />
-          <Button testID="quiz-back-to-topic-button" label="Back to topic" variant="secondary" onPress={() => router.back()} />
+          <Button testID="quiz-back-to-topic-button" label={isMock ? "Back" : "Back to topic"} variant="secondary" onPress={() => router.back()} />
         </ScrollView>
       </View>
     );
@@ -112,7 +125,7 @@ export default function QuizScreen() {
 
   return (
     <View style={styles.root} testID="quiz-screen">
-      <StackHeader title="Quiz" subtitle={topic.title} />
+      <StackHeader title={title} subtitle={subtitle} />
       <View style={styles.progressRow}>
         <View style={{ flex: 1 }}>
           <ProgressBar value={((index + (submitted ? 1 : 0)) / total) * 100} color={accent} />
@@ -122,6 +135,8 @@ export default function QuizScreen() {
         </Text>
       </View>
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xl }]}>
+        {q.image ? <Image source={slides[q.image]} style={styles.qImage} contentFit="contain" testID="quiz-question-image" /> : null}
+        {q.source === "textbook" ? <Text style={styles.sourceTag} testID="quiz-source-textbook">Textbook review question</Text> : null}
         <Animated.Text key={q.id} entering={FadeInDown} style={styles.question} testID="quiz-question-text">
           {q.q}
         </Animated.Text>
@@ -176,6 +191,8 @@ const useStyles = makeStyles((c) => ({
   progressRow: { flexDirection: "row", alignItems: "center", gap: spacing.md, paddingHorizontal: spacing.lg, paddingTop: spacing.md },
   counter: { fontFamily: fonts.display, fontSize: 16, fontWeight: "500", color: c.onSurface },
   content: { padding: spacing.lg, gap: spacing.md },
+  qImage: { width: "100%", height: 220, borderRadius: radius.md, backgroundColor: "#000000" },
+  sourceTag: { fontFamily: fonts.text, fontSize: 12, fontWeight: "700", color: c.muted, textTransform: "uppercase", letterSpacing: 1 },
   question: { fontFamily: fonts.display, fontSize: 22, fontWeight: "500", color: c.onSurface, lineHeight: 30, marginBottom: spacing.sm },
   option: { flexDirection: "row", alignItems: "center", gap: spacing.md, minHeight: 60, padding: spacing.lg, borderRadius: radius.lg, borderWidth: 2 },
   letter: { width: 32, height: 32, borderRadius: 16, borderWidth: 2, alignItems: "center", justifyContent: "center" },

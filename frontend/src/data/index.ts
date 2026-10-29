@@ -1,9 +1,14 @@
 import { adrenal } from "./adrenal";
+import { biliary } from "./biliary";
+import bookQuestions from "./bookQuestions.json";
 import { chest } from "./chest";
 import { gallbladder } from "./gallbladder";
 import { gi } from "./gi";
 import { liver } from "./liver";
+import { male } from "./male";
 import { media } from "./media";
+import { msk } from "./msk";
+import { neck } from "./neck";
 import { overview } from "./overview";
 import { pancreas } from "./pancreas";
 import { spleen } from "./spleen";
@@ -33,14 +38,25 @@ function build(raw: RawTopic): Topic {
       images: m.sectionImages.filter((x) => x.section === s.title).map(({ key, caption }) => ({ key, caption })),
     })),
     flashcards,
-    quiz: raw.quiz.map((q, i) => ({ id: `${t}-q${i + 1}`, topicId: t, ...q })),
+    quiz: [
+      ...raw.quiz.map((q, i) => ({ id: `${t}-q${i + 1}`, topicId: t, ...q, source: "guide" as const })),
+      ...((bookQuestions as Record<string, { q: string; options: string[]; answer: number; n: number }[]>)[t] ?? []).map((q) => ({
+        id: `${t}-b${q.n}`,
+        topicId: t,
+        q: q.q,
+        options: q.options,
+        answer: q.answer,
+        explanation: `Textbook review question ${q.n} (${raw.chapter}) — answer from the book's answer key.`,
+        source: "textbook" as const,
+      })),
+    ],
     mnemonics: raw.mnemonics.map((mn, i) => ({ id: `${t}-m${i + 1}`, topicId: t, ...mn })),
     imageCount: m.sectionImages.length,
   };
 }
 
 // Ordered by textbook chapter number.
-export const topics: Topic[] = [overview, liver, gallbladder, pancreas, spleen, urinary, adrenal, vasculature, gi, chest].map(build);
+export const topics: Topic[] = [overview, liver, gallbladder, biliary, pancreas, spleen, urinary, adrenal, vasculature, gi, chest, neck, male, msk].map(build);
 
 export function getTopic(id: string | undefined) {
   return topics.find((t) => t.id === id);

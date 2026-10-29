@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SlideStrip } from "@/src/components/slides";
 import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
+import { imageQuizCount } from "@/src/data/quiz";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
@@ -18,6 +19,7 @@ export default function TopicScreen() {
   const { colors } = useTheme();
   const { state, toggleRead, toggleBookmark, isBookmarked } = useProgress();
   const [tab, setTab] = useState<"notes" | "mnemonics">(initialTab === "mnemonics" ? "mnemonics" : "notes");
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
 
   if (!topic) {
     return (
@@ -28,6 +30,10 @@ export default function TopicScreen() {
   }
   const accent = colors[topic.colorKey];
   const p = topicProgress(state, topic);
+  const allCollapsed = topic.sections.every((s) => collapsed[s.id]);
+  const toggleAll = () => setCollapsed(allCollapsed ? {} : Object.fromEntries(topic.sections.map((s) => [s.id, true])));
+  const imageQuiz = state.quizzes[`${topic.id}:image`];
+  const nImageQ = imageQuizCount(topic.id);
 
   return (
     <View style={styles.root} testID="topic-screen">
@@ -42,6 +48,12 @@ export default function TopicScreen() {
           );
         })}
       </View>
+      {tab === "notes" ? (
+        <PressableScale testID="toggle-collapse-all-button" onPress={toggleAll} style={styles.collapseAll}>
+          <Ionicons name={allCollapsed ? "expand" : "contract"} size={18} color={colors.brandPrimary} />
+          <Text style={[styles.collapseText, { color: colors.brandPrimary }]}>{allCollapsed ? "Expand all sections" : "Minimize all sections"}</Text>
+        </PressableScale>
+      ) : null}
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xl }]}>
         <View style={styles.progressCard}>
           <View style={styles.rowBetween}>
@@ -64,18 +76,33 @@ export default function TopicScreen() {
           <PressableScale testID="open-quiz-button" onPress={() => router.push(`/quiz/${topic.id}`)} style={[styles.action, { backgroundColor: colors.brandSecondary }]}>
             <Ionicons name="help-circle" size={26} color={colors.onTopic} />
             <Text style={styles.actionTitle}>Quiz</Text>
-            <Text style={styles.actionSub}>{p.quiz ? `Best ${p.quiz.best}/${p.quiz.total}` : `${topic.quiz.length} questions`}</Text>
+            <Text style={styles.actionSub}>{p.quiz ? `Best ${p.quiz.best}/${p.quiz.total}` : `20 of ${topic.quiz.length} questions`}</Text>
           </PressableScale>
         </View>
+        {nImageQ > 0 ? (
+          <PressableScale testID="open-image-quiz-button" onPress={() => router.push(`/quiz/${topic.id}?mode=image&count=${nImageQ}`)} style={[styles.imageQuizBtn, { borderColor: accent }]}>
+            <Ionicons name="images" size={22} color={accent} />
+            <View style={{ flex: 1 }}>
+              <Text style={styles.sectionTitle}>Image quiz</Text>
+              <Text style={styles.progressLabel}>{imageQuiz ? `Best ${imageQuiz.best}/${imageQuiz.total}` : `Name the finding in ${nImageQ} slide images`}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color={colors.muted} />
+          </PressableScale>
+        ) : null}
 
         {tab === "notes"
           ? topic.sections.map((s, i) => {
               const read = !!state.readSections[s.id];
               const saved = isBookmarked(s.id);
+              const isCollapsed = !!collapsed[s.id];
               return (
-                <Animated.View entering={FadeIn.delay(i * 30)} key={s.id} style={[styles.section, read && { borderColor: colors.success }]} testID={`section-card-${s.id}`}>
+                <Animated.View entering={FadeIn.delay(Math.min(i, 10) * 30)} key={s.id} style={[styles.section, read && { borderColor: colors.success }]} testID={`section-card-${s.id}`}>
                   <View style={styles.rowBetween}>
-                    <Text style={styles.sectionTitle}>{s.title}</Text>
+                    <PressableScale testID={`section-collapse-${s.id}`} onPress={() => setCollapsed((c) => ({ ...c, [s.id]: !c[s.id] }))} style={styles.sectionHead}>
+                      <Ionicons name={isCollapsed ? "chevron-forward" : "chevron-down"} size={18} color={colors.muted} />
+                      <Text style={styles.sectionTitle}>{s.title}</Text>
+                      {read && isCollapsed ? <Ionicons name="checkmark-circle" size={18} color={colors.success} /> : null}
+                    </PressableScale>
                     <IconButton
                       testID={`section-bookmark-${s.id}`}
                       name={saved ? "bookmark" : "bookmark-outline"}
@@ -84,6 +111,8 @@ export default function TopicScreen() {
                       onPress={() => toggleBookmark("section", s.id, topic.id)}
                     />
                   </View>
+                  {isCollapsed ? null : (
+                  <>
                   {s.points.map((pt, j) => (
                     <View key={j} style={styles.point}>
                       <View style={[styles.dot, { backgroundColor: accent }]} />
@@ -99,6 +128,8 @@ export default function TopicScreen() {
                     <Ionicons name={read ? "checkmark-circle" : "ellipse-outline"} size={20} color={read ? colors.onSuccess : colors.onSurfaceTertiary} />
                     <Text style={[styles.readText, { color: read ? colors.onSuccess : colors.onSurfaceTertiary }]}>{read ? "Read" : "Mark as read"}</Text>
                   </PressableScale>
+                  </>
+                  )}
                 </Animated.View>
               );
             })
@@ -145,6 +176,10 @@ const useStyles = makeStyles((c) => ({
   actionTitle: { fontFamily: fonts.display, fontSize: 18, fontWeight: "500", color: c.onTopic },
   actionSub: { fontFamily: fonts.text, fontSize: 13, color: c.onTopic },
   section: { backgroundColor: c.surfaceSecondary, borderRadius: radius.lg, padding: spacing.lg, gap: spacing.sm, borderWidth: 1.5, borderColor: "transparent" },
+  sectionHead: { flex: 1, flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44 },
+  collapseAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, alignSelf: "flex-end", minHeight: 44, paddingHorizontal: spacing.lg },
+  collapseText: { fontFamily: fonts.text, fontSize: 14, fontWeight: "700" },
+  imageQuizBtn: { flexDirection: "row", alignItems: "center", gap: spacing.md, padding: spacing.lg, borderRadius: radius.lg, borderWidth: 1.5, backgroundColor: c.surfaceSecondary },
   sectionTitle: { fontFamily: fonts.display, fontSize: 18, fontWeight: "500", color: c.onSurface, flex: 1 },
   point: { flexDirection: "row", gap: spacing.sm, alignItems: "flex-start" },
   dot: { width: 8, height: 8, borderRadius: 4, marginTop: 8 },

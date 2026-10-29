@@ -31,6 +31,13 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 - Totals: 10 topics, 118 note sections, ~212 flashcards, 137 questions
 - Testing iteration 2 passed
 
+## Update (Jun 2026): Textbook questions, mock exam, image quiz, search
+- Added Bile Ducts (Ch 4), Neck (Ch 12), Male Pelvis (Ch 13), MSK/Breast/Superficial (Ch 14); notes auto-extracted from slides (src/data/*Notes.ts), images added for some
+- 388 textbook end-of-chapter review questions (Ch 1–14) parsed into src/data/bookQuestions.json and merged into each topic's quiz
+- Topic quiz = 20 random questions; Image quiz per topic (src/data/quiz.ts); Mock exam builder (/mock) with chapter + count choice, saved per size (mock:N)
+- Home: search bar ("Search") replaces the mastery/streak card; Mock exam card; Minimize toggle for topic cards; topic screens have Minimize all / per-section collapse
+- Testing iteration 3 passed; issues it raised were fixed afterward
+
 ## Backlog
 - OB/GYN chapters (waiting on PDFs from user)
 - P1: Spaced repetition (show learning cards sooner), timed exam mode mixing all topics

@@ -64,7 +64,7 @@ export default function ProgressScreen() {
               </View>
               <Mini label="Notes" value={p.read} total={t.sections.length} color={accent} />
               <Mini label="Cards" value={p.known} total={t.flashcards.length} color={accent} />
-              <Mini label="Best quiz" value={p.quiz?.best ?? 0} total={t.quiz.length} color={accent} />
+              <Mini label="Best quiz" value={p.quiz?.best ?? 0} total={p.quiz?.total ?? 20} color={accent} />
             </View>
           );
         })}
@@ -77,7 +77,9 @@ export default function ProgressScreen() {
         ) : (
           state.history.slice(0, 8).map((h, i) => (
             <View key={h.at + i} style={styles.historyRow} testID={`quiz-history-${i}`}>
-              <Text style={styles.historyTopic}>{getTopic(h.topicId)?.title}</Text>
+              <Text style={styles.historyTopic}>
+                {h.topicId.startsWith("mock") ? `Mock exam (${h.total})` : `${getTopic(h.topicId.split(":")[0])?.title ?? ""}${h.topicId.endsWith(":image") ? " · Image quiz" : ""}`}
+              </Text>
               <Text style={[styles.historyScore, { color: h.score / h.total >= 0.7 ? colors.success : colors.onSurface }]}>
                 {h.score}/{h.total}
               </Text>

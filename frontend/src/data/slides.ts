@@ -73,6 +73,19 @@ export const slides = {
   rt_psoas: require("../../assets/slides/rt_psoas.jpg"),
   rt_nodes: require("../../assets/slides/rt_nodes.jpg"),
   rt_fibrosis: require("../../assets/slides/rt_fibrosis.jpg"),
+  biliary_2: require("../../assets/slides/biliary_2.jpg"),
+  biliary_3: require("../../assets/slides/biliary_3.jpg"),
+  biliary_4: require("../../assets/slides/biliary_4.jpg"),
+  biliary_6: require("../../assets/slides/biliary_6.jpg"),
+  biliary_7: require("../../assets/slides/biliary_7.jpg"),
+  biliary_8: require("../../assets/slides/biliary_8.jpg"),
+  male_2: require("../../assets/slides/male_2.jpg"),
+  male_4: require("../../assets/slides/male_4.jpg"),
+  male_5: require("../../assets/slides/male_5.jpg"),
+  male_6: require("../../assets/slides/male_6.jpg"),
+  male_7: require("../../assets/slides/male_7.jpg"),
+  msk_7: require("../../assets/slides/msk_7.jpg"),
+  msk_8: require("../../assets/slides/msk_8.jpg"),
 };
 
 export type SlideKey = keyof typeof slides;

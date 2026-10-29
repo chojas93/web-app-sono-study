@@ -1,0 +1,39 @@
+{
+  "summary": "Frontend-only test of the Expo web build at 390x844. All 8 requested feature groups PASS and there were no page errors. (1) Home: the mastery/streak card is gone. The search input home-search-input has the placeholder 'Search'. 'seminoma' returns 5 hits (male notes, flashcard, mnemonic) and 'portal' returns 31. A nonsense term shows search-no-results. home-search-clear empties the field and restores the 14 cards. Tapping a result opens /topic/male. (2) There are 14 topic cards in chapter order with biliary 4th, then neck, male and msk last. The Minimize toggle shrinks each card from 189px to 82px (chapter, title and % only), and Expand restores it. (3) Mock exam: 14 chapter toggles. Summary is '25 questions from 526 available' by default. Clear all shows 'Pick at least one chapter', the start button is aria-disabled and tapping it does not navigate. neck+msk gives 52 available; with 10 selected the counter shows 1/10. After finishing, 'Mock exam 2/10' appears in Recent quizzes. 50 from all chapters gives 1/50. Image mode with neck+msk gives 2 available. (4) The liver topic quiz shows 1/20 and 14 of the 20 questions had the quiz-source-textbook tag. (5) Image quiz: liver has 9 questions and urinary 14. Each has quiz-question-image (urinary image loaded, naturalWidth 640) and 4 options. The correct answer is the caption and the explanation shows it. History shows 'The Liver · Image quiz 3/9'. The neck topic has no images, so it has no image quiz button. (6) Liver collapse-all cuts the scroll height from 9659 to 1841. A single section-collapse header expands and collapses its section, and Expand all restores the full height. (7) biliary/neck/male/msk have 11/22/34/23 notes, 4/4/5/4 mnemonics, 12/12/14/12 flashcards and quiz pools of 29/27/29/25. (8) Regression PASS: msk flashcards flip and mark known; the neck-s1 bookmark shows in Saved and survives a reload; section read updates topic % on the topic and Home screens; theme toggles light to dark. Data check (node): 389 textbook questions, all answer indexes valid, one has a duplicate option. Two logic issues were found in code review: mock best score and image-quiz captions.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Mock exam best score", "issue": "Every mock exam is stored under the single key 'mock' (quiz/[id].tsx:35), and recordQuiz keeps best as a raw score (store/progress.ts:115). The results card shows 'Best: {best}/{total}' using the current total. So after a 50-question mock scoring 30, a later 10-question mock shows 'Best: 30/10'. Fix: store best as a percentage, or key the record by count/chapters.", "testID": "quiz-best-score", "priority": "MEDIUM"},
+      {"component": "Image quiz captions for new chapters", "issue": "Most media.ts captions for biliary/male/msk are only section titles, e.g. 'Anatomy and Physiology', 'Sonography of the Bile Ducts', 'Vascular Anatomy of the Male Pelvis', 'Cryptorchidism', 'Hydrocele'. They become image-quiz answers and also distractors for other chapters. Seen live: 'Sonography of the Bile Ducts' offered as a distractor in the liver image quiz. These are not diagnoses, so the questions are vague or trivially guessable. Reference: src/data/media.ts:166-196", "testID": "quiz-option-*", "priority": "MEDIUM"},
+      {"component": "Image quiz answer leakage", "issue": "Some slide images have the diagnosis printed on them. Example: ur_adpkd.jpg shows the label 'Autosomal dominant polycystic disease' while the correct option is 'ADPKD'. Consider cropping or excluding labeled slides from image questions.", "testID": "quiz-question-image", "priority": "LOW"},
+      {"component": "Textbook question data", "issue": "vasculature textbook question n=21 has a duplicated option, 'Aortic rupture' twice ([Aortic rupture, Chronic aortic aneurysm, Aortic dissection, Aortic rupture]). This is a PDF parse error. Reference: src/data/bookQuestions.json", "testID": "quiz-option-3", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Home search", "issues": ["Results are not ranked. 'thyroid' (34 hits) lists Overview, Pancreas and Urinary 'hyperparathyroidism' notes before the Neck chapter's thyroid notes. Title matches and Topic hits should come first.", "Tapping a Note result opens the topic at the top instead of scrolling to or highlighting the matched section."]},
+      {"screen": "Home header", "issues": ["The kicker still reads 'Abdominal sonography', but the app now covers Neck, Male Pelvis and MSK/Breast."]},
+      {"screen": "Quiz (textbook questions)", "issues": ["Textbook questions have no real explanation, only 'Textbook review question N (Chapter X) — answer from the book's answer key.' Consider adding a short rationale."]},
+      {"screen": "Topic screen", "issues": ["The collapsed/expanded state of sections is not persisted and resets every time the topic is reopened. Optional."]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": ["/app/tests/validate_data.js"],
+  "action_items": [
+    "Fix mock exam best score so it cannot exceed total: store best as a percentage or key mock records by count (quiz/[id].tsx:35, store/progress.ts:110-124).",
+    "Replace the generic section-title captions for biliary/male/msk images in media.ts with real finding or diagnosis captions, or exclude them from imageQuestions/allCaptions.",
+    "Fix the duplicate option in bookQuestions.json vasculature n=21.",
+    "Optional: rank search results (title/topic matches first), scroll to the matched section on tap, and update the 'Abdominal sonography' kicker."
+  ],
+  "critical_code_review_comments": [
+    "quiz.ts imageQuestions draws distractors at random from all captions without filtering generic titles, so quality depends on caption quality.",
+    "Pre-existing TS errors in src/theme.ts:145-146 (StyleSheet.NamedStyles not exported in this RN version). They do not affect runtime.",
+    "No deprecated Expo packages found (no expo-av, expo-barcode-scanner or expo-background-fetch)."
+  ],
+  "updated_files": ["/app/tests/validate_data.js"],
+  "success_rate": {"backend": "N/A", "frontend": "100% of requested flows functional; 4 data/logic quality issues"},
+  "seed_data_creation": "None. localStorage was cleared before each run.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Local-only app with no backend. topics[] has 14 entries. The mock route is /quiz/mock?topics=a,b&count=N&mode=mixed|image and image quizzes are /quiz/{id}?mode=image&count=N. Neck has 0 slide images. Run node /app/tests/validate_data.js to check bookQuestions.json integrity.",
+  "rca_of_issue": "Mock best bug: recordId 'mock' is shared across mocks with different totals, and best = max(raw score), so best and total come from different exams."
+}
