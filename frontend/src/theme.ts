@@ -41,6 +41,11 @@ const light = {
   topicGallbladder: "#4EA86A",
   topicPancreas: "#F9C74F",
   topicGITract: "#E07A5F",
+  topicSpleen: "#B39DDB",
+  topicUrinary: "#5DA9E9",
+  topicAdrenal: "#F6AE2D",
+  topicVasculature: "#F28482",
+  topicChest: "#7FB7BE",
   onTopic: "#1A1918",
 };
 
@@ -80,6 +85,11 @@ const dark: ThemeColors = {
   topicGallbladder: "#4EA86A",
   topicPancreas: "#F9C74F",
   topicGITract: "#E07A5F",
+  topicSpleen: "#B39DDB",
+  topicUrinary: "#5DA9E9",
+  topicAdrenal: "#F6AE2D",
+  topicVasculature: "#F28482",
+  topicChest: "#7FB7BE",
   onTopic: "#1A1918",
 };
 

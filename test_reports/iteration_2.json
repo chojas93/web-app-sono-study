@@ -1,0 +1,27 @@
+{
+  "summary": "Frontend-only testing (Expo web, 390x844) of the 5 new chapters and the slide images. All requested flows PASS: (1) Home shows 10 topic cards in chapter order overview→chest, and every card shows an 'N images' count that matches media.ts (7/9/8/5/7/14/4/7/7/5). (2) Notes and Mnemonics tabs render for spleen(12/5), urinary(17/7), adrenal(10/5), vasculature(10/6) and chest(7/4). (3) All 73 section thumbnails across all 10 topics load (naturalWidth>0) with no 4xx responses. The slide viewer opens and shows the caption. Prev/next on overview-s10 (6 images) step through in order and wrap at both ends, the '1 / 6' counter is correct, and close works. urinary-s4 has a single image, so the viewer correctly hides prev/next there. (4) Image flashcards sit at the end of every new deck (spleen 3, urinary 4, adrenal 2, vasculature 3, chest 2). flashcard-image loads, the card flips to the correct answer, and the session summary is correct. (5) Quizzes run fully to results for all 5 new topics. The final score equals the number of 'Correct!' verdicts, the best score shows, and exactly 5 history entries are saved, so the double-record guard holds. (6) Regression: Progress shows 118 notes and 212 cards with 10 topic rows. Note, mnemonic and image-flashcard bookmarks for new topics work, including the filters and 'Open topic' deep-linking to ?tab=mnemonics. Read and card progress plus bookmarks persist after reload. The dark theme toggles and persists after reload. No page errors. Static check: every media.ts section title matches a real section, all image keys exist in slides.ts, all asset files exist (2.7MB), and every quiz answer index is in range. One minor UX gap: the Saved tab does not show the image for bookmarked image flashcards.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Saved tab - image flashcard bookmark", "issue": "Bookmarked image flashcards show only the generic front 'What finding is shown in this image?' and the answer, with no image. With several such cards saved, they can't be told apart and the question makes no sense. bookmarks.tsx never renders card.image. Reference: /app/frontend/app/(tabs)/bookmarks.tsx", "testID": "bookmark-item-chest-c15", "priority": "low"}
+    ],
+    "integration_issues": [],
+    "design_issues": [],
+    "react_native_issues": []
+  },
+  "test_report_links": ["/app/tests/check_media.js"],
+  "action_items": [
+    "In bookmarks.tsx, render a small thumbnail (expo-image, slides[card.image]) for card bookmarks that have an image, or use a more specific front text."
+  ],
+  "critical_code_review_comments": [
+    "src/data/index.ts:20: image flashcard IDs are positional (`${t}-c${raw.flashcards.length + i + 1}`). Adding or removing a text flashcard later shifts image-card IDs, so on-device progress and bookmarks will silently attach to a different card. Use stable IDs (e.g. `${t}-img-${c.key}`).",
+    "src/data/index.ts:33: section images are matched by section title string. Renaming a section silently drops its images, and duplicate titles would duplicate images. Consider keying by section index or a stable slug. All current titles match (verified by /app/tests/check_media.js)."
+  ],
+  "updated_files": ["/app/tests/check_media.js (new static data-integrity check)"],
+  "success_rate": {"backend": "N/A (no backend)", "frontend": "100% of requested flows (1 low-priority UX gap)"},
+  "seed_data_creation": "None. Tests used localStorage only and cleared it before each run.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Data is local only (localStorage key sono_study_progress_v1, double JSON-encoded, with keys readSections/cards/quizzes/history/bookmarks/streak; theme in theme_pref). Use '>> visible=true' on all selectors because stacked screens keep duplicates in the DOM. Quiz options are shuffled at runtime. Image flashcards are the last N cards of each deck in 'All cards' unshuffled mode. Run `node /app/tests/check_media.js` to validate media/section/slide integrity. Expected totals: 118 sections, 212 cards.",
+  "rca_of_issue": ""
+}

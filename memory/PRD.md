@@ -24,7 +24,15 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 - Saved tab with filters; Progress tab with stats, per-topic bars, quiz history and reset
 - Testing iteration 1 passed. Fixes after testing: option shuffling, contrast, double-record guard, shuffle tally, mnemonic deep link
 
+## Update (Jun 2026): New chapters + slide images
+- Added Spleen (Ch 6), Urinary Tract (Ch 7), Adrenal Glands (Ch 8), Abdominal Vasculature (Ch 9), Noncardiac Chest & Retroperitoneum (Ch 11), each with notes, flashcards, quizzes and mnemonics
+- 73 ultrasound images taken from all 10 PDFs and bundled in the app (assets/slides, src/data/slides.ts, src/data/media.ts)
+- Images appear as thumbnails in note sections with a full-screen viewer; image flashcards (stable ids `${topic}-img-${key}`); images also show on saved flashcards
+- Totals: 10 topics, 118 note sections, ~212 flashcards, 137 questions
+- Testing iteration 2 passed
+
 ## Backlog
+- OB/GYN chapters (waiting on PDFs from user)
 - P1: Spaced repetition (show learning cards sooner), timed exam mode mixing all topics
 - P1: Search across notes
 - P2: Remaining chapters (kidneys, spleen, OB/GYN), images from the slides, export/import of progress file

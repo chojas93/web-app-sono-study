@@ -1,4 +1,18 @@
-export type TopicColorKey = "topicOverview" | "topicLiver" | "topicGallbladder" | "topicPancreas" | "topicGITract";
+import type { SlideKey } from "./slides";
+
+export type TopicColorKey =
+  | "topicOverview"
+  | "topicLiver"
+  | "topicGallbladder"
+  | "topicPancreas"
+  | "topicGITract"
+  | "topicSpleen"
+  | "topicUrinary"
+  | "topicAdrenal"
+  | "topicVasculature"
+  | "topicChest";
+
+export type SlideImage = { key: SlideKey; caption: string };
 
 export type RawTopic = {
   id: string;
@@ -13,8 +27,14 @@ export type RawTopic = {
   mnemonics: { title: string; device: string; meaning: string }[];
 };
 
-export type Section = { id: string; topicId: string; title: string; points: string[] };
-export type Flashcard = { id: string; topicId: string; front: string; back: string };
+// Slide images per topic: attached to a section (by exact title) and/or turned into image flashcards.
+export type TopicMedia = {
+  sectionImages: { section: string; key: SlideKey; caption: string }[];
+  imageCards: { key: SlideKey; front?: string; back: string }[];
+};
+
+export type Section = { id: string; topicId: string; title: string; points: string[]; images: SlideImage[] };
+export type Flashcard = { id: string; topicId: string; front: string; back: string; image?: SlideKey };
 export type Question = { id: string; topicId: string; q: string; options: string[]; answer: number; explanation: string };
 export type Mnemonic = { id: string; topicId: string; title: string; device: string; meaning: string };
 
@@ -23,4 +43,5 @@ export type Topic = Omit<RawTopic, "sections" | "flashcards" | "quiz" | "mnemoni
   flashcards: Flashcard[];
   quiz: Question[];
   mnemonics: Mnemonic[];
+  imageCount: number;
 };

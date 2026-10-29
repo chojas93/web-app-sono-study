@@ -4,6 +4,7 @@ import { ScrollView, Text, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { SlideStrip } from "@/src/components/slides";
 import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
 import { topicProgress, useProgress } from "@/src/store/progress";
@@ -89,6 +90,7 @@ export default function TopicScreen() {
                       <Text style={styles.pointText}>{pt}</Text>
                     </View>
                   ))}
+                  <SlideStrip images={s.images} testIDPrefix={`section-${s.id}`} />
                   <PressableScale
                     testID={`section-read-toggle-${s.id}`}
                     onPress={() => toggleRead(s.id)}

@@ -1,3 +1,4 @@
+import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useState } from "react";
 import { FlatList, ScrollView, Text, View } from "react-native";
@@ -5,6 +6,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { IconButton, Ionicons, PressableScale } from "@/src/components/ui";
 import { cardById, getTopic, mnemonicById, sectionById } from "@/src/data";
+import { slides, type SlideKey } from "@/src/data/slides";
 import { usesNativeTabs } from "@/src/navigation";
 import { Bookmark, BookmarkType, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
@@ -73,6 +75,7 @@ function BookmarkRow({ b }: { b: Bookmark }) {
   let label = "";
   let title = "";
   let body = "";
+  let image: SlideKey | undefined;
   if (b.type === "section") {
     const s = sectionById[b.refId];
     if (!s) return null;
@@ -85,6 +88,7 @@ function BookmarkRow({ b }: { b: Bookmark }) {
     label = "Flashcard";
     title = c.front;
     body = c.back;
+    image = c.image;
   } else {
     const m = mnemonicById[b.refId];
     if (!m) return null;
@@ -100,6 +104,7 @@ function BookmarkRow({ b }: { b: Bookmark }) {
         </Text>
         <IconButton testID={`bookmark-remove-${b.refId}`} name="bookmark" color={colors.brandPrimary} bg={colors.surfaceTertiary} onPress={() => toggleBookmark(b.type, b.refId, b.topicId)} />
       </View>
+      {image ? <Image source={slides[image]} style={styles.rowImage} contentFit="cover" testID={`bookmark-image-${b.refId}`} /> : null}
       <Text style={styles.rowTitle}>{title}</Text>
       <Text style={styles.rowBody}>{body}</Text>
       <PressableScale testID={`bookmark-open-${b.refId}`} onPress={() => router.push(b.type === "mnemonic" ? `/topic/${b.topicId}?tab=mnemonics` : `/topic/${b.topicId}`)} style={styles.open}>
@@ -130,6 +135,7 @@ const useStyles = makeStyles((c) => ({
   row: { backgroundColor: c.surfaceSecondary, borderRadius: radius.lg, padding: spacing.lg, gap: spacing.sm, borderLeftWidth: 6 },
   rowTop: { flexDirection: "row", alignItems: "center", justifyContent: "space-between" },
   rowLabel: { fontFamily: fonts.text, fontSize: 12, color: c.muted, textTransform: "uppercase", letterSpacing: 1, flex: 1 },
+  rowImage: { width: "100%", height: 160, borderRadius: radius.md, backgroundColor: "#000000" },
   rowTitle: { fontFamily: fonts.display, fontSize: 17, fontWeight: "500", color: c.onSurface },
   rowBody: { fontFamily: fonts.text, fontSize: 15, lineHeight: 22, color: c.onSurfaceSecondary },
   open: { flexDirection: "row", alignItems: "center", gap: spacing.xs, alignSelf: "flex-start", minHeight: 44 },

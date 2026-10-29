@@ -1,3 +1,4 @@
+import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
@@ -6,6 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, IconButton, Ionicons, PressableScale, ProgressBar, StackHeader, tap } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
+import { slides } from "@/src/data/slides";
 import type { Flashcard } from "@/src/data/types";
 import { useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
@@ -147,7 +149,8 @@ export default function FlashcardsScreen() {
                 <Text style={[styles.badge, { backgroundColor: accent + "33" }]}>Question</Text>
                 {status ? <Text style={[styles.badge, { backgroundColor: status === "known" ? colors.success + "33" : colors.warning + "44" }]}>{status === "known" ? "Known" : "Learning"}</Text> : null}
               </View>
-              <Text style={styles.cardText} testID="flashcard-front-text">
+              {card.image ? <Image source={slides[card.image]} style={styles.cardImage} contentFit="contain" testID="flashcard-image" /> : null}
+              <Text style={[styles.cardText, card.image && styles.cardTextSmall]} testID="flashcard-front-text">
                 {card.front}
               </Text>
               <Text style={styles.hint}>Tap to flip</Text>
@@ -208,6 +211,8 @@ const useStyles = makeStyles((c) => ({
   cardTop: { flexDirection: "row", gap: spacing.sm },
   badge: { fontFamily: fonts.text, fontSize: 12, fontWeight: "700", color: c.onSurface, paddingHorizontal: spacing.md, paddingVertical: spacing.xs, borderRadius: radius.pill, overflow: "hidden" },
   cardText: { fontFamily: fonts.display, fontSize: 24, fontWeight: "500", color: c.onSurface, textAlign: "center", lineHeight: 32 },
+  cardImage: { flex: 1, width: "100%", marginVertical: spacing.sm, borderRadius: radius.md, backgroundColor: "#000000" },
+  cardTextSmall: { fontSize: 18, lineHeight: 24 },
   hint: { fontFamily: fonts.text, fontSize: 13, color: c.muted, textAlign: "center" },
   controls: { flexDirection: "row", alignItems: "center", gap: spacing.sm },
   center: { flex: 1, alignItems: "center", justifyContent: "center", padding: spacing.xl, gap: spacing.md },

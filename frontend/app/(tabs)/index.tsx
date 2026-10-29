@@ -74,6 +74,7 @@ export default function Home() {
                   <Meta icon="document-text-outline" text={`${p.read}/${t.sections.length} notes`} />
                   <Meta icon="albums-outline" text={`${p.known}/${t.flashcards.length} cards`} />
                   <Meta icon="trophy-outline" text={p.quiz ? `Best ${p.quiz.best}/${p.quiz.total}` : "No quiz yet"} />
+                  {t.imageCount > 0 ? <Meta icon="image-outline" text={`${t.imageCount} images`} /> : null}
                 </View>
               </PressableScale>
             </Animated.View>
