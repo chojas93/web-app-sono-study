@@ -45,6 +45,9 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 - Image-quiz wrong options come from the same chapter first
 - Testing iteration 4 passed; the small issues it raised were fixed
 
+## Update (Jun 2026): Textbook answer explanations
+- All 420 textbook questions now have a 1–2 sentence explanation (src/data/bookExplanations.json), written once by AI with /app/scripts/gen_explanations.py and bundled in the app; the app makes no AI calls when used
+
 ## Backlog
 - OB/GYN chapters (waiting on PDFs from user)
 - P1: Spaced repetition (show learning cards sooner), timed exam mode mixing all topics

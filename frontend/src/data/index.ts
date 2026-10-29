@@ -1,5 +1,6 @@
 import { adrenal } from "./adrenal";
 import { biliary } from "./biliary";
+import bookExplanations from "./bookExplanations.json";
 import bookQuestions from "./bookQuestions.json";
 import { chest } from "./chest";
 import { gallbladder } from "./gallbladder";
@@ -46,7 +47,7 @@ function build(raw: RawTopic): Topic {
         q: q.q,
         options: q.options,
         answer: q.answer,
-        explanation: `Textbook review question ${q.n} (${raw.chapter}) — answer from the book's answer key.`,
+        explanation: (bookExplanations as Record<string, string>)[`${t}-b${q.n}`] ?? `Textbook review question ${q.n} (${raw.chapter}) — answer from the book's answer key.`,
         source: "textbook" as const,
       })),
     ],
