@@ -1,0 +1,34 @@
+{
+  "summary": "Tested frontend only (local-only Expo app, no backend) at 390x844 via Playwright. All requested features PASS. (1) Neck: 11 slide thumbnails render (section-neck-s2-image-0 ... s18-image-0); tapping opens slide-viewer with caption; open-image-quiz-button -> /quiz/neck?mode=image&count=11, counter 1/11, quiz-question-image renders. (2) Textbook review: all 14 topics show 'All 30 chapter questions', navigate to ?mode=book&count=30, counter 1/30, quiz-source-textbook tag shown; full 30-question Neck run finished, button then shows 'Best 10/30'; one 2-option question seen (expected). validate_data.js: 420 questions, 0 issues. (3) Weak spots: with no misses, Home shows 'Questions you miss will appear here' and the button is aria-disabled and does nothing on tap; same for the topic button ('No missed questions'). After 5 wrong answers in a Liver quiz, localStorage holds 5 missed IDs, topic-missed-count reads '5 missed to retry' and home-missed-count reads 'Retry 5 questions you missed', and both still show after a reload. The Home weak quiz had 5/5 questions, all previously missed. Answering 4 correctly dropped the count to 1 on Home and on the topic, and the topic weak review then showed 1/1. Missed image-quiz questions are included too (Neck: 20 textbook + 9 image = 29 counted, quiz 1/29 with image). Counts update after in-app back navigation without a reload. Visiting the empty weak URL directly shows the quiz-empty message. (4) The Progress tab recent list shows 'Weak spot review (5)', 'The Neck · Textbook' and 'The Neck · Image quiz'. (5) Regression PASS: search 'thyroid' (32 results incl. Neck notes), theme toggle (light<->dark), mock exam (10 Q from 13 chapters), flashcards flip/known/bookmark, section + card bookmarks on the Saved tab. No page errors. No deprecated Expo packages found.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Weak spot review header subtitle", "issue": "Topic-scoped weak review (and empty state) shows subtitle '1 CHAPTERS' (wrong plural). For a single topic, show the topic title instead. Reference: app/quiz/[id].tsx:37", "testID": "quiz-screen", "priority": "low"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Image quiz", "issues": ["Distractors come from all chapters' captions (e.g. 'Normal spleen' and 'Testicular torsion' offered for a thyroid image), so many questions are trivially easy. Prefer distractors from the same topic first (src/data/quiz.ts:23)."]},
+      {"screen": "Home search (web)", "issues": ["A square black focus outline is drawn inside the rounded search field when it is focused (web only). Minor."]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": ["/app/tests/validate_data.js"],
+  "action_items": [
+    "LOW: In quiz/[id].tsx, make the subtitle singular-aware: use the topic title when config.topicIds.length === 1, otherwise 'N chapters'.",
+    "LOW: missedCount() counts raw stored keys by ID prefix, but weakQuestions() only returns IDs that still exist. Stale IDs (an image key later added to EXCLUDE, or renumbered book questions) would show a count that is larger than the quiz, or enable the button for an empty quiz. Compute the count with weakQuestions(topicIds, missed).length, or prune unknown IDs on load.",
+    "LOW: The Home weak-spot quiz is capped at 50 questions, but the label says 'Retry N questions' even when N > 50. Either mention the cap or remove it.",
+    "LOW: Image quiz distractors should come from the same topic first, so questions are harder.",
+    "LOW: Remove the duplicate useProgress() call in quiz/[id].tsx (lines 38 and 42)."
+  ],
+  "critical_code_review_comments": [
+    "quiz/[id].tsx calls useProgress() twice (progressState/markAnswer and state/recordQuiz). This is redundant.",
+    "missedCount (src/data/quiz.ts:49) is not derived from the real question pool, so it can drift out of sync with weakQuestions.",
+    "markAnswer runs on every submit in all modes (mixed, image, book, mock, weak). This is intended and works."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (no backend)", "frontend": "100% of requested flows"},
+  "seed_data_creation": "None. Tests cleared localStorage before each run.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Local-only app. Progress is in localStorage key 'sono_study_progress_v1' (the value may be double-JSON-encoded). Missed question IDs are stored in state.missed: written '{topic}-q{n}', textbook '{topic}-b{n}', image '{topic}-iq-{key}'. Weak route: /quiz/weak?topics=a,b&count=N&mode=weak. Book route: /quiz/{id}?mode=book&count=30. Neck has 11 quizzable images. In the mock setup all chapters are preselected, so mock-select-all-button deselects them all."
+}

@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SlideStrip } from "@/src/components/slides";
 import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
-import { imageQuizCount } from "@/src/data/quiz";
+import { imageQuizCount, missedCount } from "@/src/data/quiz";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
@@ -34,6 +34,9 @@ export default function TopicScreen() {
   const toggleAll = () => setCollapsed(allCollapsed ? {} : Object.fromEntries(topic.sections.map((s) => [s.id, true])));
   const imageQuiz = state.quizzes[`${topic.id}:image`];
   const nImageQ = imageQuizCount(topic.id);
+  const bookQuiz = state.quizzes[`${topic.id}:book`];
+  const nBook = topic.quiz.filter((q) => q.source === "textbook").length;
+  const nMissed = missedCount([topic.id], state.missed);
 
   return (
     <View style={styles.root} testID="topic-screen">
@@ -77,6 +80,23 @@ export default function TopicScreen() {
             <Ionicons name="help-circle" size={26} color={colors.onTopic} />
             <Text style={styles.actionTitle}>Quiz</Text>
             <Text style={styles.actionSub}>{p.quiz ? `Best ${p.quiz.best}/${p.quiz.total}` : `20 of ${topic.quiz.length} questions`}</Text>
+          </PressableScale>
+        </View>
+        <View style={styles.extraRow}>
+          <PressableScale testID="open-textbook-review-button" onPress={() => router.push(`/quiz/${topic.id}?mode=book&count=30`)} style={[styles.extraBtn, { borderColor: accent }]}>
+            <Ionicons name="book" size={20} color={accent} />
+            <Text style={styles.extraTitle}>Textbook review</Text>
+            <Text style={styles.progressLabel}>{bookQuiz ? `Best ${bookQuiz.best}/${bookQuiz.total}` : `All ${nBook} chapter questions`}</Text>
+          </PressableScale>
+          <PressableScale
+            testID="open-weak-review-button"
+            disabled={nMissed === 0}
+            onPress={() => router.push(`/quiz/weak?topics=${topic.id}&count=${nMissed}&mode=weak`)}
+            style={[styles.extraBtn, { borderColor: nMissed ? colors.error : colors.border, opacity: nMissed ? 1 : 0.6 }]}
+          >
+            <Ionicons name="medkit" size={20} color={nMissed ? colors.error : colors.muted} />
+            <Text style={styles.extraTitle}>Weak spots</Text>
+            <Text style={styles.progressLabel} testID="topic-missed-count">{nMissed ? `${nMissed} missed to retry` : "No missed questions"}</Text>
           </PressableScale>
         </View>
         {nImageQ > 0 ? (
@@ -176,6 +196,9 @@ const useStyles = makeStyles((c) => ({
   actionTitle: { fontFamily: fonts.display, fontSize: 18, fontWeight: "500", color: c.onTopic },
   actionSub: { fontFamily: fonts.text, fontSize: 13, color: c.onTopic },
   section: { backgroundColor: c.surfaceSecondary, borderRadius: radius.lg, padding: spacing.lg, gap: spacing.sm, borderWidth: 1.5, borderColor: "transparent" },
+  extraRow: { flexDirection: "row", gap: spacing.md },
+  extraBtn: { flex: 1, padding: spacing.lg, borderRadius: radius.lg, borderWidth: 1.5, backgroundColor: c.surfaceSecondary, gap: spacing.xs },
+  extraTitle: { fontFamily: fonts.display, fontSize: 16, fontWeight: "500", color: c.onSurface },
   sectionHead: { flex: 1, flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44 },
   collapseAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, alignSelf: "flex-end", minHeight: 44, paddingHorizontal: spacing.lg },
   collapseText: { fontFamily: fonts.text, fontSize: 14, fontWeight: "700" },

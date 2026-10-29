@@ -1,12 +1,13 @@
 import { router } from "expo-router";
 import { useState } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { Platform, ScrollView, Text, TextInput, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SearchResults } from "@/src/components/search-results";
 import { IconButton, IconName, Ionicons, PressableScale, ProgressBar } from "@/src/components/ui";
 import { topics } from "@/src/data";
+import { missedCount } from "@/src/data/quiz";
 import { usesNativeTabs } from "@/src/navigation";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, setColorScheme, spacing, useTheme } from "@/src/theme";
@@ -22,6 +23,7 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [compact, setCompact] = useState(false);
   const searching = query.trim().length > 0;
+  const nMissed = missedCount(topics.map((t) => t.id), state.missed);
 
   return (
     <View style={styles.root} testID="home-screen">
@@ -64,6 +66,21 @@ export default function Home() {
             <Text style={styles.mockSub}>Pick chapters & number of questions</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color={colors.onBrandPrimary} />
+        </PressableScale>
+        <PressableScale
+          testID="open-weak-spots-button"
+          disabled={nMissed === 0}
+          onPress={() => router.push(`/quiz/weak?topics=${topics.map((t) => t.id).join(",")}&count=${Math.min(nMissed, 50)}&mode=weak`)}
+          style={[styles.weak, { opacity: nMissed ? 1 : 0.6 }]}
+        >
+          <Ionicons name="medkit" size={24} color={colors.error} />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.weakTitle}>Weak spot review</Text>
+            <Text style={styles.weakSub} testID="home-missed-count">
+              {nMissed ? `Retry ${Math.min(nMissed, 50)} question${nMissed === 1 ? "" : "s"} you missed${nMissed > 50 ? ` (of ${nMissed})` : ""}` : "Questions you miss will appear here"}
+            </Text>
+          </View>
+          {nMissed ? <Ionicons name="chevron-forward" size={22} color={colors.muted} /> : null}
         </PressableScale>
         <View style={styles.labelRow}>
           <Text style={styles.sectionLabel}>Topics</Text>
@@ -165,10 +182,13 @@ const useStyles = makeStyles((c) => ({
   metaText: { fontFamily: fonts.text, fontSize: 12, color: c.onSurfaceTertiary },
   searchWrap: { paddingHorizontal: spacing.lg, paddingBottom: spacing.md, backgroundColor: c.surface },
   search: { flexDirection: "row", alignItems: "center", gap: spacing.sm, height: 48, paddingLeft: spacing.lg, borderRadius: radius.pill, backgroundColor: c.surfaceSecondary, borderWidth: 1, borderColor: c.border },
-  searchInput: { flex: 1, height: 48, fontFamily: fonts.text, fontSize: 16, color: c.onSurface },
+  searchInput: { flex: 1, height: 48, fontFamily: fonts.text, fontSize: 16, color: c.onSurface, ...(Platform.OS === "web" ? ({ outlineStyle: "none" } as object) : {}) },
   mock: { flexDirection: "row", alignItems: "center", gap: spacing.md, backgroundColor: c.brandPrimary, borderRadius: radius.lg, padding: spacing.lg },
   mockTitle: { fontFamily: fonts.display, fontSize: 20, fontWeight: "500", color: c.onBrandPrimary },
   mockSub: { fontFamily: fonts.text, fontSize: 13, color: c.onBrandPrimary },
+  weak: { flexDirection: "row", alignItems: "center", gap: spacing.md, backgroundColor: c.surfaceSecondary, borderRadius: radius.lg, padding: spacing.lg, borderWidth: 1.5, borderColor: c.error },
+  weakTitle: { fontFamily: fonts.display, fontSize: 18, fontWeight: "500", color: c.onSurface },
+  weakSub: { fontFamily: fonts.text, fontSize: 13, color: c.muted },
   labelRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: spacing.sm },
   compactBtn: { flexDirection: "row", alignItems: "center", gap: spacing.xs, minHeight: 44, paddingHorizontal: spacing.sm },
   compactText: { fontFamily: fonts.text, fontSize: 14, fontWeight: "700" },

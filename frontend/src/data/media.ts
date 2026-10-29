@@ -174,12 +174,6 @@ export const media: Record<string, TopicMedia> = {
     ],
     imageCards: [],
   },
-  neck: {
-    sectionImages: [
-
-    ],
-    imageCards: [],
-  },
   male: {
     sectionImages: [
       { section: "Vascular Anatomy of the Male Pelvis", key: "male_2", caption: "Male pelvis vascular anatomy (diagram)" },
@@ -196,5 +190,25 @@ export const media: Record<string, TopicMedia> = {
       { section: "Tendon Rupture", key: "msk_8", caption: "Biceps tendon rupture" }
     ],
     imageCards: [],
+  },
+  neck: {
+    sectionImages: [
+      { section: "Sonography of the Salivary Glands", key: "neck_parotid", caption: "Normal parotid gland" },
+      { section: "Pathology of the Salivary Glands", key: "neck_salivary", caption: "Salivary gland mass with internal flow" },
+      { section: "Goiter", key: "neck_goiter", caption: "Goiter — diffusely enlarged thyroid" },
+      { section: "Hashimoto Thyroiditis and Hypothryoidism", key: "neck_hashimoto", caption: "Hashimoto thyroiditis — heterogeneous gland" },
+      { section: "Benign Nodules", key: "neck_benign", caption: "Benign thyroid nodule" },
+      { section: "Benign Nodules", key: "neck_colloid", caption: "Colloid nodule with comet-tail artifact" },
+      { section: "Malignant Thyroid Nodules", key: "neck_malignant", caption: "Malignant thyroid nodules" },
+      { section: "Parathyroid Adenoma", key: "neck_parathyroid", caption: "Parathyroid adenoma posterior to the thyroid" },
+      { section: "Cervical Lymph Nodes", key: "neck_node", caption: "Cervical lymph node with echogenic hilum" },
+      { section: "Thyroglossal Duct Cyst", key: "neck_thyroglossal", caption: "Thyroglossal duct cyst" },
+      { section: "Fibromatosis Colli", key: "neck_fibromatosis", caption: "Fibromatosis colli — enlarged SCM muscle" },
+    ],
+    imageCards: [
+      { key: "neck_colloid", back: "Colloid nodule — comet-tail artifact suggests benign." },
+      { key: "neck_parathyroid", back: "Parathyroid adenoma — hypoechoic oval mass posterior to the thyroid." },
+      { key: "neck_thyroglossal", back: "Thyroglossal duct cyst — midline neck cyst near the hyoid." },
+    ],
   },
 };

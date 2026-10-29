@@ -20,7 +20,9 @@ const allCaptions = Array.from(new Set(Object.keys(media).flatMap((t) => quizzab
 export function imageQuestions(topicIds: string[]): Question[] {
   return topicIds.flatMap((t) =>
     quizzable(t).map((img) => {
-      const distractors = shuffle(allCaptions.filter((c) => c !== img.caption)).slice(0, 3);
+      const same = shuffle(quizzable(t).map((x) => x.caption).filter((c) => c !== img.caption));
+      const others = shuffle(allCaptions.filter((c) => c !== img.caption && !same.includes(c)));
+      const distractors = [...same, ...others].slice(0, 3);
       return {
         id: `${t}-iq-${img.key}`,
         topicId: t,
@@ -34,11 +36,25 @@ export function imageQuestions(topicIds: string[]): Question[] {
   );
 }
 
-export type QuizConfig = { topicIds: string[]; count: number; mode: "mixed" | "image" };
+export type QuizMode = "mixed" | "image" | "book" | "weak";
+export type QuizConfig = { topicIds: string[]; count: number; mode: QuizMode; missed?: Record<string, boolean> };
 
-export function buildQuiz({ topicIds, count, mode }: QuizConfig): Question[] {
-  const pool =
-    mode === "image" ? imageQuestions(topicIds) : topics.filter((t) => topicIds.includes(t.id)).flatMap((t) => t.quiz);
+function writtenPool(topicIds: string[]) {
+  return topics.filter((t) => topicIds.includes(t.id)).flatMap((t) => t.quiz);
+}
+
+// Questions answered wrong before (written + image) for the chosen topics.
+export function weakQuestions(topicIds: string[], missed: Record<string, boolean>) {
+  return [...writtenPool(topicIds), ...imageQuestions(topicIds)].filter((q) => missed[q.id]);
+}
+
+export function missedCount(topicIds: string[], missed: Record<string, boolean>) {
+  return weakQuestions(topicIds, missed).length;
+}
+
+export function buildQuiz({ topicIds, count, mode, missed }: QuizConfig): Question[] {
+  if (mode === "book") return writtenPool(topicIds).filter((q) => q.source === "textbook");
+  const pool = mode === "image" ? imageQuestions(topicIds) : mode === "weak" ? weakQuestions(topicIds, missed ?? {}) : writtenPool(topicIds);
   return shuffle(pool).slice(0, count);
 }
 

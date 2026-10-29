@@ -86,6 +86,17 @@ export const slides = {
   male_7: require("../../assets/slides/male_7.jpg"),
   msk_7: require("../../assets/slides/msk_7.jpg"),
   msk_8: require("../../assets/slides/msk_8.jpg"),
+  neck_parotid: require("../../assets/slides/neck_parotid.jpg"),
+  neck_salivary: require("../../assets/slides/neck_salivary.jpg"),
+  neck_goiter: require("../../assets/slides/neck_goiter.jpg"),
+  neck_hashimoto: require("../../assets/slides/neck_hashimoto.jpg"),
+  neck_benign: require("../../assets/slides/neck_benign.jpg"),
+  neck_colloid: require("../../assets/slides/neck_colloid.jpg"),
+  neck_malignant: require("../../assets/slides/neck_malignant.jpg"),
+  neck_parathyroid: require("../../assets/slides/neck_parathyroid.jpg"),
+  neck_node: require("../../assets/slides/neck_node.jpg"),
+  neck_thyroglossal: require("../../assets/slides/neck_thyroglossal.jpg"),
+  neck_fibromatosis: require("../../assets/slides/neck_fibromatosis.jpg"),
 };
 
 export type SlideKey = keyof typeof slides;

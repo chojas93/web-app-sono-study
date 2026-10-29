@@ -18,6 +18,7 @@ export type ProgressState = {
   history: QuizHistory[];
   bookmarks: Bookmark[];
   streak: { count: number; lastDate: string | null };
+  missed: Record<string, boolean>;
 };
 
 const empty: ProgressState = {
@@ -27,6 +28,7 @@ const empty: ProgressState = {
   history: [],
   bookmarks: [],
   streak: { count: 0, lastDate: null },
+  missed: {},
 };
 
 function fmt(d: Date) {
@@ -69,6 +71,7 @@ type Ctx = {
   toggleBookmark: (type: BookmarkType, refId: string, topicId: string) => void;
   isBookmarked: (refId: string) => boolean;
   resetAll: () => void;
+  markAnswer: (questionId: string, correct: boolean) => void;
 };
 
 const ProgressContext = createContext<Ctx | null>(null);
@@ -137,9 +140,20 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
 
   const resetAll = useCallback(() => setState(empty), []);
 
+  // Weak spots: wrong answers are remembered until answered correctly.
+  const markAnswer = useCallback((qid: string, correct: boolean) => {
+    setState((s) => {
+      if (correct === !s.missed[qid]) return s;
+      const missed = { ...s.missed };
+      if (correct) delete missed[qid];
+      else missed[qid] = true;
+      return { ...s, missed };
+    });
+  }, []);
+
   const value = useMemo(
-    () => ({ state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll }),
-    [state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll],
+    () => ({ state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll, markAnswer }),
+    [state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll, markAnswer],
   );
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

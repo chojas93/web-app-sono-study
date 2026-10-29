@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Button, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
-import { buildQuiz, shuffle } from "@/src/data/quiz";
+import { buildQuiz, QuizMode, shuffle } from "@/src/data/quiz";
 import { slides } from "@/src/data/slides";
 import type { Question } from "@/src/data/types";
 import { useProgress } from "@/src/store/progress";
@@ -23,23 +23,25 @@ function prepare(qs: Question[]) {
 export default function QuizScreen() {
   const { id, topics: tp, count: cp, mode: mp } = useLocalSearchParams<{ id: string; topics?: string; count?: string; mode?: string }>();
   const topic = getTopic(id);
-  const isMock = id === "mock";
+  const isMock = id === "mock" || id === "weak";
   const config = useMemo(
     () => ({
       topicIds: isMock ? (tp ?? "").split(",").filter(Boolean) : [id],
       count: Number(cp) || 20,
-      mode: (mp === "image" ? "image" : "mixed") as "image" | "mixed",
+      mode: (mp === "image" || mp === "book" || mp === "weak" ? mp : "mixed") as QuizMode,
     }),
     [isMock, tp, id, cp, mp],
   );
-  const recordId = isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : id;
-  const title = isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : "Quiz";
-  const subtitle = isMock ? `${config.topicIds.length} chapters` : (topic?.title ?? "");
+  const recordId = config.mode === "weak" ? "weak" : isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : config.mode === "book" ? `${id}:book` : id;
+  const title = config.mode === "weak" ? "Weak spot review" : isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : config.mode === "book" ? "Textbook review" : "Quiz";
+  const subtitle =
+    isMock && config.topicIds.length !== 1 ? `${config.topicIds.length} chapters` : (topic?.title ?? getTopic(config.topicIds[0])?.title ?? "");
+  const { state: progressState, markAnswer } = useProgress();
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   const { colors } = useTheme();
   const { state, recordQuiz } = useProgress();
-  const [questions, setQuestions] = useState<Question[]>(() => prepare(buildQuiz(config)));
+  const [questions, setQuestions] = useState<Question[]>(() => prepare(buildQuiz({ ...config, missed: progressState.missed })));
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -53,7 +55,7 @@ export default function QuizScreen() {
     return (
       <View style={styles.root} testID="quiz-empty">
         <StackHeader title={title} subtitle={subtitle} />
-        <Text style={[styles.explain, { padding: spacing.xl, textAlign: "center" }]}>No questions available for this selection yet.</Text>
+        <Text style={[styles.explain, { padding: spacing.xl, textAlign: "center" }]}>{config.mode === "weak" ? "No missed questions — great job! Answer quizzes and any wrong answers will show up here." : "No questions available for this selection yet."}</Text>
       </View>
     );
   const accent = topic ? colors[topic.colorKey] : colors.brandPrimary;
@@ -63,6 +65,7 @@ export default function QuizScreen() {
   const submit = () => {
     if (selected === null) return;
     setSubmitted(true);
+    markAnswer(q.id, selected === q.answer);
     if (selected === q.answer) setScore((s) => s + 1);
     else setMissed((m) => [...m, q]);
   };
@@ -79,7 +82,7 @@ export default function QuizScreen() {
     setSubmitted(false);
   };
   const retry = () => {
-    setQuestions(prepare(buildQuiz(config)));
+    setQuestions(prepare(buildQuiz({ ...config, missed: progressState.missed })));
     setIndex(0);
     setSelected(null);
     setSubmitted(false);

@@ -38,6 +38,13 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 - Home: search bar ("Search") replaces the mastery/streak card; Mock exam card; Minimize toggle for topic cards; topic screens have Minimize all / per-section collapse
 - Testing iteration 3 passed; issues it raised were fixed afterward
 
+## Update (Jun 2026): Neck images, all 30 textbook questions, weak spots
+- 11 Neck ultrasound images added to the notes, plus an image quiz and image flashcards
+- All 30 textbook review questions per chapter (420 total); ~32 rebuilt by hand where the PDF columns broke apart (some are 2-option true/false). Each topic has a Textbook review button (mode=book)
+- Weak spot review: wrong answers are stored in progress.missed until answered correctly; buttons on Home (all chapters) and on each topic
+- Image-quiz wrong options come from the same chapter first
+- Testing iteration 4 passed; the small issues it raised were fixed
+
 ## Backlog
 - OB/GYN chapters (waiting on PDFs from user)
 - P1: Spaced repetition (show learning cards sooner), timed exam mode mixing all topics
