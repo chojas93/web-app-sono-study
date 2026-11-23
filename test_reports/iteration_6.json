@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only test at 390x844 (no backend in this app). All 7 requested items work. (1) The missing pictures are fixed: in bookQuestions.json, spleen n54, vasculature n16 and neck n11 now have image keys, the JPGs exist (481px wide), and they are registered in slides.ts lines 186-188. In the shuffled 60-question Textbook review each one showed quiz-question-image (358x220, loaded, naturalWidth 481), and the pictures match the question text (arrows / calipers). (2) Midterm: open-midterm-button opens midterm-screen with rows all=102, Spleen=16, Pancreas=14, Gallbladder and Bile Duct=50, Liver=22. The quiz title is 'Midterm Quiz 1' with subtitle 'Personal review · Spleen'. After submitting, quiz-option-why-0..3 show 'Why it's correct:' on the correct option and 'Why it's wrong:' on the others, and quiz-explanation shows. Finishing shows results (7/16). Progress history shows 'Midterm Quiz 1 · Spleen | 7/16', and the midterm row shows 'Best 7/16'. (3) Separation: midterm misses do not count toward weak spots (the home missed count stayed empty after 2 midterm misses), no mock-exam question matched a midterm question, and the mock pool is 977 questions. (4) Score trend: after two Liver quizzes (4/20 then 2/20), score-trend-liver showed 2 bars (20, 10) and the text '▼ 10% since first try'. (5) Regression passed: textbook review, mock exam (25 questions, results), weak spots (1/15 after the mock) and search ('spleen' gave 35 results). No page errors. One real issue: midterm answer options are never shuffled, and 65 of 102 correct answers are option A (49 of 50 in Gallbladder and Bile Duct), so the quiz can be beaten by always tapping A.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {"flow": "Midterm quiz option order", "issue": "quiz/[id].tsx lines 46 and 87 skip prepare() when isMidterm, so options and question order stay exactly as in midterm.json. The answer key is heavily skewed: index 0 is correct 65 of 102 times, including 49 of 50 in Gallbladder and Bile Duct and all 16 Spleen answers being 0 or 1. Always tapping A scores about 98% on the Gallbladder and Bile Duct section, which defeats the point of a review quiz.", "affected_testIDs": ["quiz-option-0", "quiz-option-why-0"]}
+    ],
+    "design_issues": [],
+    "react_native_issues": []
+  },
+  "test_report_links": [".screenshots/midterm.png", ".screenshots/midterm_q1.png", ".screenshots/book_spleen.png", ".screenshots/book_vasculature.png", ".screenshots/book_neck.png", ".screenshots/trend.png", ".screenshots/search.png"],
+  "action_items": [
+    "Shuffle the midterm options (and optionally the question order). IMPORTANT: prepare() in quiz/[id].tsx only permutes options and answer, so applying it as-is would mismatch the per-option explanations. Also permute optionExplanations with the same perm: optionExplanations: q.optionExplanations && perm.map(i => q.optionExplanations[i]).",
+    "Optional: double-check the AI-written midterm answer key. 49 of 50 Gallbladder and Bile Duct answers being 'A' suggests either the PDF listed the correct answer first or the AI was biased.",
+    "Optional: ScoreTrend in progress.tsx line 72 puts mixed, image and textbook quizzes (liver, liver:image, liver:book) in one chart. Consider limiting it to the chapter quiz, or labeling bars by mode."
+  ],
+  "critical_code_review_comments": [
+    "markAnswer also stores midterm-* ids in state.missed. This is harmless because weakQuestions only pulls from the chapter quizzes, but nothing ever reads those entries.",
+    "In midterm results, 'Review missed questions' shows only the correct option's explanation, not why the chosen option was wrong. This is acceptable."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100% of requested flows (1 design/logic issue: unshuffled midterm options)"},
+  "seed_data_creation": "None (data is local-only browser storage; each test session started fresh)",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Local-only Expo app. Routes: /quiz/{topic}?mode=book&count=60, /quiz/midterm?topics=<Section|all>, /mock, /progress. Each browser_automation session starts with empty storage. Midterm options are not shuffled (deterministic order from midterm.json).",
+  "rca_of_issue": "Midterm skew: QuizScreen calls buildQuiz(config) directly for the midterm, bypassing prepare(). The likely reason is that prepare() would break the alignment of optionExplanations, but as a result the AI-generated answer key, which is mostly index 0, is shown in its original order."
+}

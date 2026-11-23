@@ -2,11 +2,19 @@ import { useState } from "react";
 import { Modal, Pressable, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { ScoreTrend } from "@/src/components/score-trend";
 import { Button, IconName, Ionicons, ProgressBar } from "@/src/components/ui";
 import { getTopic, topics, totals } from "@/src/data";
 import { usesNativeTabs } from "@/src/navigation";
 import { currentStreak, topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
+
+const TREND_MODES = [
+  { key: "quiz", label: "Quiz" },
+  { key: "image", label: "Image quiz" },
+  { key: "book", label: "Textbook" },
+] as const;
+
 
 export default function ProgressScreen() {
   const insets = useSafeAreaInsets();
@@ -65,6 +73,18 @@ export default function ProgressScreen() {
               <Mini label="Notes" value={p.read} total={t.sections.length} color={accent} />
               <Mini label="Cards" value={p.known} total={t.flashcards.length} color={accent} />
               <Mini label="Best quiz" value={p.quiz?.best ?? 0} total={p.quiz?.total ?? 20} color={accent} />
+              {TREND_MODES.map((m) => (
+                <ScoreTrend
+                  key={m.key}
+                  testID={`score-trend-${t.id}-${m.key}`}
+                  label={`${m.label} trend`}
+                  color={accent}
+                  entries={state.history.filter((h) => {
+                    const [id, mode = "quiz"] = h.topicId.split(":");
+                    return id === t.id && mode === m.key;
+                  })}
+                />
+              ))}
             </View>
           );
         })}
@@ -78,7 +98,7 @@ export default function ProgressScreen() {
           state.history.slice(0, 8).map((h, i) => (
             <View key={h.at + i} style={styles.historyRow} testID={`quiz-history-${i}`}>
               <Text style={styles.historyTopic}>
-                {h.topicId === "weak" ? `Weak spot review (${h.total})` : h.topicId.startsWith("mock") ? `Mock exam (${h.total})` : `${getTopic(h.topicId.split(":")[0])?.title ?? ""}${h.topicId.endsWith(":image") ? " · Image quiz" : h.topicId.endsWith(":book") ? " · Textbook" : ""}`}
+                {h.topicId.startsWith("midterm") ? `Midterm Quiz 1${h.topicId.includes(":") ? ` · ${h.topicId.split(":")[1]}` : ""}` : h.topicId === "weak" ? `Weak spot review (${h.total})` : h.topicId.startsWith("mock") ? `Mock exam (${h.total})` : `${getTopic(h.topicId.split(":")[0])?.title ?? ""}${h.topicId.endsWith(":image") ? " · Image quiz" : h.topicId.endsWith(":book") ? " · Textbook" : ""}`}
               </Text>
               <Text style={[styles.historyScore, { color: h.score / h.total >= 0.7 ? colors.success : colors.onSurface }]}>
                 {h.score}/{h.total}

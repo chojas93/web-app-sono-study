@@ -39,7 +39,7 @@ export type TopicMedia = {
 
 export type Section = { id: string; topicId: string; title: string; points: string[]; images: SlideImage[] };
 export type Flashcard = { id: string; topicId: string; front: string; back: string; image?: SlideKey };
-export type Question = { id: string; topicId: string; q: string; options: string[]; answer: number; explanation: string; image?: SlideKey; source?: "guide" | "textbook" };
+export type Question = { id: string; topicId: string; q: string; options: string[]; answer: number; explanation: string; image?: SlideKey; source?: "guide" | "textbook"; optionExplanations?: string[] };
 export type Mnemonic = { id: string; topicId: string; title: string; device: string; meaning: string };
 
 export type Topic = Omit<RawTopic, "sections" | "flashcards" | "quiz" | "mnemonics"> & {

@@ -82,6 +82,14 @@ export default function Home() {
           </View>
           {nMissed ? <Ionicons name="chevron-forward" size={22} color={colors.muted} /> : null}
         </PressableScale>
+        <PressableScale testID="open-midterm-button" onPress={() => router.push("/midterm")} style={styles.weak}>
+          <Ionicons name="school" size={24} color={colors.brandPrimary} />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.weakTitle}>Midterm Quiz 1</Text>
+            <Text style={styles.weakSub}>Personal review with explanations for every answer choice</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={22} color={colors.muted} />
+        </PressableScale>
         <View style={styles.labelRow}>
           <Text style={styles.sectionLabel}>Topics</Text>
           <PressableScale testID="toggle-compact-topics-button" onPress={() => setCompact((v) => !v)} style={styles.compactBtn}>

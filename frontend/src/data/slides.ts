@@ -183,6 +183,9 @@ export const slides = {
   b3_msk_11: require("../../assets/slides/b3_msk_11.jpg"),
   b3_msk_12: require("../../assets/slides/b3_msk_12.jpg"),
   b3_msk_20: require("../../assets/slides/b3_msk_20.jpg"),
+  b3_spleen_54: require("../../assets/slides/b3_spleen_54.jpg"),
+  b3_vasculature_16: require("../../assets/slides/b3_vasculature_16.jpg"),
+  b3_neck_11: require("../../assets/slides/b3_neck_11.jpg"),
 };
 
 export type SlideKey = keyof typeof slides;

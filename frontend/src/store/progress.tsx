@@ -121,7 +121,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
         attempts: (prev?.attempts ?? 0) + 1,
         lastAt: at,
       };
-      const history = [{ topicId, score, total, at }, ...s.history].slice(0, 30);
+      const history = [{ topicId, score, total, at }, ...s.history].slice(0, 300);
       return bump({ ...s, quizzes: { ...s.quizzes, [topicId]: rec }, history });
     });
   }, []);

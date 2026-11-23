@@ -54,8 +54,17 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 - Every study section rewritten in more detail from the 3rd edition chapter text (/app/scripts/gen_detailed_notes.py → detailedNotes.json, overrides section points by title); about 2,500 bullet points in total
 - Content is written once and bundled in the app; no AI calls at runtime
 
+## Update (Jun 2026): Midterm quiz, score trends, missing figures
+- Added figures to Spleen Q54, Vasculature Q16 and Neck Q11; the "Figure 6- 16" spacing had broken the match
+- Score trend bar chart (last 10 attempts) for each chapter on the Progress tab (src/components/score-trend.tsx); quiz history now keeps 300 entries
+- Midterm Quiz 1 (personal review), separate from the chapters: /midterm screen with All plus 4 sections (Spleen, Pancreas, Gallbladder and Bile Duct, Liver), 102 questions. The PDF had no answer key, so answers and per-option explanations were written by AI (/app/scripts/gen_midterm.py → src/data/midterm.json); each choice shows why it is right or wrong after submitting
+
 ## Backlog
 - OB/GYN chapters (waiting on PDFs from user)
 - P1: Spaced repetition (show learning cards sooner), timed exam mode mixing all topics
 - P1: Search across notes
 - P2: Remaining chapters (kidneys, spleen, OB/GYN), images from the slides, export/import of progress file
+
+## Update (Iteration 7)
+- Midterm answer shuffle fix verified by testing agent (always-A scores ~20-25%).
+- Progress score trends split per mode: Quiz / Image quiz / Textbook (testIDs score-trend-{id}-{mode}).

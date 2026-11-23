@@ -14,34 +14,45 @@ import { useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
 function prepare(qs: Question[]) {
-  return shuffle(qs).map((q) => {
-    const perm = shuffle(q.options.map((_, i) => i));
-    return { ...q, options: perm.map((i) => q.options[i]), answer: perm.indexOf(q.answer) };
-  });
+  return shuffle(qs).map(shuffleOptions);
+}
+
+// Shuffle answer choices (keeping per-option explanations aligned); True/False keeps its order.
+function shuffleOptions(q: Question): Question {
+  const isTF = q.options.length === 2 && q.options.every((o) => /^(true|false)$/i.test(o.trim()));
+  const perm = isTF ? q.options.map((_, i) => i) : shuffle(q.options.map((_, i) => i));
+  return {
+    ...q,
+    options: perm.map((i) => q.options[i]),
+    answer: perm.indexOf(q.answer),
+    optionExplanations: q.optionExplanations ? perm.map((i) => q.optionExplanations![i]) : undefined,
+  };
 }
 
 export default function QuizScreen() {
   const { id, topics: tp, count: cp, mode: mp } = useLocalSearchParams<{ id: string; topics?: string; count?: string; mode?: string }>();
   const topic = getTopic(id);
   const isMock = id === "mock" || id === "weak";
+  const isMidterm = id === "midterm";
   const config = useMemo(
     () => ({
-      topicIds: isMock ? (tp ?? "").split(",").filter(Boolean) : [id],
+      topicIds: isMidterm ? [tp ?? "all"] : isMock ? (tp ?? "").split(",").filter(Boolean) : [id],
       count: Number(cp) || 20,
-      mode: (mp === "image" || mp === "book" || mp === "weak" ? mp : "mixed") as QuizMode,
+      mode: (isMidterm ? "midterm" : mp === "image" || mp === "book" || mp === "weak" ? mp : "mixed") as QuizMode,
     }),
-    [isMock, tp, id, cp, mp],
+    [isMock, isMidterm, tp, id, cp, mp],
   );
-  const recordId = config.mode === "weak" ? "weak" : isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : config.mode === "book" ? `${id}:book` : id;
-  const title = config.mode === "weak" ? "Weak spot review" : isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : config.mode === "book" ? "Textbook review" : "Quiz";
-  const subtitle =
-    isMock && config.topicIds.length !== 1 ? `${config.topicIds.length} chapters` : (topic?.title ?? getTopic(config.topicIds[0])?.title ?? "");
+  const recordId = isMidterm ? (config.topicIds[0] === "all" ? "midterm" : `midterm:${config.topicIds[0]}`) : config.mode === "weak" ? "weak" : isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : config.mode === "book" ? `${id}:book` : id;
+  const title = isMidterm ? "Midterm Quiz 1" : config.mode === "weak" ? "Weak spot review" : isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : config.mode === "book" ? "Textbook review" : "Quiz";
+  const subtitle = isMidterm
+    ? config.topicIds[0] === "all" ? "Personal review · all sections" : `Personal review · ${config.topicIds[0]}`
+    : isMock && config.topicIds.length !== 1 ? `${config.topicIds.length} chapters` : (topic?.title ?? getTopic(config.topicIds[0])?.title ?? "");
   const { state: progressState, markAnswer } = useProgress();
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   const { colors } = useTheme();
   const { state, recordQuiz } = useProgress();
-  const [questions, setQuestions] = useState<Question[]>(() => prepare(buildQuiz({ ...config, missed: progressState.missed })));
+  const [questions, setQuestions] = useState<Question[]>(() => (isMidterm ? buildQuiz(config).map(shuffleOptions) : prepare(buildQuiz({ ...config, missed: progressState.missed }))));
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -50,7 +61,7 @@ export default function QuizScreen() {
   const [finished, setFinished] = useState(false);
   const recorded = useRef(false);
 
-  if (!topic && !isMock) return <StackHeader title="Topic not found" />;
+  if (!topic && !isMock && !isMidterm) return <StackHeader title="Topic not found" />;
   if (questions.length === 0)
     return (
       <View style={styles.root} testID="quiz-empty">
@@ -82,7 +93,7 @@ export default function QuizScreen() {
     setSubmitted(false);
   };
   const retry = () => {
-    setQuestions(prepare(buildQuiz({ ...config, missed: progressState.missed })));
+    setQuestions(isMidterm ? buildQuiz(config).map(shuffleOptions) : prepare(buildQuiz({ ...config, missed: progressState.missed })));
     setIndex(0);
     setSelected(null);
     setSubmitted(false);
@@ -166,7 +177,15 @@ export default function QuizScreen() {
               <View style={[styles.letter, { borderColor: border }]}>
                 <Text style={styles.letterText}>{String.fromCharCode(65 + i)}</Text>
               </View>
-              <Text style={styles.optionText}>{opt}</Text>
+              <View style={{ flex: 1, gap: spacing.xs }}>
+                <Text style={styles.optionText}>{opt}</Text>
+                {submitted && q.optionExplanations?.[i] ? (
+                  <Text style={styles.optionWhy} testID={`quiz-option-why-${i}`}>
+                    {isAns ? "Why it's correct: " : "Why it's wrong: "}
+                    {q.optionExplanations[i]}
+                  </Text>
+                ) : null}
+              </View>
               {icon ? <Ionicons name={icon} size={24} color={icon === "checkmark-circle" ? colors.success : colors.error} /> : null}
             </PressableScale>
           );
@@ -196,6 +215,7 @@ const useStyles = makeStyles((c) => ({
   content: { padding: spacing.lg, gap: spacing.md },
   qImage: { width: "100%", height: 220, borderRadius: radius.md, backgroundColor: "#000000" },
   sourceTag: { fontFamily: fonts.text, fontSize: 12, fontWeight: "700", color: c.muted, textTransform: "uppercase", letterSpacing: 1 },
+  optionWhy: { fontFamily: fonts.text, fontSize: 13, lineHeight: 18, color: c.onSurfaceTertiary },
   question: { fontFamily: fonts.display, fontSize: 22, fontWeight: "500", color: c.onSurface, lineHeight: 30, marginBottom: spacing.sm },
   option: { flexDirection: "row", alignItems: "center", gap: spacing.md, minHeight: 60, padding: spacing.lg, borderRadius: radius.lg, borderWidth: 2 },
   letter: { width: 32, height: 32, borderRadius: 16, borderWidth: 2, alignItems: "center", justifyContent: "center" },

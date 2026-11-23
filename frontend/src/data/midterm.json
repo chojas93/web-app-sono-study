@@ -1,0 +1,1732 @@
+[
+{
+"section": "Spleen",
+"q": "Which structure serves as the best sonographic landmark for the spleen?",
+"options": [
+"Left kidney",
+"Aorta",
+"Pancreas tail",
+"Stomach"
+],
+"answer": 0,
+"explanations": [
+"The left kidney is the primary sonographic landmark for locating the spleen in the left upper quadrant.",
+"The aorta is a central vascular landmark but is not the best direct landmark for splenic imaging.",
+"The pancreatic tail lies near the splenic hilum but is not the main landmark used to find the spleen.",
+"The stomach is adjacent to the spleen but is variable and not a reliable primary landmark."
+]
+},
+{
+"section": "Spleen",
+"q": "The normal adult spleen should not exceed which length?",
+"options": [
+"9 cm",
+"11 cm",
+"13 cm",
+"15 cm"
+],
+"answer": 2,
+"explanations": [
+"Nine centimeters is below the usual upper limit and would underestimate normal adult splenic length.",
+"Eleven centimeters is within normal range but is not the commonly accepted maximum adult splenic length.",
+"Thirteen centimeters is the commonly accepted upper limit for normal adult splenic length on ultrasound.",
+"Fifteen centimeters exceeds the normal upper limit and is consistent with splenomegaly."
+]
+},
+{
+"section": "Spleen",
+"q": "The most common cause of splenomegaly in the United States is:",
+"options": [
+"Portal hypertension",
+"Trauma",
+"Lymphoma",
+"Sickle cell disease"
+],
+"answer": 0,
+"explanations": [
+"Portal hypertension is a common U.S. cause of splenomegaly due to congestive enlargement from increased portal venous pressure.",
+"Trauma can injure the spleen but does not commonly cause generalized splenomegaly.",
+"Lymphoma can enlarge the spleen but is less common overall than portal hypertensive congestion.",
+"Sickle cell disease may affect splenic size, especially in children, but is not the most common U.S. cause."
+]
+},
+{
+"section": "Spleen",
+"q": "Which splenic condition is most associated with sickle cell disease?",
+"options": [
+"Splenomegaly",
+"Autosplenectomy",
+"Splenic abscess",
+"Splenic rupture"
+],
+"answer": 1,
+"explanations": [
+"Splenomegaly may occur early, but chronic sickle cell disease classically leads to infarction and shrinkage.",
+"Autosplenectomy is the classic chronic splenic outcome of sickle cell disease from repeated infarctions.",
+"Splenic abscess is not the characteristic splenic complication most associated with sickle cell disease.",
+"Splenic rupture can occur with trauma, but it is not the hallmark splenic finding in sickle cell disease."
+]
+},
+{
+"section": "Spleen",
+"q": "Splenic infarction on ultrasound is most likely to appear as:",
+"options": [
+"Hyperechoic lesion",
+"Anechoic lesion",
+"Wedge-shaped hypoechoic lesion",
+"Isoechoic lesion"
+],
+"answer": 2,
+"explanations": [
+"A hyperechoic lesion is not the typical appearance of an acute splenic infarct.",
+"An anechoic lesion suggests a simple fluid-filled structure rather than infarcted splenic parenchyma.",
+"A wedge-shaped hypoechoic lesion is the classic sonographic appearance of splenic infarction.",
+"An isoechoic lesion may be occult, but it is not the most likely or classic presentation."
+]
+},
+{
+"section": "Spleen",
+"q": "The spleen receives arterial blood supply from the:",
+"options": [
+"Splenic artery",
+"Left gastric artery",
+"Superior mesenteric artery",
+"Hepatic artery"
+],
+"answer": 0,
+"explanations": [
+"The splenic artery, a branch of the celiac trunk, provides the arterial blood supply to the spleen.",
+"The left gastric artery supplies the stomach and distal esophagus, not the spleen.",
+"The superior mesenteric artery supplies the midgut and does not directly supply the spleen.",
+"The hepatic artery primarily supplies the liver and is not the spleen’s main arterial source."
+]
+},
+{
+"section": "Spleen",
+"q": "Which congenital condition results in multiple small spleens?",
+"options": [
+"Asplenia",
+"Polysplenia",
+"Splenomegaly",
+"Wandering spleen"
+],
+"answer": 1,
+"explanations": [
+"Asplenia means absence of the spleen, not multiple splenic nodules.",
+"Polysplenia is a congenital condition characterized by multiple small spleens.",
+"Splenomegaly refers to an enlarged spleen rather than multiple spleens.",
+"Wandering spleen describes abnormal mobility from lax ligaments, not multiple spleens."
+]
+},
+{
+"section": "Spleen",
+"q": "Which pathology is associated with splenic calcifications (granulomas)?",
+"options": [
+"Tuberculosis",
+"Portal hypertension",
+"Splenic rupture",
+"Trauma"
+],
+"answer": 0,
+"explanations": [
+"Tuberculosis can produce granulomatous disease with calcified splenic granulomas.",
+"Portal hypertension causes splenic enlargement and congestion but not typically granulomatous calcifications.",
+"Splenic rupture causes laceration and hematoma rather than calcified granulomas.",
+"Trauma may calcify old hematomas rarely, but granulomatous calcifications are classically infectious such as tuberculosis."
+]
+},
+{
+"section": "Spleen",
+"q": "Which splenic abnormality is most common following trauma?",
+"options": [
+"Splenic cyst",
+"Splenic rupture/hematoma",
+"Splenic abscess",
+"Splenic calcifications"
+],
+"answer": 1,
+"explanations": [
+"Splenic cysts are not the most common immediate traumatic splenic abnormality.",
+"Splenic rupture or hematoma is the most common splenic abnormality after trauma.",
+"Splenic abscess usually results from infection rather than blunt or penetrating trauma.",
+"Splenic calcifications are chronic findings and are not the usual acute post-traumatic abnormality."
+]
+},
+{
+"section": "Spleen",
+"q": "Splenic abscesses are most often caused by:",
+"options": [
+"Trauma",
+"Hematogenous infection",
+"Tuberculosis",
+"Splenic infarction"
+],
+"answer": 1,
+"explanations": [
+"Trauma may predispose to complications, but it is not the most common cause of splenic abscess.",
+"Hematogenous infection is the most common cause of splenic abscess formation.",
+"Tuberculosis can involve the spleen, but it is not the most common overall cause of splenic abscess.",
+"Splenic infarction may become secondarily infected, but this is less common than hematogenous spread."
+]
+},
+{
+"section": "Spleen",
+"q": "A child presents with a midline cystic lesion posterior to the stomach. The most likely diagnosis is:",
+"options": [
+"Pancreatic pseudocyst",
+"Enteric duplication cyst",
+"Splenic cyst",
+"Choledochal cyst"
+],
+"answer": 1,
+"explanations": [
+"A pancreatic pseudocyst is possible near the stomach but is less likely in a child without pancreatitis history.",
+"An enteric duplication cyst is a classic pediatric cystic lesion that can appear posterior to the stomach near midline.",
+"A splenic cyst would usually be located within or adjacent to the spleen in the left upper quadrant.",
+"A choledochal cyst arises from the biliary tree and is usually right-sided near the porta hepatis."
+]
+},
+{
+"section": "Spleen",
+"q": "Which is the most common primary malignant tumor of the spleen?",
+"options": [
+"Lymphoma",
+"Hemangioma",
+"Sarcoma",
+"Metastasis"
+],
+"answer": 0,
+"explanations": [
+"Lymphoma is the most common primary malignant neoplasm involving the spleen in standard ultrasound review references.",
+"Hemangioma is a benign vascular tumor, not a malignant splenic neoplasm.",
+"Sarcoma can occur but is much less common than lymphoma in the spleen.",
+"Metastasis is malignant but is secondary, not a primary splenic tumor."
+]
+},
+{
+"section": "Spleen",
+"q": "Splenic rupture most often appears on ultrasound as:",
+"options": [
+"Hyperechoic linear area",
+"Complex fluid collection around spleen",
+"Calcified nodule",
+"Anechoic cyst"
+],
+"answer": 1,
+"explanations": [
+"A hyperechoic linear area is not the most typical overall sonographic appearance of splenic rupture.",
+"Complex fluid collection around the spleen is a common sonographic finding of splenic rupture with hemorrhage.",
+"A calcified nodule suggests old granulomatous disease or healed lesions, not acute rupture.",
+"An anechoic cyst is a benign fluid lesion and does not represent traumatic splenic rupture."
+]
+},
+{
+"section": "Spleen",
+"q": "Which condition is associated with a small, echogenic spleen?",
+"options": [
+"Sickle cell disease",
+"Portal hypertension",
+"Lymphoma",
+"Infection"
+],
+"answer": 0,
+"explanations": [
+"Sickle cell disease classically causes repeated infarction leading to a small, echogenic autosplenectomized spleen.",
+"Portal hypertension usually causes splenomegaly rather than a small echogenic spleen.",
+"Lymphoma more often causes splenic enlargement or focal lesions, not a small fibrotic spleen.",
+"Infection generally causes enlargement or focal inflammatory change rather than a small echogenic spleen."
+]
+},
+{
+"section": "Spleen",
+"q": "Which splenic lesion appears as a hyperechoic well-defined mass and is the most common benign splenic tumor?",
+"options": [
+"Hemangioma",
+"Hamartoma",
+"Lymphangioma",
+"Fibroma"
+],
+"answer": 0,
+"explanations": [
+"Hemangioma is the most common benign splenic tumor and often appears as a well-defined hyperechoic mass.",
+"Hamartoma is a benign splenic lesion but is less common than hemangioma.",
+"Lymphangioma is a benign lesion that is often multicystic rather than a classic hyperechoic solid mass.",
+"Fibroma is uncommon in the spleen and is not the most common benign splenic tumor."
+]
+},
+{
+"section": "Spleen",
+"q": "Which splenic abnormality is associated with Beckwith-Wiedemann syndrome?",
+"options": [
+"Splenic cysts",
+"Splenomegaly",
+"Polysplenia",
+"Accessory spleen"
+],
+"answer": 1,
+"explanations": [
+"Splenic cysts are not the characteristic splenic association of Beckwith-Wiedemann syndrome.",
+"Splenomegaly can be associated with Beckwith-Wiedemann syndrome as part of visceromegaly.",
+"Polysplenia is a heterotaxy syndrome and is not the typical association with Beckwith-Wiedemann syndrome.",
+"Accessory spleen is a common incidental variant but is not specifically linked to Beckwith-Wiedemann syndrome."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which structure serves as the most reliable landmark for locating the pancreas sonographically?",
+"options": [
+"Splenic vein",
+"Aorta",
+"Inferior vena cava",
+"Superior mesenteric vein"
+],
+"answer": 0,
+"explanations": [
+"The splenic vein courses along the posterior pancreas and is the classic sonographic landmark for locating the gland.",
+"The aorta is posterior and midline but is not the most reliable direct landmark for the pancreas.",
+"The inferior vena cava helps identify nearby anatomy but is not the primary landmark for the pancreas.",
+"The superior mesenteric vein is useful regionally, especially near the neck, but is less reliable than the splenic vein overall."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which portion of the pancreas lies posterior to the superior mesenteric vein?",
+"options": [
+"Tail",
+"Body",
+"Head",
+"Uncinate process"
+],
+"answer": 3,
+"explanations": [
+"The tail extends toward the splenic hilum and does not lie posterior to the superior mesenteric vein.",
+"The body lies anterior to the splenic vein and aorta, not posterior to the superior mesenteric vein.",
+"The head lies adjacent to the duodenum, while the uncinate process specifically extends posteriorly behind mesenteric vessels.",
+"The uncinate process hooks posterior to the superior mesenteric vessels, making it the correct answer."
+]
+},
+{
+"section": "Pancreas",
+"q": "The most common cause of acute pancreatitis in adults is:",
+"options": [
+"Trauma",
+"Gallstones",
+"Viral infection",
+"Pancreatic carcinoma"
+],
+"answer": 1,
+"explanations": [
+"Trauma can cause pancreatitis but is a much less common adult cause than biliary disease.",
+"Gallstones are a leading and commonly cited most common cause of acute pancreatitis in adults.",
+"Viral infection is an uncommon cause compared with gallstones and alcohol-related disease.",
+"Pancreatic carcinoma may obstruct ducts but is not the most common cause of acute pancreatitis."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which laboratory test is most specific for acute pancreatitis?",
+"options": [
+"Amylase",
+"Lipase",
+"Bilirubin",
+"Alkaline phosphatase"
+],
+"answer": 1,
+"explanations": [
+"Amylase rises in pancreatitis but is less specific because many nonpancreatic conditions can elevate it.",
+"Lipase is more specific and remains elevated longer, making it the best laboratory choice here.",
+"Bilirubin may increase with biliary obstruction but is not specific for acute pancreatitis.",
+"Alkaline phosphatase reflects cholestatic or biliary processes rather than being specific for pancreatitis."
+]
+},
+{
+"section": "Pancreas",
+"q": "A well-defined cystic lesion near the pancreas following pancreatitis most likely represents:",
+"options": [
+"Pancreatic cystadenoma",
+"Pseudocyst",
+"Pancreatic abscess",
+"IPMN"
+],
+"answer": 1,
+"explanations": [
+"Pancreatic cystadenoma is a neoplasm and is not the classic post-pancreatitis cystic collection.",
+"A pseudocyst commonly develops after pancreatitis as a well-defined peripancreatic fluid collection.",
+"A pancreatic abscess usually suggests infected fluid with systemic illness rather than a typical simple post-pancreatitis cystic lesion.",
+"IPMN is a ductal mucinous neoplasm and does not classically present as a post-pancreatitis peripancreatic cyst."
+]
+},
+{
+"section": "Pancreas",
+"q": "Pancreatic carcinoma most commonly occurs in the:",
+"options": [
+"Tail",
+"Body",
+"Head",
+"Uncinate process"
+],
+"answer": 2,
+"explanations": [
+"Tumors can occur in the tail, but this is less common than in the head.",
+"The body is a possible site, but most pancreatic adenocarcinomas arise in the head.",
+"The pancreatic head is the most common location for carcinoma and often causes biliary obstruction.",
+"The uncinate process is less commonly the primary site compared with the head overall."
+]
+},
+{
+"section": "Pancreas",
+"q": "Courvoisier’s gallbladder is associated with which pancreatic pathology?",
+"options": [
+"Pancreatic cystadenoma",
+"Pancreatic pseudocyst",
+"Pancreatic carcinoma",
+"Chronic pancreatitis"
+],
+"answer": 2,
+"explanations": [
+"Pancreatic cystadenoma does not classically cause the painless obstructive jaundice associated with Courvoisier’s sign.",
+"Pancreatic pseudocyst may compress structures, but it is not the classic association with Courvoisier’s gallbladder.",
+"Pancreatic carcinoma, especially in the head, can obstruct the distal CBD and produce a distended palpable gallbladder.",
+"Chronic pancreatitis may cause ductal changes, but Courvoisier’s gallbladder is more classically linked to malignancy."
+]
+},
+{
+"section": "Pancreas",
+"q": "The double duct sign refers to simultaneous dilation of the:",
+"options": [
+"Splenic vein and SMV",
+"CBD and pancreatic duct",
+"Portal vein and hepatic artery",
+"Hepatic duct and cystic duct"
+],
+"answer": 1,
+"explanations": [
+"Splenic vein and SMV are vessels, not the paired ducts described by the double duct sign.",
+"The double duct sign means concurrent dilation of the common bile duct and pancreatic duct, often from a pancreatic head mass.",
+"Portal vein and hepatic artery are vascular structures and are unrelated to this named ductal sign.",
+"The hepatic duct and cystic duct are not the ducts referred to in the double duct sign."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which of the following is an endocrine tumor of the pancreas?",
+"options": [
+"Insulinoma",
+"Serous cystadenoma",
+"Pseudocyst",
+"Adenocarcinoma"
+],
+"answer": 0,
+"explanations": [
+"Insulinoma is a pancreatic islet cell tumor and therefore an endocrine neoplasm.",
+"Serous cystadenoma is a cystic exocrine neoplasm, not an endocrine tumor.",
+"A pseudocyst is a non-neoplastic fluid collection, not a tumor.",
+"Adenocarcinoma is an exocrine malignant tumor, not an endocrine neoplasm."
+]
+},
+{
+"section": "Pancreas",
+"q": "Chronic pancreatitis typically leads to:",
+"options": [
+"Pancreatic ductal dilatation and calcifications",
+"Acute abdominal pain only",
+"Splenic infarction",
+"Choledochal cyst"
+],
+"answer": 0,
+"explanations": [
+"Chronic pancreatitis commonly produces ductal dilatation, parenchymal atrophy, and calcifications.",
+"Chronic pancreatitis causes recurrent or chronic changes, not acute pain only.",
+"Splenic infarction is not a typical hallmark finding of chronic pancreatitis.",
+"Choledochal cyst is a congenital biliary abnormality unrelated to chronic pancreatitis as a typical outcome."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which vessel courses through the pancreas and helps distinguish body from tail?",
+"options": [
+"Splenic vein",
+"SMA",
+"Portal vein",
+"Hepatic vein"
+],
+"answer": 0,
+"explanations": [
+"The splenic vein runs along the posterior pancreas and is an important landmark in evaluating the body and tail.",
+"The SMA is adjacent to the pancreas but does not course through it to distinguish body from tail.",
+"The portal vein forms posterior to the neck and is not the main vessel used to separate body from tail.",
+"The hepatic vein is within the liver and not a pancreatic landmark for body-tail distinction."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which pancreatic lesion is associated with elevated CA 19-9 levels?",
+"options": [
+"Pseudocyst",
+"Pancreatic adenocarcinoma",
+"Insulinoma",
+"Serous cystadenoma"
+],
+"answer": 1,
+"explanations": [
+"A pseudocyst is an inflammatory collection and is not classically associated with elevated CA 19-9.",
+"Pancreatic adenocarcinoma is commonly associated with elevated CA 19-9 tumor marker levels.",
+"Insulinoma is an endocrine tumor and is not typically linked to CA 19-9 elevation.",
+"Serous cystadenoma is usually benign and not typically associated with elevated CA 19-9."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which pancreatic anomaly results from abnormal embryologic rotation and encircles the duodenum?",
+"options": [
+"Pancreas divisum",
+"Annular pancreas",
+"Ectopic pancreas",
+"Agenesis of dorsal pancreas"
+],
+"answer": 1,
+"explanations": [
+"Pancreas divisum results from failure of ductal fusion, not a ring around the duodenum.",
+"Annular pancreas forms a ring of pancreatic tissue around the duodenum due to abnormal embryologic rotation.",
+"Ectopic pancreas is pancreatic tissue in an abnormal location, not encircling the duodenum.",
+"Agenesis of dorsal pancreas involves absent developmental components, not duodenal encirclement."
+]
+},
+{
+"section": "Pancreas",
+"q": "Which vessel is most commonly thrombosed in pancreatitis?",
+"options": [
+"Portal vein",
+"Splenic vein",
+"SMA",
+"Hepatic vein"
+],
+"answer": 1,
+"explanations": [
+"The portal vein can thrombose, but it is less commonly involved than the splenic vein in pancreatitis.",
+"The splenic vein is the vessel most commonly thrombosed due to its close relationship to the pancreas.",
+"The SMA is an artery and is not the vessel most commonly thrombosed in pancreatitis.",
+"The hepatic vein is not typically thrombosed as a common complication of pancreatitis."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the normal thickness of the gallbladder wall in a fasting patient?",
+"options": [
+"Less than 3 mm",
+"Less than 5 mm",
+"Less than 7 mm",
+"Less than 10 mm"
+],
+"answer": 0,
+"explanations": [
+"Normal fasting gallbladder wall thickness is typically 3 mm or less.",
+"This exceeds the standard normal cutoff and may include abnormal thickening.",
+"This value is well above normal and suggests pathology if measured.",
+"This is far above normal and not used as a normal threshold."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the normal diameter of the common bile duct (CBD) in most adults?",
+"options": [
+"<6 mm",
+"<8 mm",
+"<10 mm",
+"<12 mm"
+],
+"answer": 0,
+"explanations": [
+"In most adults, a common bile duct diameter under 6 mm is considered normal.",
+"This may be acceptable in some older or postcholecystectomy patients but not most adults.",
+"This is generally enlarged for most adults and suggests possible obstruction.",
+"This diameter is abnormal in most adults and indicates marked ductal dilatation."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which sign is most specific for acute cholecystitis on ultrasound?",
+"options": [
+"Positive sonographic Murphy’s sign",
+"Gallbladder sludge",
+"Pericholecystic fluid",
+"Gallbladder distension"
+],
+"answer": 0,
+"explanations": [
+"A positive sonographic Murphy sign is the most specific ultrasound finding for acute cholecystitis.",
+"Sludge is nonspecific and may occur without inflammation.",
+"Pericholecystic fluid supports inflammation but is less specific than Murphy sign.",
+"Distension can occur from many causes and is not highly specific."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "The WES sign is seen in which condition?",
+"options": [
+"Gallbladder packed with stones",
+"Chronic cholecystitis",
+"Porcelain gallbladder",
+"Gallbladder carcinoma"
+],
+"answer": 0,
+"explanations": [
+"The WES sign indicates a gallbladder wall, echoes, and shadow from a lumen packed with stones.",
+"Chronic cholecystitis may coexist but the WES sign specifically reflects a stone-filled gallbladder.",
+"Porcelain gallbladder shows calcified wall rather than the classic WES appearance.",
+"Gallbladder carcinoma does not produce the classic wall-echo-shadow complex."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common cause of obstructive jaundice in adults?",
+"options": [
+"Choledocholithiasis",
+"Gallbladder carcinoma",
+"Pancreatic carcinoma",
+"Cholangiocarcinoma"
+],
+"answer": 0,
+"explanations": [
+"Choledocholithiasis is a common leading cause of obstructive jaundice in adults in sonography review references.",
+"Gallbladder carcinoma is a less common cause of biliary obstruction.",
+"Pancreatic carcinoma commonly causes distal obstruction but is not the most common overall cause.",
+"Cholangiocarcinoma causes obstruction but is less common than stones."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which feature is most typical of gallstones on ultrasound?",
+"options": [
+"Mobile echogenic foci with shadowing",
+"Non-mobile echogenic foci without shadowing",
+"Anechoic round structure",
+"Isoechoic lesion with enhancement"
+],
+"answer": 0,
+"explanations": [
+"Gallstones are typically echogenic, mobile, and produce clean posterior acoustic shadowing.",
+"Nonmobile nonshadowing foci are more typical of polyps or adherent debris.",
+"Anechoic round structures represent fluid-filled rather than calcified objects.",
+"Isoechoic lesions with enhancement are not the typical appearance of gallstones."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common complication of gallstones?",
+"options": [
+"Acute cholecystitis",
+"Cholangiocarcinoma",
+"Hydatid cyst",
+"Porcelain gallbladder"
+],
+"answer": 0,
+"explanations": [
+"Acute cholecystitis is the most common complication resulting from gallstone obstruction of the cystic duct.",
+"Cholangiocarcinoma is unrelated as a common complication of gallstones.",
+"Hydatid cyst is a parasitic liver disease, not a usual gallstone complication.",
+"Porcelain gallbladder is uncommon and not the most frequent complication."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the upper limit of CBD diameter in elderly patients?",
+"options": [
+"8–10 mm",
+"6 mm",
+"4 mm",
+"12 mm"
+],
+"answer": 0,
+"explanations": [
+"In elderly patients, the common bile duct may measure up to about 8 to 10 mm and still be acceptable.",
+"Six millimeters is the usual adult cutoff, not the upper limit commonly allowed in elderly patients.",
+"Four millimeters is below the typical normal adult upper limit.",
+"Twelve millimeters is generally too large and suggests pathologic dilatation."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which sign describes dilated intrahepatic ducts that resemble multiple tubular structures?",
+"options": [
+"Double duct sign",
+"Double barrel sign",
+"Target sign",
+"String sign"
+],
+"answer": 1,
+"explanations": [
+"The double duct sign refers to simultaneous dilation of the CBD and pancreatic duct, not intrahepatic branching ducts.",
+"The double barrel sign describes parallel tubular structures from dilated intrahepatic ducts adjacent to portal veins.",
+"The target sign usually refers to concentric bowel or lesion appearance, not biliary ductal dilatation.",
+"The string sign is used in other conditions and does not describe dilated intrahepatic ducts."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which gallbladder pathology is associated with Rokitansky-Aschoff sinuses?",
+"options": [
+"Adenomyomatosis",
+"Cholelithiasis",
+"Sludge",
+"Cholesterolosis"
+],
+"answer": 0,
+"explanations": [
+"Adenomyomatosis is characterized by mucosal outpouchings called Rokitansky-Aschoff sinuses.",
+"Cholelithiasis involves stones, not mucosal sinus formation.",
+"Sludge is dependent echogenic bile without sinus formation.",
+"Cholesterolosis involves cholesterol deposition in the wall, not Rokitansky-Aschoff sinuses."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which gallbladder condition is associated with comet-tail reverberation artifact?",
+"options": [
+"Adenomyomatosis",
+"Cholelithiasis",
+"Porcelain gallbladder",
+"Carcinoma"
+],
+"answer": 0,
+"explanations": [
+"Adenomyomatosis commonly produces comet-tail artifact from cholesterol crystals within Rokitansky-Aschoff sinuses.",
+"Gallstones typically create clean shadowing rather than comet-tail reverberation.",
+"Porcelain gallbladder causes wall calcification with shadowing, not classic comet-tail artifact.",
+"Carcinoma does not usually present with comet-tail artifact."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which laboratory test is most elevated in obstructive jaundice?",
+"options": [
+"Direct bilirubin",
+"Indirect bilirubin",
+"AST",
+"ALT"
+],
+"answer": 0,
+"explanations": [
+"Direct conjugated bilirubin rises prominently in obstructive jaundice due to impaired bile excretion.",
+"Indirect bilirubin is more associated with hemolysis or impaired conjugation.",
+"AST may rise mildly but is not the key cholestatic marker here.",
+"ALT may increase but is less characteristic than conjugated bilirubin in obstruction."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is Courvoisier’s sign?",
+"options": [
+"Palpable, non-tender gallbladder with jaundice",
+"Painful, distended gallbladder",
+"Sludge-filled gallbladder",
+"Gallbladder carcinoma"
+],
+"answer": 0,
+"explanations": [
+"Courvoisier sign is a palpable, nontender enlarged gallbladder in a jaundiced patient, often from malignant obstruction.",
+"A painful distended gallbladder suggests inflammatory disease rather than Courvoisier sign.",
+"Sludge alone does not define Courvoisier sign.",
+"Gallbladder carcinoma is a diagnosis, not the definition of this sign."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common malignancy of the gallbladder?",
+"options": [
+"Adenocarcinoma",
+"Squamous cell carcinoma",
+"Metastatic melanoma",
+"Lymphoma"
+],
+"answer": 0,
+"explanations": [
+"Adenocarcinoma is by far the most common primary malignancy of the gallbladder.",
+"Squamous cell carcinoma is much less common in the gallbladder.",
+"Metastatic melanoma can involve the gallbladder but is not the most common malignancy there.",
+"Lymphoma of the gallbladder is rare."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which imaging artifact is typical for small gallstones <5 mm?",
+"options": [
+"Twinkle artifact",
+"Ring-down artifact",
+"Mirror artifact",
+"Refraction artifact"
+],
+"answer": 0,
+"explanations": [
+"Small calculi may show color Doppler twinkle artifact, helping detect tiny stones.",
+"Ring-down artifact is more associated with gas or cholesterol crystals, not tiny stones specifically.",
+"Mirror artifact duplicates structures across strong reflectors and is unrelated to stones.",
+"Refraction artifact causes edge displacement, not the classic appearance of small gallstones."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common cause of emphysematous cholecystitis?",
+"options": [
+"Gas-forming bacteria",
+"Gallbladder polyps",
+"Pancreatitis",
+"Hydrops"
+],
+"answer": 0,
+"explanations": [
+"Emphysematous cholecystitis results from infection by gas-forming organisms in the gallbladder wall or lumen.",
+"Gallbladder polyps do not cause emphysematous infection.",
+"Pancreatitis is not the usual cause of gas within the gallbladder wall.",
+"Hydrops is distention from obstruction and not the primary cause of emphysematous cholecystitis."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What condition is strongly associated with porcelain gallbladder?",
+"options": [
+"Gallbladder carcinoma",
+"Choledochal cyst",
+"Sludge",
+"Adenomyomatosis"
+],
+"answer": 0,
+"explanations": [
+"Porcelain gallbladder has a recognized association with gallbladder carcinoma.",
+"Choledochal cyst is a separate congenital biliary disorder.",
+"Sludge is common and not specifically associated with porcelain gallbladder.",
+"Adenomyomatosis is a benign wall condition, not the classic association here."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which duct joins the common hepatic duct to form the common bile duct?",
+"options": [
+"Cystic duct",
+"Pancreatic duct",
+"Right hepatic duct",
+"Left hepatic duct"
+],
+"answer": 0,
+"explanations": [
+"The cystic duct joins the common hepatic duct to form the common bile duct.",
+"The pancreatic duct joins the CBD near the ampulla, not to form it.",
+"The right hepatic duct joins the left hepatic duct to form the common hepatic duct.",
+"The left hepatic duct joins the right hepatic duct, not the common hepatic duct."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which gallbladder finding is most often mistaken for a gallstone but does not shadow?",
+"options": [
+"Polyp",
+"Adenomyomatosis",
+"Sludge",
+"Porcelain gallbladder"
+],
+"answer": 0,
+"explanations": [
+"A polyp is a nonshadowing echogenic mural lesion that can mimic a stone.",
+"Adenomyomatosis usually shows wall thickening and comet-tail artifact rather than a simple stone mimic.",
+"Sludge layers dependently and usually lacks a discrete attached echogenic focus.",
+"Porcelain gallbladder causes calcified wall shadowing, not a nonshadowing stone mimic."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common cause of acute acalculous cholecystitis?",
+"options": [
+"Critical illness/trauma",
+"Porcelain gallbladder",
+"Gallbladder carcinoma",
+"Choledocholithiasis"
+],
+"answer": 0,
+"explanations": [
+"Acute acalculous cholecystitis most often occurs in critically ill, postoperative, septic, or trauma patients.",
+"Porcelain gallbladder is a chronic calcific condition, not the usual cause.",
+"Gallbladder carcinoma is not the common cause of acute acalculous inflammation.",
+"Choledocholithiasis involves bile duct stones rather than acalculous disease."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the upper limit of the gallbladder length in a fasting adult?",
+"options": [
+"10 cm",
+"12 cm",
+"15 cm",
+"20 cm"
+],
+"answer": 0,
+"explanations": [
+"A fasting adult gallbladder is usually up to about 10 cm in length.",
+"Twelve centimeters generally exceeds the standard normal fasting upper limit.",
+"Fifteen centimeters indicates marked distention in most cases.",
+"Twenty centimeters is far beyond the normal gallbladder length."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which duct dilates first in obstructive jaundice?",
+"options": [
+"Common bile duct",
+"Cystic duct",
+"Left hepatic duct",
+"Gallbladder neck"
+],
+"answer": 0,
+"explanations": [
+"With extrahepatic obstruction, the common bile duct typically dilates before more proximal ducts become enlarged.",
+"The cystic duct is not usually the first duct assessed or seen dilating in obstructive jaundice.",
+"A single left hepatic duct is not the earliest expected site of dilation in general obstruction.",
+"The gallbladder neck is not a duct and is not the standard answer for this progression."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common site of gallstone impaction?",
+"options": [
+"Gallbladder neck/cystic duct",
+"CBD",
+"Fundus of gallbladder",
+"Intrahepatic ducts"
+],
+"answer": 0,
+"explanations": [
+"Gallstones most commonly impact in the gallbladder neck or cystic duct.",
+"The common bile duct can contain stones but is not the most common impaction site.",
+"The fundus is a dependent storage area, not the usual point of impaction.",
+"Intrahepatic ducts are uncommon sites for routine gallstone impaction."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which condition is characterized by echogenic material layering in the dependent portion of the gallbladder?",
+"options": [
+"Sludge",
+"Polyp",
+"Adenomyomatosis",
+"Porcelain gallbladder"
+],
+"answer": 0,
+"explanations": [
+"Sludge appears as low-level echoes layering dependently within the gallbladder.",
+"A polyp is attached to the wall and does not layer dependently.",
+"Adenomyomatosis is a wall abnormality rather than dependent intraluminal material.",
+"Porcelain gallbladder is calcification of the wall, not dependent echogenic layering."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which bile duct abnormality is associated with Caroli disease?",
+"options": [
+"Segmental intrahepatic ductal dilatation",
+"Extrahepatic obstruction",
+"Choledochal cyst",
+"Biliary atresia"
+],
+"answer": 0,
+"explanations": [
+"Caroli disease features saccular or segmental dilatation of the intrahepatic bile ducts.",
+"Extrahepatic obstruction is not the defining abnormality of Caroli disease.",
+"Choledochal cyst is a different congenital cystic biliary entity, though related conceptually.",
+"Biliary atresia is neonatal duct obliteration, not Caroli disease."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which type of choledochal cyst is most common?",
+"options": [
+"Type I",
+"Type II",
+"Type III",
+"Type IV"
+],
+"answer": 0,
+"explanations": [
+"Type I choledochal cyst is the most common form, involving fusiform extrahepatic duct dilatation.",
+"Type II is a rare diverticular form of choledochal cyst.",
+"Type III is a choledochocele and is less common.",
+"Type IV involves multiple cysts and is less common than Type I."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the normal gallbladder wall thickness cutoff for diagnosing cholecystitis?",
+"options": [
+">3 mm",
+">5 mm",
+">7 mm",
+">10 mm"
+],
+"answer": 0,
+"explanations": [
+"A wall thickness greater than 3 mm is the commonly used threshold suggesting abnormal thickening in cholecystitis.",
+"A cutoff above 5 mm is too high and may miss abnormal cases.",
+"A 7 mm threshold is far above the accepted diagnostic cutoff.",
+"A 10 mm threshold is not used for routine diagnosis of cholecystitis."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which condition is most often associated with the 'double barrel shotgun' sign?",
+"options": [
+"Dilated portal vein and CBD",
+"Choledocholithiasis",
+"Adenomyomatosis",
+"Gallbladder polyp"
+],
+"answer": 0,
+"explanations": [
+"The double barrel shotgun sign describes parallel dilated bile ducts alongside portal venous branches or a dilated CBD near the portal vein.",
+"Choledocholithiasis can cause ductal dilation but is not the sign itself.",
+"Adenomyomatosis is a gallbladder wall disorder unrelated to this ductal sign.",
+"Gallbladder polyp is a focal mural lesion and does not produce this appearance."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which gallbladder condition is referred to as 'strawberry gallbladder'?",
+"options": [
+"Cholesterolosis",
+"Adenomyomatosis",
+"Porcelain gallbladder",
+"Hydropic gallbladder"
+],
+"answer": 0,
+"explanations": [
+"Strawberry gallbladder is another term for cholesterolosis of the gallbladder mucosa.",
+"Adenomyomatosis involves hyperplastic wall change with Rokitansky-Aschoff sinuses.",
+"Porcelain gallbladder refers to calcification of the wall.",
+"Hydropic gallbladder means distention usually from cystic duct obstruction."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which sign indicates gas in the biliary tree on ultrasound?",
+"options": [
+"Dirty shadowing with ring-down artifact",
+"Clean posterior shadow",
+"Twinkle artifact",
+"Mirror image artifact"
+],
+"answer": 0,
+"explanations": [
+"Gas in the biliary tree commonly creates echogenic foci with dirty shadowing and ring-down artifact.",
+"Clean posterior shadow is typical of calcified stones rather than gas.",
+"Twinkle artifact is a color Doppler artifact often seen with stones or calcifications.",
+"Mirror image artifact is a duplication artifact unrelated to biliary gas."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common cause of Mirizzi syndrome?",
+"options": [
+"Impacted gallstone in cystic duct",
+"Porcelain gallbladder",
+"Gallbladder polyp",
+"Adenomyomatosis"
+],
+"answer": 0,
+"explanations": [
+"Mirizzi syndrome is caused by an impacted stone in the cystic duct or gallbladder neck compressing the common hepatic duct.",
+"Porcelain gallbladder does not cause the typical extrinsic duct compression of Mirizzi syndrome.",
+"Gallbladder polyps do not usually obstruct the common hepatic duct externally.",
+"Adenomyomatosis is a benign wall condition and not the usual cause."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which biliary tumor is most common?",
+"options": [
+"Cholangiocarcinoma",
+"Lymphoma",
+"Metastatic melanoma",
+"Squamous carcinoma"
+],
+"answer": 0,
+"explanations": [
+"Cholangiocarcinoma is the most common primary malignant tumor of the bile ducts.",
+"Lymphoma can involve the biliary tract but is uncommon.",
+"Metastatic melanoma is not the most common biliary tumor.",
+"Squamous carcinoma of the bile ducts is rare."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which condition is associated with dilatation of both intrahepatic and extrahepatic ducts?",
+"options": [
+"Obstructive jaundice",
+"Adenomyomatosis",
+"Hydrops",
+"Porcelain gallbladder"
+],
+"answer": 0,
+"explanations": [
+"Obstructive jaundice from extrahepatic blockage often causes both intrahepatic and extrahepatic biliary dilatation.",
+"Adenomyomatosis is confined to the gallbladder wall and does not cause generalized ductal dilatation.",
+"Hydrops is gallbladder enlargement from cystic duct obstruction, not widespread ductal dilation.",
+"Porcelain gallbladder is wall calcification and not a ductal dilatation disorder."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which duct is not typically seen unless dilated?",
+"options": [
+"Cystic duct",
+"CBD",
+"Right hepatic duct",
+"Left hepatic duct"
+],
+"answer": 0,
+"explanations": [
+"The cystic duct is usually not visualized sonographically unless dilated or abnormal.",
+"The CBD is often visible in normal patients.",
+"The right hepatic duct may be difficult to see, but the classic answer for not typically seen is the cystic duct.",
+"The left hepatic duct can sometimes be seen near the portal vein, especially centrally."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which infection is associated with cholangiocarcinoma?",
+"options": [
+"Liver flukes (Clonorchis)",
+"Hepatitis A",
+"HIV",
+"Echinococcus"
+],
+"answer": 0,
+"explanations": [
+"Clonorchis and other liver fluke infections are established risk factors for cholangiocarcinoma.",
+"Hepatitis A is not a classic risk factor for cholangiocarcinoma.",
+"HIV is not the standard infection association tested for this cancer.",
+"Echinococcus causes hydatid disease rather than cholangiocarcinoma association."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which part of the gallbladder is most often affected by carcinoma?",
+"options": [
+"Fundus",
+"Neck",
+"Body",
+"Cystic duct"
+],
+"answer": 0,
+"explanations": [
+"Gallbladder carcinoma most commonly arises in the fundus.",
+"The neck can be involved but is not the most frequent origin site.",
+"The body is less commonly the primary location than the fundus.",
+"The cystic duct is not the most common site of gallbladder carcinoma."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the first imaging modality of choice in suspected gallstones?",
+"options": [
+"Ultrasound",
+"CT scan",
+"MRI",
+"ERCP"
+],
+"answer": 0,
+"explanations": [
+"Ultrasound is the first-line imaging test for suspected gallstones because it is sensitive, quick, and noninvasive.",
+"CT is less sensitive for many gallstones and is not first-line.",
+"MRI can evaluate the biliary tree but is not the initial test for routine gallstones.",
+"ERCP is invasive and reserved mainly for therapeutic or selected diagnostic purposes."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which condition is associated with hydropic gallbladder?",
+"options": [
+"Cystic duct obstruction",
+"Porcelain gallbladder",
+"Chronic cholecystitis",
+"Adenomyomatosis"
+],
+"answer": 0,
+"explanations": [
+"Hydropic gallbladder results from prolonged cystic duct obstruction causing distention.",
+"Porcelain gallbladder is wall calcification, not the cause of hydrops.",
+"Chronic cholecystitis often leads to a contracted rather than hydropic gallbladder.",
+"Adenomyomatosis affects the wall and does not typically cause hydrops."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which sign is most indicative of acute cholecystitis?",
+"options": [
+"Positive Murphy sign",
+"Sludge",
+"Polyp",
+"Thickened wall only"
+],
+"answer": 0,
+"explanations": [
+"A positive sonographic Murphy sign is highly indicative of acute cholecystitis in the right clinical setting.",
+"Sludge is nonspecific and may be present without acute inflammation.",
+"A polyp is a focal mural lesion unrelated to acute cholecystitis.",
+"Wall thickening alone is nonspecific and occurs in many systemic and local conditions."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which bile duct tumor commonly arises at the hepatic hilum?",
+"options": [
+"Klatskin tumor",
+"Caroli disease",
+"Porcelain gallbladder",
+"Gallbladder polyp"
+],
+"answer": 0,
+"explanations": [
+"A Klatskin tumor is a hilar cholangiocarcinoma arising at the confluence of the right and left hepatic ducts.",
+"Caroli disease is congenital intrahepatic duct dilatation, not a hilar tumor.",
+"Porcelain gallbladder is calcification of the gallbladder wall.",
+"A gallbladder polyp is not a bile duct hilar tumor."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which lab test is most elevated in bile duct obstruction?",
+"options": [
+"Alkaline phosphatase",
+"ALT",
+"AST",
+"Albumin"
+],
+"answer": 0,
+"explanations": [
+"Alkaline phosphatase is typically markedly elevated in cholestatic and bile duct obstructive processes.",
+"ALT may rise but is more associated with hepatocellular injury.",
+"AST may increase with liver injury but is less characteristic of obstruction than alkaline phosphatase.",
+"Albumin reflects synthetic function and is not typically elevated in obstruction."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which ultrasound finding suggests malignant obstruction rather than benign?",
+"options": [
+"Irregular abrupt duct termination",
+"Smooth tapering duct",
+"Mobile echogenic stone",
+"Sludge ball"
+],
+"answer": 0,
+"explanations": [
+"Irregular abrupt duct cutoff suggests a malignant obstructing mass or infiltrative lesion.",
+"Smooth tapering is more typical of benign stricture or gradual narrowing.",
+"A mobile echogenic stone indicates benign calculous obstruction.",
+"A sludge ball is benign intraluminal material rather than malignant obstruction."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which condition results from gallstone erosion into the bowel causing obstruction?",
+"options": [
+"Gallstone ileus",
+"Mirizzi syndrome",
+"Porcelain gallbladder",
+"Choledochal cyst"
+],
+"answer": 0,
+"explanations": [
+"Gallstone ileus occurs when a stone enters the bowel through a fistula and causes mechanical obstruction.",
+"Mirizzi syndrome is extrinsic compression of the hepatic duct by an impacted stone.",
+"Porcelain gallbladder is chronic wall calcification and not bowel obstruction from erosion.",
+"Choledochal cyst is a congenital ductal cystic dilation."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the most common benign gallbladder tumor?",
+"options": [
+"Adenoma",
+"Leiomyoma",
+"Lymphangioma",
+"Lipoma"
+],
+"answer": 0,
+"explanations": [
+"Adenoma is the most common benign neoplasm of the gallbladder.",
+"Leiomyoma is a rare mesenchymal tumor in this location.",
+"Lymphangioma is uncommon in the gallbladder.",
+"Lipoma is rare and not the most common benign gallbladder tumor."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which sign refers to gallbladder distension due to obstruction without stones?",
+"options": [
+"Courvoisier sign",
+"WES sign",
+"Double barrel sign",
+"Strawberry gallbladder"
+],
+"answer": 0,
+"explanations": [
+"Courvoisier sign refers to a distended palpable gallbladder from obstruction, classically without stones and often due to malignancy.",
+"The WES sign indicates a gallbladder full of stones.",
+"Double barrel sign refers to ductal dilatation patterns, not gallbladder distension without stones.",
+"Strawberry gallbladder refers to cholesterolosis."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which sonographic feature distinguishes polyp from gallstone?",
+"options": [
+"Non-shadowing and non-mobile",
+"Mobile with shadowing",
+"Posterior enhancement",
+"Dirty shadowing"
+],
+"answer": 0,
+"explanations": [
+"Polyps are attached to the wall, remain nonmobile, and usually do not shadow.",
+"Mobile with shadowing is the typical appearance of gallstones.",
+"Posterior enhancement occurs behind fluid-containing structures, not typical polyps.",
+"Dirty shadowing suggests gas rather than a polyp."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "What is the maximum normal gallbladder wall thickness in fasting adults?",
+"options": [
+"3 mm",
+"5 mm",
+"7 mm",
+"10 mm"
+],
+"answer": 0,
+"explanations": [
+"The accepted maximum normal gallbladder wall thickness in fasting adults is 3 mm.",
+"Five millimeters is abnormally thick in most fasting adults.",
+"Seven millimeters is markedly abnormal for gallbladder wall thickness.",
+"Ten millimeters indicates severe thickening and is not normal."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which finding suggests chronic cholecystitis?",
+"options": [
+"Contracted gallbladder with stones",
+"Hydropic gallbladder",
+"Sludge only",
+"Adenomyomatosis"
+],
+"answer": 0,
+"explanations": [
+"A contracted thick-walled gallbladder containing stones is a classic appearance of chronic cholecystitis.",
+"Hydropic gallbladder suggests cystic duct obstruction and distention, often acute rather than chronic.",
+"Sludge alone is nonspecific and does not imply chronic cholecystitis.",
+"Adenomyomatosis is a separate benign hyperplastic condition."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which duct is formed by the junction of the right and left hepatic ducts?",
+"options": [
+"Common hepatic duct",
+"Cystic duct",
+"Pancreatic duct",
+"Gallbladder neck"
+],
+"answer": 0,
+"explanations": [
+"The right and left hepatic ducts join to form the common hepatic duct.",
+"The cystic duct drains the gallbladder and joins the common hepatic duct later.",
+"The pancreatic duct belongs to the pancreas and does not form from hepatic ducts.",
+"The gallbladder neck is an anatomic region, not a duct formed by hepatic ducts."
+]
+},
+{
+"section": "Gallbladder and Bile Duct",
+"q": "Which biliary condition is associated with intrahepatic ductal stones?",
+"options": [
+"Recurrent pyogenic cholangitis",
+"Caroli disease",
+"Choledochal cyst",
+"Hydatid disease"
+],
+"answer": 0,
+"explanations": [
+"Recurrent pyogenic cholangitis is classically associated with intrahepatic pigment stone formation.",
+"Caroli disease may predispose to stones but is not the primary classic association asked here.",
+"Choledochal cysts can cause stasis but are not the hallmark condition for intrahepatic stones.",
+"Hydatid disease is a parasitic cystic disease, not a biliary stone disorder."
+]
+},
+{
+"section": "Liver",
+"q": "The remnant of the ductus venosus becomes the_______.",
+"options": [
+"Ligamentum teres",
+"Falciform Ligament",
+"Round Ligament",
+"Ligamentum Venosum"
+],
+"answer": 3,
+"explanations": [
+"Ligamentum teres is the remnant of the fetal umbilical vein, not the ductus venosus.",
+"The falciform ligament is a peritoneal fold that attaches the liver to the anterior abdominal wall.",
+"Round ligament is another name for ligamentum teres, which derives from the umbilical vein.",
+"Ligamentum venosum is the fibrous remnant of the fetal ductus venosus."
+]
+},
+{
+"section": "Liver",
+"q": "What is the name for the area of the liver that has no peritoneal coverage?",
+"options": [
+"Quadrate Lobe",
+"Bare Area",
+"Lesser Sac",
+"Glisson’s Capsule"
+],
+"answer": 1,
+"explanations": [
+"The quadrate lobe is an anatomic liver lobe, not a peritoneal-free surface.",
+"The bare area is the portion of the liver not covered by peritoneum.",
+"The lesser sac is a peritoneal space posterior to the stomach, not a liver surface area.",
+"Glisson’s capsule is the fibrous capsule covering the liver, not the uncovered region."
+]
+},
+{
+"section": "Liver",
+"q": "This space lies posterior to the liver and stomach and is often a site for abscess formation.",
+"options": [
+"The Lesser Sac",
+"The Right Subhepatic Space",
+"The Greater Sac",
+"The Subphrenic Space"
+],
+"answer": 0,
+"explanations": [
+"The lesser sac lies posterior to the stomach and adjacent to the liver and can collect fluid or abscess.",
+"The right subhepatic space is inferior to the liver, commonly called Morrison's pouch.",
+"The greater sac is the main peritoneal cavity, not specifically posterior to the stomach.",
+"The subphrenic space lies between the diaphragm and liver, not posterior to the stomach."
+]
+},
+{
+"section": "Liver",
+"q": "What is the right subhepatic space also known as?",
+"options": [
+"Glisson’s Capsule",
+"Waldeyer’s Fossa",
+"Lesser Sac",
+"Morrison's Pouch"
+],
+"answer": 3,
+"explanations": [
+"Glisson’s capsule is the fibrous covering of the liver.",
+"Waldeyer’s fossa is not the standard name for the right subhepatic space in abdominal sonography.",
+"The lesser sac is a separate peritoneal compartment posterior to the stomach.",
+"Morrison's pouch is the hepatorenal recess, also called the right subhepatic space."
+]
+},
+{
+"section": "Liver",
+"q": "This is the thin connective tissue layer that completely surrounds the liver.",
+"options": [
+"Tunica Albuginea",
+"Glisson’s Capsule",
+"Diaphragm",
+"Linea Terminalis"
+],
+"answer": 1,
+"explanations": [
+"Tunica albuginea surrounds organs like the testes and ovaries, not the liver.",
+"Glisson’s capsule is the thin fibrous connective tissue capsule surrounding the liver.",
+"The diaphragm is a muscle superior to the liver, not its capsule.",
+"Linea terminalis is a pelvic landmark, unrelated to liver covering."
+]
+},
+{
+"section": "Liver",
+"q": "Glisson's capsule is thickest around the _____ & the_______.",
+"options": [
+"IVC & Ligamentum Teres",
+"Aorta & Porta Hepatis",
+"Porta Hepatis & IVC",
+"Ligamentum Venosum & IVC"
+],
+"answer": 2,
+"explanations": [
+"The ligamentum teres is not one of the two principal regions where Glisson’s capsule is thickest.",
+"The aorta is not in direct continuity with the liver capsule as a thickening landmark.",
+"Glisson’s capsule is thickest around the porta hepatis and the inferior vena cava.",
+"The ligamentum venosum is a fissure landmark, but the classic thickened regions are porta hepatis and IVC."
+]
+},
+{
+"section": "Liver",
+"q": "Name the congenital variant that can be mistaken for a pathology such as a mass?",
+"options": [
+"Reidel’s Lobe",
+"Quadrate Lobe",
+"Situs Inversus",
+"Caudate Lobe"
+],
+"answer": 0,
+"explanations": [
+"Riedel’s lobe is an elongated right lobe variant that may mimic a mass or hepatomegaly.",
+"The quadrate lobe is a normal anatomic lobe of the liver.",
+"Situs inversus is a whole-body organ reversal, not a focal liver mass mimic.",
+"The caudate lobe is a normal liver lobe, not a congenital mass-like variant."
+]
+},
+{
+"section": "Liver",
+"q": "This fissure is utilized to find the gallbladder.",
+"options": [
+"CBD",
+"Right Intersegmental fissure",
+"HA",
+"Main Lobar Fissure"
+],
+"answer": 3,
+"explanations": [
+"The CBD is a duct, not a fissure used as a landmark for the gallbladder.",
+"The right intersegmental fissure relates to hepatic venous anatomy rather than gallbladder localization.",
+"The hepatic artery is a vessel, not a fissure landmark.",
+"The main lobar fissure is an echogenic landmark leading to the gallbladder neck and portal vein."
+]
+},
+{
+"section": "Liver",
+"q": "This fissure separates the LLL from the caudate lobe.",
+"options": [
+"Ligamentum Teres",
+"Ligamentum Venosum",
+"Falciform Ligament",
+"Coronary Ligament"
+],
+"answer": 1,
+"explanations": [
+"Ligamentum teres separates portions of the left lobe but not specifically the caudate from the left lobe.",
+"Ligamentum venosum separates the left lobe from the caudate lobe.",
+"The falciform ligament divides right and left lobes on the anterior surface.",
+"The coronary ligament reflects peritoneum to the diaphragm and does not separate these lobes."
+]
+},
+{
+"section": "Liver",
+"q": "Also known as the “round ligament”, this is the rounded termination of the falciform ligament.",
+"options": [
+"Ductus Venosus",
+"Umbilicus",
+"Ligamentum Teres",
+"Ligamentum Venosum"
+],
+"answer": 2,
+"explanations": [
+"The ductus venosus is a fetal vessel whose remnant is the ligamentum venosum.",
+"The umbilicus is the navel, not the round ligament itself.",
+"Ligamentum teres is the round ligament and free inferior margin of the falciform ligament.",
+"Ligamentum venosum is the remnant of ductus venosus, not the round ligament."
+]
+},
+{
+"section": "Liver",
+"q": "The liver receives what percentage of blood from the portal veins?",
+"options": [
+"70-80%",
+"50-60%",
+"20-30%",
+"90-100%"
+],
+"answer": 0,
+"explanations": [
+"About 70-80% of hepatic blood flow comes from the portal venous system.",
+"50-60% underestimates normal portal contribution to liver blood flow.",
+"20-30% corresponds more closely to hepatic arterial contribution, not portal flow.",
+"90-100% is too high because the hepatic artery also supplies the liver."
+]
+},
+{
+"section": "Liver",
+"q": "T or F: The main portal vein is formed by the hepatic vein & splenic vein.",
+"options": [
+"True",
+"False"
+],
+"answer": 1,
+"explanations": [
+"True is incorrect because the main portal vein is not formed by a hepatic vein.",
+"False is correct because the main portal vein is formed by the splenic vein and superior mesenteric vein."
+]
+},
+{
+"section": "Liver",
+"q": "The LPV branches into:",
+"options": [
+"Anterior & Posterior Branches",
+"Medial and Anterior Branches",
+"Anterior & Lateral Branches",
+"Medial & Lateral Branches"
+],
+"answer": 3,
+"explanations": [
+"Anterior and posterior branches describe the right portal vein, not the left.",
+"Medial and anterior is not the standard division of the left portal vein.",
+"Anterior and lateral is not the accepted branching terminology for the left portal vein.",
+"The left portal vein divides into medial and lateral branches."
+]
+},
+{
+"section": "Liver",
+"q": "The hepatic artery arises from the_______.",
+"options": [
+"SMV",
+"SMA",
+"IMA",
+"Celiac Trunk"
+],
+"answer": 3,
+"explanations": [
+"The SMV is a vein and does not give rise to the hepatic artery.",
+"The SMA supplies midgut structures and is not the origin of the common hepatic artery.",
+"The IMA supplies hindgut structures and is not the source of the hepatic artery.",
+"The common hepatic artery arises from the celiac trunk."
+]
+},
+{
+"section": "Liver",
+"q": "The right hepatic vein separates the RLL into ____ & ______segments.",
+"options": [
+"Anterior & Posterior",
+"Medial and Anterior",
+"Anterior & Lateral",
+"Medial & Lateral"
+],
+"answer": 0,
+"explanations": [
+"The right hepatic vein divides the right lobe into anterior and posterior segments.",
+"Medial and anterior is not the standard segmental division created by the right hepatic vein.",
+"Anterior and lateral is not the accepted Couinaud description here.",
+"Medial and lateral refers more to left lobe division than right lobe segmentation."
+]
+},
+{
+"section": "Liver",
+"q": "Which option is NOT a lab value?",
+"options": [
+"AST",
+"ALP",
+"FTA",
+"LDH"
+],
+"answer": 2,
+"explanations": [
+"AST is a standard liver-related laboratory enzyme value.",
+"ALP is a common hepatobiliary laboratory value, especially with cholestasis.",
+"FTA is not a standard liver laboratory value in routine hepatobiliary assessment.",
+"LDH is a recognized laboratory enzyme value, though less specific for liver disease."
+]
+},
+{
+"section": "Liver",
+"q": "Which lab value is the most important indicator for hepatocellular damage?",
+"options": [
+"LDH",
+"ALP",
+"AST",
+"ALT"
+],
+"answer": 3,
+"explanations": [
+"LDH is nonspecific and elevated in many tissue injuries.",
+"ALP is more associated with cholestasis or biliary obstruction than hepatocellular injury.",
+"AST rises with hepatocellular injury but is less liver-specific than ALT.",
+"ALT is the most specific common indicator of hepatocellular damage."
+]
+},
+{
+"section": "Liver",
+"q": "Which lab value is present with 90% of hepatic malignancies?",
+"options": [
+"ALP",
+"AST",
+"ALT",
+"AFP"
+],
+"answer": 3,
+"explanations": [
+"ALP may rise with biliary obstruction or infiltrative disease but is not present in 90% of hepatic malignancies.",
+"AST can elevate with liver injury but is not a hallmark tumor marker.",
+"ALT is a hepatocellular enzyme, not a principal malignancy marker.",
+"AFP is the classic tumor marker associated with many primary hepatic malignancies, especially hepatocellular carcinoma."
+]
+},
+{
+"section": "Liver",
+"q": "What are the 4 segments of the Hepatic artery?",
+"options": [
+"Common HA, Proper HA, Right HA, Middle HA",
+"Proper HA, Right HA, Left HA",
+"Right gastric artery, Right Ha, Left HA, Common HA",
+"Common HA, Proper HA, Left HA, Right HA"
+],
+"answer": 3,
+"explanations": [
+"Middle hepatic artery is not one of the standard four named hepatic artery segments in basic sonography review.",
+"This list has only three arteries and omits the common hepatic artery.",
+"The right gastric artery is a branch vessel and not one of the four standard hepatic artery segments.",
+"The standard four are common hepatic, proper hepatic, left hepatic, and right hepatic arteries."
+]
+},
+{
+"section": "Liver",
+"q": "Which ligament shows up as a bright echogenic focus",
+"options": [
+"Ligamentum teres",
+"Falciform ligament",
+"Coronary ligament",
+"Main portal vein"
+],
+"answer": 0,
+"explanations": [
+"Ligamentum teres is typically seen as a bright echogenic round or linear focus in the left lobe.",
+"The falciform ligament may be echogenic but is not the classic bright focal landmark asked here.",
+"The coronary ligament is not typically identified as a bright echogenic focus on liver ultrasound.",
+"The main portal vein is a vessel, not a ligament, and appears as anechoic lumen with echogenic walls."
+]
+},
+{
+"section": "Liver",
+"q": "Which of the below make up the portal triad",
+"options": [
+"MPV, SM, SMV",
+"HA, CBD, PV",
+"CA, SMA, IMA",
+"LHV, MHV, RHV"
+],
+"answer": 1,
+"explanations": [
+"MPV and SMV are vascular structures, but this set does not include the bile duct and includes an unclear term.",
+"The portal triad consists of the hepatic artery, portal vein, and common bile duct.",
+"CA, SMA, and IMA are major abdominal arteries, not the portal triad.",
+"LHV, MHV, and RHV are the three main hepatic veins, not the portal triad."
+]
+},
+{
+"section": "Liver",
+"q": "Which portal vein branches into anterior and posterior",
+"options": [
+"Left portal vein",
+"Main portal vein",
+"Right portal vein",
+"Medial portal vein"
+],
+"answer": 2,
+"explanations": [
+"The left portal vein divides into medial and lateral branches, not anterior and posterior.",
+"The main portal vein first divides into right and left portal veins.",
+"The right portal vein divides into anterior and posterior branches.",
+"There is no standard main vessel called the medial portal vein in this context."
+]
+}
+]

@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only test at 390x844 (the app has no backend by design). All requested items pass. (1) Midterm always-A bug is FIXED. quiz/[id].tsx now runs shuffleOptions on midterm questions at runtime, and it permutes optionExplanations with the same order. Spleen (16 questions) always tapping A: 4/16 (25%), with the correct answer at A/B/C/D 4/4/4/4 times. Gallbladder and Bile Duct (50 questions) always tapping A: 10/50 (20%), with correct positions A10/B17/C15/D8. Across all 50 questions the 'Why it's correct' option matched the quiz-explanation text exactly, and the Correct/Not quite verdict was always consistent (0 mismatches). I spot-checked 5 Spleen questions (left kidney landmark, 13 cm, portal hypertension, autosplenectomy, wedge-shaped hypoechoic infarct): the content makes sense and matches the highlighted answer. (2) Retry, choosing the option that was flagged correct (matched by text after the reshuffle): 49/50 and Best 49/50. All 49 matched picks scored as correct. The one miss was a test timing artifact: the question text was read empty right after Retry, so the script fell back to option A. (3) Split trends work. Under progress-topic-liver, after 2 regular quizzes, 1 image quiz and 1 textbook quiz there are exactly 3 charts: score-trend-liver-quiz 'Quiz trend' (bars 35, 25, '▼ 10% since first try'), score-trend-liver-image 'Image quiz trend' (bar 11), and score-trend-liver-book 'Textbook trend' (bar 30). The old score-trend-liver ID is gone. With no history, no chart renders, and mock/weak runs do not create topic charts. (4) Regression passed: search 'spleen' gives 35 results and nonsense text shows search-no-results; mock exam (25 questions from 977) gives results 7/25; weak spots (18 missed) gives 4/18; Recent quizzes shows 'Weak spot review (18) 4/18', 'Mock exam (25) 7/25', 'The Liver · Textbook 18/60', 'The Liver · Image quiz 1/9' and 'The Liver 5/20'. No page errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Progress - score trend", "issues": ["When a mode has only 1 attempt, its single bar stretches the full card width (about 326px), which looks like a progress bar instead of a chart. Consider capping the column width (for example maxWidth 48) and aligning left. Reference: src/components/score-trend.tsx:46"]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": [".screenshots/i7_spleen_q3.png", ".screenshots/i7_gb_results.png", ".screenshots/i7_trend.png"],
+  "action_items": [
+    "Optional (cosmetic): cap the bar column width in ScoreTrend so single-attempt charts don't render as one full-width block.",
+    "Optional: midterm.json still stores 65 of 102 answers at index 0. The runtime shuffle fixes this in the UI, but if the data is ever used without shuffleOptions, the bias comes back. You could permanently shuffle the JSON too."
+  ],
+  "critical_code_review_comments": [
+    "quiz/[id].tsx calls useProgress() twice (lines 50 and 54). Merge them into one destructure.",
+    "progress.tsx line 101: the history label is one long nested ternary. Extract it into a historyLabel(h) helper for readability.",
+    "Midterm question order is not shuffled (only the options are). This is fine for a review quiz, but you could shuffle it to stop people memorising the order."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (no backend by design)", "frontend": "100%"},
+  "seed_data_creation": "None. Only browser localStorage in the Playwright sessions was used.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Midterm route: /quiz/midterm?topics=<Section> (sections: Spleen 16, Pancreas 14, Gallbladder and Bile Duct 50, Liver 22). Options are shuffled at runtime, so match the correct answer by option text, not by index. Trend testIDs are score-trend-{topicId}-{quiz|image|book}. Liver textbook mode serves all 60 textbook questions (no count limit) and the Liver image quiz has 9 questions.",
+  "rca_of_issue": "Previous issue: midterm skipped prepare(), and the raw answer key was skewed toward index 0. Fix: shuffleOptions() is now applied to midterm questions (initial state and retry), keeping optionExplanations aligned. Verified fixed."
+}

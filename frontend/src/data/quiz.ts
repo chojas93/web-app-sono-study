@@ -1,5 +1,6 @@
 import { topics } from "./index";
 import { media } from "./media";
+import { midtermQuestions } from "./midterm";
 import type { Question } from "./types";
 
 export function shuffle<T>(arr: T[]) {
@@ -36,7 +37,7 @@ export function imageQuestions(topicIds: string[]): Question[] {
   );
 }
 
-export type QuizMode = "mixed" | "image" | "book" | "weak";
+export type QuizMode = "mixed" | "image" | "book" | "weak" | "midterm";
 export type QuizConfig = { topicIds: string[]; count: number; mode: QuizMode; missed?: Record<string, boolean> };
 
 function writtenPool(topicIds: string[]) {
@@ -53,6 +54,7 @@ export function missedCount(topicIds: string[], missed: Record<string, boolean>)
 }
 
 export function buildQuiz({ topicIds, count, mode, missed }: QuizConfig): Question[] {
+  if (mode === "midterm") return midtermQuestions.filter((q) => topicIds[0] === "all" || q.section === topicIds[0]);
   if (mode === "book") return writtenPool(topicIds).filter((q) => q.source === "textbook");
   const pool = mode === "image" ? imageQuestions(topicIds) : mode === "weak" ? weakQuestions(topicIds, missed ?? {}) : writtenPool(topicIds);
   return shuffle(pool).slice(0, count);
