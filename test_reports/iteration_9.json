@@ -1,0 +1,51 @@
+{
+  "summary": "Frontend-only test of the new section images, image flashcards and image quiz at a 375x667 viewport using Playwright on the public URL, plus static data audits. All 14 topics render 391 section images (294 new) with no orphans, and every images-array entry matches a notes section title. All image assets load (HTTP 200 image/jpeg, naturalWidth>0 after lazy load), captions are present, and no page or console errors appeared. Zoom viewer works: tapping an image opens it, slide-viewer-caption is correct, next/prev wrap 1->2->3->1 and back, and close works. Flashcards: male shows 34 cards (20 image cards) and msk 30 (18 image cards). Every image loaded and the answer back showed the caption. Image quiz on male (24), msk (20), neck (15) and liver (21): every question image loaded, the option matching the image caption was always present, picking it scored 100%, and no diagram or quiz:false image appeared. The 50-question image-mode mock exam across all chapters scored 50/50 by caption match, and the correct-answer position was evenly spread (0:13, 1:12, 2:10, 3:15). Regression: search ('seminoma' gives 8 results), the mock exam (mixed: 977 questions available, image: 186), liver textbook review (60 questions with textbook badge), midterm section quiz and missed review (missed count correct, review 1/11), and the Progress tab with history all work with no page errors. Issues found: one section has more than 3 images, a few images are a poor fit for their section, the same picture appears twice in one section, some image-quiz options are near-identical, and 9 pathology sections still have no image. No deprecated Expo packages and no SafeAreaView-from-react-native imports were found.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Topic notes / overview 'Imaging Artifacts'", "issue": "This section shows 6 images, above the 3-per-section limit. The 6 are the original base entries in media.ts (ov_comet, ov_shadow, ov_mirror, ov_enhance, ov_reverb, ov_ringdown). Reference: /app/frontend/src/data/media.ts:7-12", "testID": "section-overview-s9-image-0..5", "priority": "MEDIUM"},
+      {"component": "Topic notes / male 'Malignant Testicular Tumors and Tumor Markers'", "issue": "Both images in this section are the same seminoma picture: x_male_286 and x_male_287 (x_male_287 is byte-identical to x_male_204, which the Seminoma section also uses). Replace one of them with a different tumor image (for example a mixed germ-cell tumor or lymphoma).", "testID": "section-male-s*-image-1", "priority": "LOW"}
+    ],
+    "integration_issues": [
+      {"flow": "Image quiz (topic + mock)", "issue": "Some quizzable images in the same topic have nearly identical captions. When both appear in one question, the options can't be told apart. Pairs: urinary 'Complex renal cyst with septation' vs 'Complex renal cyst with septations'; urinary 'Small echogenic kidneys in chronic renal failure' vs 'Echogenic kidneys in chronic renal failure'; msk 'Ganglion cyst with internal debris or septations' vs '...near joint'; msk 'Ultrasound of superficial foreign body with shadowing' vs 'Superficial foreign body with posterior shadowing'; liver 'Portal vein thrombosis sonographic appearance' vs 'Portal vein thrombosis on color Doppler'. Fix: in imageQuestions(), skip distractors from the same section or with a similar caption, or set quiz:false on one image of each pair. Reference: /app/frontend/src/data/quiz.ts:24-26", "affected_testIDs": ["quiz-option-0", "quiz-option-1", "quiz-option-2", "quiz-option-3"]}
+    ],
+    "design_issues": [
+      {"screen": "Topic notes SlideStrip", "issues": ["When a section has 3 images, 2 thumbnails (150px each) fill the card exactly. The 3rd is fully off-screen with no peek and no scroll indicator (showsHorizontalScrollIndicator=false), so users may not know it exists. Add a partial peek (for example a 130px thumbnail width) or an 'n images' badge. Reference: /app/frontend/src/components/slides.tsx:18,76", "Thumbnails have no accessibilityLabel. Use the caption as the label."]},
+      {"screen": "Section image relevance (spot-check of about 60 sections across 14 topics; captions matched image content in all 6 images viewed)", "issues": [
+        "male / Scrotal Pearls: shows general diagrams ('Male pelvis and testicular anatomy', 'Male reproductive organs...'), not a scrotolith sonogram. The first is a duplicate of the Anatomy section image x_male_189.",
+        "male / Vascular Impotence: shows penile prosthesis images ('Pelvic reservoir of penile inflatable prosthesis', 'Penile implants'), not cavernosal artery Doppler.",
+        "male / Seminal Vesicle cysts: shows normal seminal vesicles, not a cyst.",
+        "urinary / Sonography of the Kidneys: shows 'Renal hematoma after blunt trauma', which is pathology in a technique section.",
+        "vasculature / Portal Venous System: 'Inferior vena cava and tributary veins' (a duplicate of the IVC section image) is the wrong system.",
+        "gallbladder / Sonography of the Gallbladder: 'Laparoscopic cholecystectomy abdominal scar sites' is a weak fit.",
+        "pancreas / Exocrine & Endocrine Function: shows islet-cell tumor and insulinoma pathology. The insulinoma image is byte-identical to the one in Cystic & Islet Cell Tumors.",
+        "gi / Inflammatory Bowel & Cancer: shows diverticula images (barium study and diverticulitis) rather than Crohn's disease or a bowel tumor.",
+        "msk / Sonography of Superficial Structures: 'Anterior view of the skeleton' is a weak fit.",
+        "Good matches confirmed: Seminoma (hypoechoic intratesticular mass 'M'), DDH (Graf alpha/beta angle views), Varicocele, Baker Cyst, Pneumothorax (seashore/barcode), Caroli (central dot), Pyloric stenosis, Achilles, TI-RADS, Nuclear medicine thyroid."
+      ]},
+      {"screen": "Coverage", "issues": ["12 sections render no image (not about 25 as noted). 9 of them are pathology sections, and the user asked for sonographic images in ALL pathology sections: overview FAST Exam; biliary Ascariasis; chest Lung Masses & Consolidation; male Adrenal Rests, Peyronie Disease, Penile Trauma, Prostatitis; msk Galactocele, Melanoma. The other 3 are liver Jaundice & Bilirubin, spleen WBC Assessment and overview Echogenicity of Abdominal Organs. Note: Basic Patient Care and PSA DO have images now, which differs from the handoff note."]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": ["/app/tests/media_audit.mjs"],
+  "action_items": [
+    "Limit overview 'Imaging Artifacts' to 3 images, or move 3 of the base images (for example mirror, reverberation and ring-down) into separate sections or into flashcards and quiz only (media.ts:7-12).",
+    "Prevent near-identical captions in image-quiz options: drop same-section distractors or similar captions in quiz.ts imageQuestions(), or set quiz:false on one image of each pair listed above.",
+    "Replace the duplicate seminoma image in male 'Malignant Testicular Tumors and Tumor Markers' (x_male_287 duplicates x_male_204, and x_male_286 is the same picture).",
+    "Re-match the poor-fit section images listed in design_issues (Scrotal Pearls, Vascular Impotence, Seminal Vesicle cysts, Sonography of the Kidneys, Portal Venous System, GB Sonography, Pancreas Exocrine/Endocrine, GI IBD & Cancer).",
+    "Optional: add sonograms to the pathology sections still missing one (Ascariasis, Lung Masses, Peyronie, Penile Trauma, Prostatitis, Galactocele, Melanoma, Adrenal Rests, FAST).",
+    "Optional: remove 4 unused bundled assets (x_male_209, x_male_283, x_male_290, x_msk_296), which are referenced in extraSlides.ts but in no section or card. Also make the 3rd SlideStrip thumbnail discoverable (add a peek)."
+  ],
+  "critical_code_review_comments": [
+    "quiz.ts imageQuestions: distractors come first from all same-topic captions, so images of the same finding from the same section (for example 3 Pilonidal or 3 scintigraphy images) can compete as options. Only exact duplicates are filtered.",
+    "Topic.imageCount (index.ts:59) counts every sectionImages entry. It is accurate now because no image is orphaned, but a section rename would silently create orphan images. Consider a dev-time check.",
+    "About 18 byte-identical image pairs are reused across sections (for example x_overview_1 and x_overview_267, x_liver_24 and x_liver_270). This is acceptable, but the identical files bloat the 17MB assets/slides bundle. Reuse one key instead of copying the file.",
+    "Deprecated packages detected: none (no expo-av, expo-barcode-scanner or expo-background-fetch). SafeAreaView issues detected: none."
+  ],
+  "updated_files": ["/app/tests/media_audit.mjs (new static audit script; no app code modified)"],
+  "success_rate": {"backend": "N/A (frontend only)", "frontend": "92%"},
+  "seed_data_creation": "None. Only local browser storage in Playwright sessions was used (quiz attempts).",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Section images are rendered as testID section-{topic}-s{N}-image-{i}. They lazy-load, so scroll each into view before checking img.naturalWidth. Image URLs look like /assets/?unstable_path=./assets/slides/{key}.jpg, so you can map key to caption via extraMedia.json and media.ts to verify image-quiz answers (options are shuffled). Use the ':visible' filter for testIDs in stacked screens. On the mock page, mock-select-all-button toggles, so check mock-summary for 'Pick at least one chapter' before starting. Run `node /app/tests/media_audit.mjs` for the per-section count (>3), missing files and tiny files."
+}

@@ -1,0 +1,2324 @@
+{
+ "overview": {
+  "sectionImages": [
+   {
+    "section": "Sonographic Descriptive Terms",
+    "key": "x_overview_1",
+    "caption": "Transducer orientation and image presentation planes",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonographic Descriptive Terms",
+    "key": "x_overview_2",
+    "caption": "Common directional and relational anatomical terms",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonographic Descriptive Terms",
+    "key": "x_overview_3",
+    "caption": "Common directional anatomical terms",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Simple Cyst Criteria (STAR)",
+    "key": "x_overview_4",
+    "caption": "Simple, solid, and complex breast masses",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Patient Preparation",
+    "key": "x_overview_5",
+    "caption": "Common patient positions for ultrasound scanning",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Clinical History & Key Labs",
+    "key": "x_overview_6",
+    "caption": "Referred abdominal pain patterns by organ",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Infection Control",
+    "key": "x_overview_7",
+    "caption": "Chain of infection transmission",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Doppler Artifacts",
+    "key": "x_overview_8",
+    "caption": "Color Doppler aliasing in a vessel",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Doppler Artifacts",
+    "key": "x_overview_9",
+    "caption": "Pulsed Doppler aliasing examples",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Body Systems & Peritoneum",
+    "key": "x_overview_10",
+    "caption": "Paracolic gutters and infracolic spaces",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Body Systems & Peritoneum",
+    "key": "x_overview_11",
+    "caption": "Normal abdominal CT anatomy at multiple levels",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Body Systems & Peritoneum",
+    "key": "x_overview_12",
+    "caption": "Normal upper abdominal CT anatomy",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Abdominal Pathology Overview",
+    "key": "x_overview_13",
+    "caption": "Cancer staging and progression diagram",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Basic Patient Care",
+    "key": "x_overview_263",
+    "caption": "Common patient positions for ultrasound examination",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Basic Patient Care",
+    "key": "x_overview_264",
+    "caption": "Common patient positions for ultrasound scanning",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Invasive & Sterile Procedures",
+    "key": "x_overview_265",
+    "caption": "Chain of infection transmission",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Invasive & Sterile Procedures",
+    "key": "x_overview_266",
+    "caption": "Cycle of infection diagram",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Instrumentation",
+    "key": "x_overview_267",
+    "caption": "Transducer orientation and image presentation planes",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Instrumentation",
+    "key": "x_overview_268",
+    "caption": "Ultrasound scanning planes and image orientation",
+    "kind": "diagram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_overview_4",
+    "back": "Simple, solid, and complex breast masses"
+   },
+   {
+    "key": "x_overview_8",
+    "back": "Color Doppler aliasing in a vessel"
+   }
+  ]
+ },
+ "liver": {
+  "sectionImages": [
+   {
+    "section": "Lobes of the Liver",
+    "key": "x_liver_14",
+    "caption": "Sagittal oblique liver showing right and left lobes",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Lobes of the Liver",
+    "key": "x_liver_15",
+    "caption": "Couinaud liver segmentation diagram",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Lobes of the Liver",
+    "key": "x_liver_16",
+    "caption": "Caudate lobe between ligamentum venosum and IVC",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Dual Blood Supply",
+    "key": "x_liver_17",
+    "caption": "Transverse main portal vein",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Dual Blood Supply",
+    "key": "x_liver_18",
+    "caption": "Portal and hepatic venous liver vasculature",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Portal vs Hepatic Veins",
+    "key": "x_liver_19",
+    "caption": "Hepatic vein Doppler waveform",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Portal vs Hepatic Veins",
+    "key": "x_liver_20",
+    "caption": "Main, right, and left portal veins",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Portal vs Hepatic Veins",
+    "key": "x_liver_21",
+    "caption": "Hepatic veins draining into the IVC",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Porta Hepatis",
+    "key": "x_liver_22",
+    "caption": "Color Doppler hepatic artery at porta hepatis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Porta Hepatis",
+    "key": "x_liver_23",
+    "caption": "Porta hepatis with hepatic artery and bile ducts",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Ligaments & Fissures",
+    "key": "x_liver_24",
+    "caption": "Surfaces and ligaments of the liver",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Ligaments & Fissures",
+    "key": "x_liver_25",
+    "caption": "Liver fissures and ligaments on ultrasound",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Variants & Normal Sonography",
+    "key": "x_liver_26",
+    "caption": "Right lobe extends below right kidney",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Variants & Normal Sonography",
+    "key": "x_liver_27",
+    "caption": "Diaphragmatic slips in the liver",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Fatty Liver Disease",
+    "key": "x_liver_28",
+    "caption": "Diffuse hepatic steatosis with posterior attenuation",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Fatty Liver Disease",
+    "key": "x_liver_29",
+    "caption": "Focal fatty sparing near gallbladder",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Cirrhosis & Portal Hypertension",
+    "key": "x_liver_30",
+    "caption": "Clinical signs of cirrhosis and portal hypertension",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Cirrhosis & Portal Hypertension",
+    "key": "x_liver_31",
+    "caption": "Liver shear wave elastography showing normal and stiff tissue",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Vascular Disorders",
+    "key": "x_liver_32",
+    "caption": "Enlarged caudate lobe compressing the IVC",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Vascular Disorders",
+    "key": "x_liver_33",
+    "caption": "Portal vein thrombosis sonographic appearance",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Cysts, Abscesses & Infection",
+    "key": "x_liver_34",
+    "caption": "Benign hepatic cyst with posterior enhancement",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Cysts, Abscesses & Infection",
+    "key": "x_liver_35",
+    "caption": "Hydatid cyst life cycle and human infection",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Benign Liver Masses",
+    "key": "x_liver_36",
+    "caption": "Focal nodular hyperplasia in liver",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Benign Liver Masses",
+    "key": "x_liver_37",
+    "caption": "Hepatocellular adenoma in liver",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Liver Cancer",
+    "key": "x_liver_38",
+    "caption": "Multiple hepatic metastases in right lobe",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Liver Cancer",
+    "key": "x_liver_39",
+    "caption": "Hepatocellular carcinoma in right liver lobe",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Liver Doppler, TIPS & Transplant",
+    "key": "x_liver_40",
+    "caption": "Doppler of main portal vein",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Liver Doppler, TIPS & Transplant",
+    "key": "x_liver_41",
+    "caption": "TIPS shunt between portal and hepatic veins",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Pediatric Liver & CEUS",
+    "key": "x_liver_42",
+    "caption": "Contrast-enhanced ultrasound of liver lesions",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_liver_269",
+    "caption": "Couinaud liver segmentation diagram",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_liver_270",
+    "caption": "Surfaces and ligaments of the liver",
+    "kind": "diagram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_liver_19",
+    "back": "Hepatic vein Doppler waveform"
+   },
+   {
+    "key": "x_liver_22",
+    "back": "Color Doppler hepatic artery at porta hepatis"
+   },
+   {
+    "key": "x_liver_26",
+    "back": "Right lobe extends below right kidney"
+   },
+   {
+    "key": "x_liver_27",
+    "back": "Diaphragmatic slips in the liver"
+   },
+   {
+    "key": "x_liver_28",
+    "back": "Diffuse hepatic steatosis with posterior attenuation"
+   },
+   {
+    "key": "x_liver_31",
+    "back": "Liver shear wave elastography showing normal and stiff tissue"
+   },
+   {
+    "key": "x_liver_33",
+    "back": "Portal vein thrombosis sonographic appearance"
+   },
+   {
+    "key": "x_liver_34",
+    "back": "Benign hepatic cyst with posterior enhancement"
+   },
+   {
+    "key": "x_liver_36",
+    "back": "Focal nodular hyperplasia in liver"
+   },
+   {
+    "key": "x_liver_37",
+    "back": "Hepatocellular adenoma in liver"
+   },
+   {
+    "key": "x_liver_38",
+    "back": "Multiple hepatic metastases in right lobe"
+   },
+   {
+    "key": "x_liver_39",
+    "back": "Hepatocellular carcinoma in right liver lobe"
+   }
+  ]
+ },
+ "gallbladder": {
+  "sectionImages": [
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_gallbladder_43",
+    "caption": "Hepatobiliary scintigraphy showing gallbladder and biliary tree",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Variants & Anomalies",
+    "key": "x_gallbladder_44",
+    "caption": "Phrygian cap of the gallbladder",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonography of the Gallbladder",
+    "key": "x_gallbladder_45",
+    "caption": "Normal gallbladder with fundus, body, and neck",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Cholelithiasis (Gallstones)",
+    "key": "x_gallbladder_47",
+    "caption": "WES sign from gallbladder packed with stones",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Cholelithiasis (Gallstones)",
+    "key": "x_gallbladder_48",
+    "caption": "Mobile gallstone in gallbladder neck and fundus",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Biliary Spectrum",
+    "key": "x_gallbladder_49",
+    "caption": "Locations of gallstones in the biliary tree",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sludge",
+    "key": "x_gallbladder_50",
+    "caption": "Tumefactive gallbladder sludge with hepatization appearance",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Acute Cholecystitis",
+    "key": "x_gallbladder_51",
+    "caption": "CT showing acute cholecystitis with pericholecystic fluid",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Acute Cholecystitis",
+    "key": "x_gallbladder_52",
+    "caption": "Acalculous cholecystitis with thickened striated gallbladder wall",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Complicated Cholecystitis",
+    "key": "x_gallbladder_53",
+    "caption": "Gallbladder perforation with wall defect and intraluminal debris",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Hydrops, Courvoisier & Porcelain GB",
+    "key": "x_gallbladder_54",
+    "caption": "Long-axis distended gallbladder",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Gallbladder Carcinoma",
+    "key": "x_gallbladder_55",
+    "caption": "Gallbladder mass with internal arterial flow",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Gallbladder Carcinoma",
+    "key": "x_gallbladder_56",
+    "caption": "Gallbladder mass projecting into lumen",
+    "kind": "sonogram"
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_gallbladder_44",
+    "back": "Phrygian cap of the gallbladder"
+   },
+   {
+    "key": "x_gallbladder_48",
+    "back": "Mobile gallstone in gallbladder neck and fundus"
+   },
+   {
+    "key": "x_gallbladder_50",
+    "back": "Tumefactive gallbladder sludge with hepatization appearance"
+   },
+   {
+    "key": "x_gallbladder_52",
+    "back": "Acalculous cholecystitis with thickened striated gallbladder wall"
+   },
+   {
+    "key": "x_gallbladder_53",
+    "back": "Gallbladder perforation with wall defect and intraluminal debris"
+   },
+   {
+    "key": "x_gallbladder_55",
+    "back": "Gallbladder mass with internal arterial flow"
+   },
+   {
+    "key": "x_gallbladder_56",
+    "back": "Gallbladder mass projecting into lumen"
+   }
+  ]
+ },
+ "biliary": {
+  "sectionImages": [
+   {
+    "section": "Anatomy and Physiology",
+    "key": "x_biliary_57",
+    "caption": "Normal MRCP of the biliary tree",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Bile Ducts",
+    "key": "x_biliary_58",
+    "caption": "ERCP of biliary tree and common bile duct",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Biliary Obstruction and Jaundice",
+    "key": "x_biliary_59",
+    "caption": "Mirizzi syndrome with cystic duct stone compressing common duct",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Choledocholithiasis",
+    "key": "x_biliary_60",
+    "caption": "Mirizzi syndrome schematic at cystic duct",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Cholangitis",
+    "key": "x_biliary_61",
+    "caption": "Color Doppler common bile duct wall thickening",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Cholangiocarcinoma and Klatskin Tumors",
+    "key": "x_biliary_62",
+    "caption": "Biliary ductal mass causing obstruction",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Cholangiocarcinoma and Klatskin Tumors",
+    "key": "x_biliary_63",
+    "caption": "Klatskin tumor at the hepatic duct bifurcation",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Cholangiocarcinoma and Klatskin Tumors",
+    "key": "x_biliary_64",
+    "caption": "Dilated intrahepatic ducts with hilar cholangiocarcinoma",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Biliary Atresia",
+    "key": "x_biliary_65",
+    "caption": "Biliary atresia with pseudogallbladder and triangular cord signs",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Choledochal Cyst",
+    "key": "x_biliary_66",
+    "caption": "Choledochal cyst adjacent to gallbladder and pancreas",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Caroli Disease",
+    "key": "x_biliary_67",
+    "caption": "Central dot sign in Caroli disease",
+    "kind": "sonogram"
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_biliary_59",
+    "back": "Mirizzi syndrome with cystic duct stone compressing common duct"
+   },
+   {
+    "key": "x_biliary_61",
+    "back": "Color Doppler common bile duct wall thickening"
+   },
+   {
+    "key": "x_biliary_62",
+    "back": "Biliary ductal mass causing obstruction"
+   },
+   {
+    "key": "x_biliary_64",
+    "back": "Dilated intrahepatic ducts with hilar cholangiocarcinoma"
+   },
+   {
+    "key": "x_biliary_67",
+    "back": "Central dot sign in Caroli disease"
+   }
+  ]
+ },
+ "pancreas": {
+  "sectionImages": [
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_pancreas_68",
+    "caption": "Pancreatic and biliary duct anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Vascular Anatomy",
+    "key": "x_pancreas_69",
+    "caption": "Pancreatic arterial and venous anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Pancreas",
+    "key": "x_pancreas_70",
+    "caption": "Transverse pancreas with adjacent vascular landmarks",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Pancreas",
+    "key": "x_pancreas_71",
+    "caption": "Pancreatic head ultrasound views",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Congenital Anomalies",
+    "key": "x_pancreas_72",
+    "caption": "True pancreatic cysts within the pancreas",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Congenital Anomalies",
+    "key": "x_pancreas_73",
+    "caption": "Annular pancreas encircling the duodenum",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Congenital Anomalies",
+    "key": "x_pancreas_74",
+    "caption": "Normal pancreatic ducts and pancreas divisum",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Acute Pancreatitis",
+    "key": "x_pancreas_75",
+    "caption": "CT showing acute pancreatitis with peripancreatic inflammation",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Chronic Pancreatitis",
+    "key": "x_pancreas_76",
+    "caption": "CT showing pancreatic calcifications in chronic pancreatitis",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Pancreatic Adenocarcinoma",
+    "key": "x_pancreas_77",
+    "caption": "CT of malignant pancreatic mass with dilated gallbladder",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Pancreatic Adenocarcinoma",
+    "key": "x_pancreas_78",
+    "caption": "Dilated common bile duct",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Cystic & Islet Cell Tumors",
+    "key": "x_pancreas_79",
+    "caption": "Pancreatic insulinoma hypoechoic mass with Doppler flow",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Pancreatic Transplant",
+    "key": "x_pancreas_80",
+    "caption": "Pancreatic transplant anatomy and enteric drainage configurations",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Pancreatic Transplant",
+    "key": "x_pancreas_81",
+    "caption": "Reversed diastolic flow in pancreatic transplant",
+    "kind": "sonogram"
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_pancreas_72",
+    "back": "True pancreatic cysts within the pancreas"
+   },
+   {
+    "key": "x_pancreas_79",
+    "back": "Pancreatic insulinoma hypoechoic mass with Doppler flow"
+   },
+   {
+    "key": "x_pancreas_81",
+    "back": "Reversed diastolic flow in pancreatic transplant"
+   }
+  ]
+ },
+ "spleen": {
+  "sectionImages": [
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_spleen_82",
+    "caption": "Splenic anatomy and rib intercostal location",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Vascular Anatomy",
+    "key": "x_spleen_83",
+    "caption": "Color Doppler of splenic artery",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Vascular Anatomy",
+    "key": "x_spleen_84",
+    "caption": "Splenic vascular anatomy and hilar vessels",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Congenital Anomalies",
+    "key": "x_spleen_85",
+    "caption": "Accessory spleen adjacent to spleen",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Splenomegaly",
+    "key": "x_spleen_86",
+    "caption": "Sagittal spleen ultrasound with enlarged length measurement",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Splenomegaly",
+    "key": "x_spleen_87",
+    "caption": "CT showing enlarged spleen",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Splenic Cysts & Abscess",
+    "key": "x_spleen_88",
+    "caption": "Splenic abscess",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Splenic Cysts & Abscess",
+    "key": "x_spleen_89",
+    "caption": "Splenic abscess with complex hypoechoic appearance",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Splenic Trauma",
+    "key": "x_spleen_90",
+    "caption": "CT showing splenic rupture and perisplenic hematoma",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Sickle Cell Anemia",
+    "key": "x_spleen_91",
+    "caption": "Splenic infarcts in sickle cell anemia",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sickle Cell Anemia",
+    "key": "x_spleen_92",
+    "caption": "Systemic manifestations of sickle cell anemia",
+    "kind": "diagram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_spleen_86",
+    "back": "Sagittal spleen ultrasound with enlarged length measurement"
+   },
+   {
+    "key": "x_spleen_91",
+    "back": "Splenic infarcts in sickle cell anemia"
+   }
+  ]
+ },
+ "urinary": {
+  "sectionImages": [
+   {
+    "section": "Kidney Anatomy & Physiology",
+    "key": "x_urinary_93",
+    "caption": "Labeled gross anatomy of the kidney",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Renal Variants",
+    "key": "x_urinary_95",
+    "caption": "Duplicated collecting system in right kidney",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Renal Variants",
+    "key": "x_urinary_96",
+    "caption": "Junctional parenchymal defect in kidney",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Renal Failure & Dialysis",
+    "key": "x_urinary_97",
+    "caption": "Small echogenic kidneys in chronic renal failure",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Renal Failure & Dialysis",
+    "key": "x_urinary_98",
+    "caption": "Echogenic kidneys in chronic renal failure",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Renal Failure & Dialysis",
+    "key": "x_urinary_99",
+    "caption": "Acquired renal cystic disease in dialysis kidneys",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Simple & Complex Renal Cysts",
+    "key": "x_urinary_100",
+    "caption": "Complex renal cyst with septation",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Simple & Complex Renal Cysts",
+    "key": "x_urinary_101",
+    "caption": "Complex renal cyst with septations",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Polycystic & Cystic Diseases",
+    "key": "x_urinary_102",
+    "caption": "Features of von Hippel\u2013Lindau syndrome",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Renal Infection",
+    "key": "x_urinary_103",
+    "caption": "Routes of urinary tract infection spread",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Renal Infection",
+    "key": "x_urinary_104",
+    "caption": "Progressive scarring in chronic pyelonephritis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Obstruction & Hydronephrosis",
+    "key": "x_urinary_105",
+    "caption": "Causes and sites of urinary tract obstruction",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Benign Renal Masses",
+    "key": "x_urinary_106",
+    "caption": "Renal angiomyolipomas in tuberous sclerosis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Benign Renal Masses",
+    "key": "x_urinary_107",
+    "caption": "Renal angiomyolipoma adjacent to kidney",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Malignant Renal Masses",
+    "key": "x_urinary_108",
+    "caption": "Renal cell carcinoma staging diagram",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Malignant Renal Masses",
+    "key": "x_urinary_109",
+    "caption": "Renal cell carcinoma with bilateral renal cysts",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Renal Vascular Disease",
+    "key": "x_urinary_110",
+    "caption": "Progression of renal artery stenosis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Renal Vascular Disease",
+    "key": "x_urinary_111",
+    "caption": "Distal right renal artery poststenotic turbulence",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Renal Transplant",
+    "key": "x_urinary_112",
+    "caption": "Transplant renal vein thrombosis on color Doppler",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Pediatric Kidney",
+    "key": "x_urinary_113",
+    "caption": "Duplicated collecting system with ureterocele",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Ureters",
+    "key": "x_urinary_114",
+    "caption": "Duplicated ureter collecting system imaging",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Urinary Bladder & Urethra",
+    "key": "x_urinary_115",
+    "caption": "Trabeculated urinary bladder wall",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Urinary Bladder & Urethra",
+    "key": "x_urinary_116",
+    "caption": "Urachal anomalies: fistula, cyst, and sinus",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Urinary Bladder & Urethra",
+    "key": "x_urinary_117",
+    "caption": "Bladder diverticulum with narrow neck",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Renal Vasculature & Labs",
+    "key": "x_urinary_273",
+    "caption": "Progression of renal artery stenosis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Renal Vasculature & Labs",
+    "key": "x_urinary_274",
+    "caption": "Proximal right renal artery stenosis spectral Doppler",
+    "kind": "sonogram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_urinary_95",
+    "back": "Duplicated collecting system in right kidney"
+   },
+   {
+    "key": "x_urinary_96",
+    "back": "Junctional parenchymal defect in kidney"
+   },
+   {
+    "key": "x_urinary_97",
+    "back": "Small echogenic kidneys in chronic renal failure"
+   },
+   {
+    "key": "x_urinary_98",
+    "back": "Echogenic kidneys in chronic renal failure"
+   },
+   {
+    "key": "x_urinary_99",
+    "back": "Acquired renal cystic disease in dialysis kidneys"
+   },
+   {
+    "key": "x_urinary_100",
+    "back": "Complex renal cyst with septation"
+   },
+   {
+    "key": "x_urinary_101",
+    "back": "Complex renal cyst with septations"
+   },
+   {
+    "key": "x_urinary_106",
+    "back": "Renal angiomyolipomas in tuberous sclerosis"
+   },
+   {
+    "key": "x_urinary_107",
+    "back": "Renal angiomyolipoma adjacent to kidney"
+   },
+   {
+    "key": "x_urinary_112",
+    "back": "Transplant renal vein thrombosis on color Doppler"
+   },
+   {
+    "key": "x_urinary_115",
+    "back": "Trabeculated urinary bladder wall"
+   },
+   {
+    "key": "x_urinary_117",
+    "back": "Bladder diverticulum with narrow neck"
+   }
+  ]
+ },
+ "adrenal": {
+  "sectionImages": [
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_adrenal_118",
+    "caption": "Adrenal glands above kidneys",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy & Physiology",
+    "key": "x_adrenal_119",
+    "caption": "Hypothalamic-pituitary-adrenal axis diagram",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Vascular Anatomy",
+    "key": "x_adrenal_120",
+    "caption": "Vascular anatomy of the adrenal glands",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Adrenals",
+    "key": "x_adrenal_121",
+    "caption": "Right adrenal gland near liver and IVC",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Addison Disease",
+    "key": "x_adrenal_122",
+    "caption": "Systemic manifestations of Addison disease",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Cushing & Conn Syndromes",
+    "key": "x_adrenal_123",
+    "caption": "Clinical features of Cushing syndrome",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Adrenal Adenoma",
+    "key": "x_adrenal_124",
+    "caption": "Coronal MRI showing adrenal adenoma",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Adrenal Adenoma",
+    "key": "x_adrenal_125",
+    "caption": "CT of adrenal adenoma between arrowheads",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Cysts, Rests & Malignancy",
+    "key": "x_adrenal_126",
+    "caption": "Adrenal cyst sonographic examples",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Cysts, Rests & Malignancy",
+    "key": "x_adrenal_127",
+    "caption": "Adrenal carcinoma near the IVC",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Neuroblastoma",
+    "key": "x_adrenal_128",
+    "caption": "CT neuroblastoma with liver metastases",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Neuroblastoma",
+    "key": "x_adrenal_129",
+    "caption": "Adrenal neuroblastoma sonogram",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Adrenal Hemorrhage",
+    "key": "x_adrenal_130",
+    "caption": "Right adrenal hemorrhage near upper kidney",
+    "kind": "anatomy",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_adrenal_121",
+    "back": "Right adrenal gland near liver and IVC"
+   },
+   {
+    "key": "x_adrenal_126",
+    "back": "Adrenal cyst sonographic examples"
+   },
+   {
+    "key": "x_adrenal_129",
+    "back": "Adrenal neuroblastoma sonogram"
+   }
+  ]
+ },
+ "vasculature": {
+  "sectionImages": [
+   {
+    "section": "Abdominal Aorta Anatomy",
+    "key": "x_vasculature_131",
+    "caption": "Aortic bifurcation into common iliac arteries",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Abdominal Aorta Anatomy",
+    "key": "x_vasculature_132",
+    "caption": "Artery and vein wall layers",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Abdominal Aorta Anatomy",
+    "key": "x_vasculature_133",
+    "caption": "Abdominal aorta and major branch arteries",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Celiac Trunk",
+    "key": "x_vasculature_134",
+    "caption": "Normal and abnormal celiac artery Doppler waveforms",
+    "kind": "sonogram"
+   },
+   {
+    "section": "SMA & Other Branches",
+    "key": "x_vasculature_135",
+    "caption": "Postprandial superior mesenteric artery Doppler waveform",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "SMA & Other Branches",
+    "key": "x_vasculature_136",
+    "caption": "Abdominal aorta branches to mesenteric and hepatic arteries",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "SMA & Other Branches",
+    "key": "x_vasculature_137",
+    "caption": "Superior mesenteric artery anatomy and surrounding vessels",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Aorta",
+    "key": "x_vasculature_138",
+    "caption": "Normal abdominal aorta Doppler waveforms",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Aorta",
+    "key": "x_vasculature_139",
+    "caption": "Aortic Doppler spectral waveforms",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Abdominal Aortic Aneurysm",
+    "key": "x_vasculature_140",
+    "caption": "Longitudinal infrarenal abdominal aortic aneurysm",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Abdominal Aortic Aneurysm",
+    "key": "x_vasculature_141",
+    "caption": "Types of arterial aneurysms",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "EVAR, Dissection & Rupture",
+    "key": "x_vasculature_142",
+    "caption": "Marfan syndrome with aortic aneurysm and dissection",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Pseudoaneurysm & AV Fistula",
+    "key": "x_vasculature_143",
+    "caption": "Renal artery pseudoaneurysm on MRI",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Pseudoaneurysm & AV Fistula",
+    "key": "x_vasculature_144",
+    "caption": "Color Doppler arteriovenous fistula",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Inferior Vena Cava",
+    "key": "x_vasculature_145",
+    "caption": "Inferior vena cava and tributary veins",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "IVC Pathology",
+    "key": "x_vasculature_146",
+    "caption": "IVC filter with thrombus filling defect",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "IVC Pathology",
+    "key": "x_vasculature_147",
+    "caption": "IVC thrombus in longitudinal view",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Portal Venous System",
+    "key": "x_vasculature_275",
+    "caption": "Gallbladder and portal vein with common bile duct",
+    "kind": "sonogram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_vasculature_134",
+    "back": "Normal and abnormal celiac artery Doppler waveforms"
+   },
+   {
+    "key": "x_vasculature_144",
+    "back": "Color Doppler arteriovenous fistula"
+   },
+   {
+    "key": "x_vasculature_147",
+    "back": "IVC thrombus in longitudinal view"
+   }
+  ]
+ },
+ "gi": {
+  "sectionImages": [
+   {
+    "section": "Anatomy of the GI Tract",
+    "key": "x_gi_148",
+    "caption": "Gastroesophageal junction near liver and aorta",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy of the GI Tract",
+    "key": "x_gi_149",
+    "caption": "Labeled anatomy of the gastrointestinal tract",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Gut Signature",
+    "key": "x_gi_150",
+    "caption": "Bowel wall layers labeled on ultrasound",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Gut Signature",
+    "key": "x_gi_151",
+    "caption": "Gut wall signature layers in stomach",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Acute Appendicitis",
+    "key": "x_gi_152",
+    "caption": "Appendix surface anatomy and McBurney point",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Acute Appendicitis",
+    "key": "x_gi_153",
+    "caption": "Appendicolith with hyperemic inflamed appendix",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Hypertrophic Pyloric Stenosis",
+    "key": "x_gi_154",
+    "caption": "Diagram of hypertrophic pyloric stenosis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Hypertrophic Pyloric Stenosis",
+    "key": "x_gi_155",
+    "caption": "Transverse pyloric stenosis ultrasound appearance",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Intussusception",
+    "key": "x_gi_156",
+    "caption": "Color Doppler intussusception with preserved bowel flow",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Intestinal Obstruction & Bezoars",
+    "key": "x_gi_157",
+    "caption": "Causes of mechanical intestinal obstruction",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anterior Abdominal Wall",
+    "key": "x_gi_160",
+    "caption": "Anterior abdominal wall sonographic anatomy",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Anterior Abdominal Wall",
+    "key": "x_gi_161",
+    "caption": "Common abdominal wall hernia locations",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anterior Abdominal Wall",
+    "key": "x_gi_162",
+    "caption": "Diagram of abdominal wall hernial sac",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Scanning Technique",
+    "key": "x_gi_277",
+    "caption": "Longitudinal and transverse appendix ultrasound views",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Scanning Technique",
+    "key": "x_gi_278",
+    "caption": "Longitudinal appendix ultrasound image",
+    "kind": "sonogram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_gi_150",
+    "back": "Bowel wall layers labeled on ultrasound"
+   },
+   {
+    "key": "x_gi_155",
+    "back": "Transverse pyloric stenosis ultrasound appearance"
+   },
+   {
+    "key": "x_gi_156",
+    "back": "Color Doppler intussusception with preserved bowel flow"
+   }
+  ]
+ },
+ "chest": {
+  "sectionImages": [
+   {
+    "section": "Noncardiac Chest Anatomy",
+    "key": "x_chest_163",
+    "caption": "Lung lobes and fissures anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Pleural & Pericardial Effusion",
+    "key": "x_chest_164",
+    "caption": "Pericardial effusion around the heart",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Pleural & Pericardial Effusion",
+    "key": "x_chest_165",
+    "caption": "Pericardial effusion surrounding the heart",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Pneumothorax",
+    "key": "x_chest_166",
+    "caption": "Left pneumothorax on chest radiograph and CT",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Pneumothorax",
+    "key": "x_chest_167",
+    "caption": "Ultrasound image of pneumothorax",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Retroperitoneum Anatomy",
+    "key": "x_chest_168",
+    "caption": "Kidney adjacent to psoas and quadratus lumborum muscles",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Retroperitoneum Anatomy",
+    "key": "x_chest_169",
+    "caption": "Kidney with adjacent retroperitoneal muscles",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Retroperitoneal Lymphadenopathy",
+    "key": "x_chest_170",
+    "caption": "Coronal CT showing retroperitoneal lymphadenopathy",
+    "kind": "anatomy",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_chest_169",
+    "back": "Kidney with adjacent retroperitoneal muscles"
+   }
+  ]
+ },
+ "neck": {
+  "sectionImages": [
+   {
+    "section": "Anatomy and Physiology of the Salivary Glands",
+    "key": "x_neck_171",
+    "caption": "Oral cavity with major salivary glands",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Pathology of the Salivary Glands",
+    "key": "x_neck_172",
+    "caption": "Lobulated hypoechoic salivary gland mass with internal vascularity",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Anatomy and Physiology of the Thyroid Gland",
+    "key": "x_neck_173",
+    "caption": "Anterior thyroid gland surface anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy and Physiology of the Thyroid Gland",
+    "key": "x_neck_174",
+    "caption": "Transverse neck anatomy at the thyroid isthmus",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Vascular Anatomy of the Thyroid Gland and Neck",
+    "key": "x_neck_175",
+    "caption": "Transverse neck ultrasound with carotid, jugular, thyroid, and trachea",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Graves Disease and Hyperthyroidism",
+    "key": "x_neck_176",
+    "caption": "Hypervascular thyroid on color Doppler",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Graves Disease and Hyperthyroidism",
+    "key": "x_neck_177",
+    "caption": "Clinical features of Graves disease",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Hashimoto Thyroiditis and Hypothryoidism",
+    "key": "x_neck_178",
+    "caption": "Clinical findings of hypothyroidism",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Benign Nodules",
+    "key": "x_neck_179",
+    "caption": "Thyroid nodule with internal microcalcifications",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Malignant Thyroid Nodules",
+    "key": "x_neck_180",
+    "caption": "CT of medullary thyroid carcinoma",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "TI-RADS",
+    "key": "x_neck_181",
+    "caption": "TI-RADS scoring and category chart",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Nuclear Medicine and Thyroid Nodules",
+    "key": "x_neck_182",
+    "caption": "Thyroid scintigraphy with hot and cold nodules",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Nuclear Medicine and Thyroid Nodules",
+    "key": "x_neck_183",
+    "caption": "Thyroid scintigraphy with cold palpable nodule and hot nodule",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Nuclear Medicine and Thyroid Nodules",
+    "key": "x_neck_184",
+    "caption": "Thyroid scintigraphy showing hot and cold nodules",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy and Physiology of the Parathyroid Glands",
+    "key": "x_neck_185",
+    "caption": "Parathyroid gland locations relative to the thyroid",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Cervical Lymph Nodes",
+    "key": "x_neck_186",
+    "caption": "Cervical lymph node level map",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Thyroglossal Duct Cyst",
+    "key": "x_neck_187",
+    "caption": "Anterior neck thyroglossal duct cyst",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Thyroid and Neck",
+    "key": "x_neck_279",
+    "caption": "Transverse neck anatomy at thyroid level",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Thyroid and Neck",
+    "key": "x_neck_280",
+    "caption": "Transverse neck ultrasound with carotid, jugular, thyroid, and trachea",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Lymphangioma (Cystic Hygroma)",
+    "key": "x_neck_281",
+    "caption": "Complex cystic neck mass",
+    "kind": "sonogram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_neck_172",
+    "back": "Lobulated hypoechoic salivary gland mass with internal vascularity"
+   },
+   {
+    "key": "x_neck_175",
+    "back": "Transverse neck ultrasound with carotid, jugular, thyroid, and trachea"
+   },
+   {
+    "key": "x_neck_176",
+    "back": "Hypervascular thyroid on color Doppler"
+   },
+   {
+    "key": "x_neck_179",
+    "back": "Thyroid nodule with internal microcalcifications"
+   }
+  ]
+ },
+ "male": {
+  "sectionImages": [
+   {
+    "section": "Anatomy and Physiology of the Male Pelvis",
+    "key": "x_male_188",
+    "caption": "Lateral view of right testis and epididymis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy and Physiology of the Male Pelvis",
+    "key": "x_male_189",
+    "caption": "Male pelvis and testicular anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Torsion of the Testicular Appendages",
+    "key": "x_male_190",
+    "caption": "Testicular and epididymal appendages anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Extratesticular Cysts",
+    "key": "x_male_191",
+    "caption": "Spermatocele adjacent to the testis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Varicocele",
+    "key": "x_male_192",
+    "caption": "Color Doppler varicocele adjacent to testis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Varicocele",
+    "key": "x_male_193",
+    "caption": "Varicocele with dilated tortuous scrotal veins",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Varicocele",
+    "key": "x_male_194",
+    "caption": "Dilated pampiniform veins adjacent to testis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Epididymitis and Epididymo-orchitis",
+    "key": "x_male_195",
+    "caption": "Color Doppler shows hyperemia of the right testis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Epididymitis and Epididymo-orchitis",
+    "key": "x_male_196",
+    "caption": "Gray-scale comparison of right and left testes",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Epididymitis and Epididymo-orchitis",
+    "key": "x_male_197",
+    "caption": "Hypervascular enlarged right testis in orchitis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Testicular Abscess and Pyocele",
+    "key": "x_male_198",
+    "caption": "Color Doppler testicular abscess with peripheral hyperemia",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Intratesticular Cysts",
+    "key": "x_male_199",
+    "caption": "Multiple small intratesticular cysts near mediastinum testis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Intratesticular Cysts",
+    "key": "x_male_200",
+    "caption": "Epidermoid cyst within the testicle",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Testicular Microcalcifications",
+    "key": "x_male_201",
+    "caption": "Testicular microlithiasis with multiple echogenic foci",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Klinefelter Syndrome",
+    "key": "x_male_202",
+    "caption": "Physical features of Klinefelter syndrome",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Klinefelter Syndrome",
+    "key": "x_male_203",
+    "caption": "Clinical features of Klinefelter syndrome",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Seminoma",
+    "key": "x_male_204",
+    "caption": "Hypoechoic intratesticular seminoma mass",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Other Germ Cell Tumors of the Testicles",
+    "key": "x_male_205",
+    "caption": "Cystic hypervascular intratesticular yolk sac tumor",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Scrotal Trauma and Hematocele",
+    "key": "x_male_206",
+    "caption": "Testicular fracture with linear hypoechoic parenchymal clefts",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Inguinal Hernias",
+    "key": "x_male_207",
+    "caption": "Scrotal sonogram showing inguinal hernia",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Inguinal Hernias",
+    "key": "x_male_208",
+    "caption": "Inguinal hernia extending into the scrotum",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy and Physiology of the Penis",
+    "key": "x_male_210",
+    "caption": "Transverse penile anatomy with paired corpora cavernosa",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Anatomy and Physiology of the Penis",
+    "key": "x_male_211",
+    "caption": "Anterior and cross-sectional penile anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Anatomy and Physiology of the Penis",
+    "key": "x_male_212",
+    "caption": "Cross section of the penis anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Penis",
+    "key": "x_male_213",
+    "caption": "Penile transducer position at the glans penis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Penis",
+    "key": "x_male_214",
+    "caption": "Penile implants: semirigid and inflatable prostheses",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Prostate and Seminal Vesicles",
+    "key": "x_male_215",
+    "caption": "Zones of the prostate gland",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Sonography of the Prostate Gland and Seminal Vesicles",
+    "key": "x_male_216",
+    "caption": "Seminal vesicles on transrectal ultrasound",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonography of the Prostate Gland and Seminal Vesicles",
+    "key": "x_male_217",
+    "caption": "Transverse transrectal ultrasound of the prostate gland",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonography of the Prostate Gland and Seminal Vesicles",
+    "key": "x_male_218",
+    "caption": "Transrectal ultrasound of prostate and seminal vesicle",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Prostate Cancer",
+    "key": "x_male_219",
+    "caption": "Hypoechoic prostate lesion on transrectal ultrasound",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Benign Prostatic Hypertrophy",
+    "key": "x_male_220",
+    "caption": "Enlarged heterogeneous prostate from benign prostatic hyperplasia",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonography of the Scrotum",
+    "key": "x_male_282",
+    "caption": "Lateral view of right testis and epididymis",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Malignant Testicular Tumors and Tumor Markers",
+    "key": "x_male_286",
+    "caption": "Intratesticular seminoma mass",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Prostate-Specific Antigen",
+    "key": "x_male_291",
+    "caption": "Hypoechoic prostate lesion on transrectal ultrasound",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Prostate-Specific Antigen",
+    "key": "x_male_292",
+    "caption": "Hypoechoic peripheral zone prostate mass",
+    "kind": "sonogram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_male_191",
+    "back": "Spermatocele adjacent to the testis"
+   },
+   {
+    "key": "x_male_192",
+    "back": "Color Doppler varicocele adjacent to testis"
+   },
+   {
+    "key": "x_male_194",
+    "back": "Dilated pampiniform veins adjacent to testis"
+   },
+   {
+    "key": "x_male_195",
+    "back": "Color Doppler shows hyperemia of the right testis"
+   },
+   {
+    "key": "x_male_196",
+    "back": "Gray-scale comparison of right and left testes"
+   },
+   {
+    "key": "x_male_197",
+    "back": "Hypervascular enlarged right testis in orchitis"
+   },
+   {
+    "key": "x_male_198",
+    "back": "Color Doppler testicular abscess with peripheral hyperemia"
+   },
+   {
+    "key": "x_male_199",
+    "back": "Multiple small intratesticular cysts near mediastinum testis"
+   },
+   {
+    "key": "x_male_200",
+    "back": "Epidermoid cyst within the testicle"
+   },
+   {
+    "key": "x_male_201",
+    "back": "Testicular microlithiasis with multiple echogenic foci"
+   },
+   {
+    "key": "x_male_204",
+    "back": "Hypoechoic intratesticular seminoma mass"
+   },
+   {
+    "key": "x_male_205",
+    "back": "Cystic hypervascular intratesticular yolk sac tumor"
+   },
+   {
+    "key": "x_male_206",
+    "back": "Testicular fracture with linear hypoechoic parenchymal clefts"
+   },
+   {
+    "key": "x_male_207",
+    "back": "Scrotal sonogram showing inguinal hernia"
+   },
+   {
+    "key": "x_male_210",
+    "back": "Transverse penile anatomy with paired corpora cavernosa"
+   },
+   {
+    "key": "x_male_216",
+    "back": "Seminal vesicles on transrectal ultrasound"
+   },
+   {
+    "key": "x_male_217",
+    "back": "Transverse transrectal ultrasound of the prostate gland"
+   },
+   {
+    "key": "x_male_218",
+    "back": "Transrectal ultrasound of prostate and seminal vesicle"
+   },
+   {
+    "key": "x_male_219",
+    "back": "Hypoechoic prostate lesion on transrectal ultrasound"
+   },
+   {
+    "key": "x_male_220",
+    "back": "Enlarged heterogeneous prostate from benign prostatic hyperplasia"
+   }
+  ]
+ },
+ "msk": {
+  "sectionImages": [
+   {
+    "section": "Sonographic Appearance of Muscles, Tendons, and Ligaments",
+    "key": "x_msk_221",
+    "caption": "Normal anterior tibialis tendon, longitudinal ankle view",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Sonographic Appearance of Muscles, Tendons, and Ligaments",
+    "key": "x_msk_222",
+    "caption": "Posterior superficial muscle anatomy",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Sonographic Appearance of Muscles, Tendons, and Ligaments",
+    "key": "x_msk_223",
+    "caption": "Anterior muscular anatomy of the body",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Tendon Rupture",
+    "key": "x_msk_224",
+    "caption": "MRI of Achilles tendon rupture",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Tendon Rupture",
+    "key": "x_msk_225",
+    "caption": "Ruptured biceps tendon with fluid collection",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Achilles Tendon",
+    "key": "x_msk_226",
+    "caption": "Achilles tendon region anatomy",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Achilles Tendon",
+    "key": "x_msk_227",
+    "caption": "Posterior and lateral Achilles tendon anatomy",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Achilles Tendon",
+    "key": "x_msk_228",
+    "caption": "Thompson test for Achilles tendon rupture",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Developmental Hip Dysplasia (DDH)",
+    "key": "x_msk_229",
+    "caption": "Infant hip Graf technique ultrasound views",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Developmental Hip Dysplasia (DDH)",
+    "key": "x_msk_230",
+    "caption": "Ortolani and Barlow maneuvers for DDH assessment",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Developmental Hip Dysplasia (DDH)",
+    "key": "x_msk_231",
+    "caption": "Clinical signs of developmental hip dysplasia",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Infant Hip Joint Effusion",
+    "key": "x_msk_232",
+    "caption": "Hip joint effusion in transient synovitis",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Breast Sonography",
+    "key": "x_msk_233",
+    "caption": "Normal breast sonographic layers",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Breast Sonography",
+    "key": "x_msk_234",
+    "caption": "Breast quadrant and clockface annotation",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Breast Sonography",
+    "key": "x_msk_235",
+    "caption": "Breast 123 and ABC annotation scheme",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Mastitis and Breast Abscess",
+    "key": "x_msk_236",
+    "caption": "Breast mastitis with subcutaneous edema",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Mastitis and Breast Abscess",
+    "key": "x_msk_237",
+    "caption": "Complex breast abscess fluid collection",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Mastitis and Breast Abscess",
+    "key": "x_msk_238",
+    "caption": "Breast abscess with sonographic needle drainage",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Postsurgical Breast",
+    "key": "x_msk_239",
+    "caption": "Breast seroma",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Postsurgical Breast",
+    "key": "x_msk_240",
+    "caption": "Breast hematoma on ultrasound",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Gynecomastia",
+    "key": "x_msk_241",
+    "caption": "Gynecomastia with subareolar hypoechoic nodule",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonography of Superficial Structures",
+    "key": "x_msk_242",
+    "caption": "Thigh skin layers and underlying muscle sonogram",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Superficial Epidermoid Cyst",
+    "key": "x_msk_244",
+    "caption": "Superficial epidermal cyst, transverse view",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Superficial Epidermoid Cyst",
+    "key": "x_msk_245",
+    "caption": "Superficial epidermoid cyst with pseudotestis appearance",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Superficial Epidermoid Cyst",
+    "key": "x_msk_246",
+    "caption": "Superficial epidermal cyst with posterior enhancement",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Ganglion Cyst",
+    "key": "x_msk_247",
+    "caption": "Dorsal wrist ganglion cyst",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Ganglion Cyst",
+    "key": "x_msk_248",
+    "caption": "Ganglion cyst with internal debris or septations",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Ganglion Cyst",
+    "key": "x_msk_249",
+    "caption": "Ganglion cyst with internal debris near joint",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Superficial Lipoma and Hemangioma",
+    "key": "x_msk_250",
+    "caption": "Subcutaneous lipoma with internal fibrous echoes",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Meniscal Cyst",
+    "key": "x_msk_251",
+    "caption": "Long-axis ultrasound of medial meniscal cyst",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Meniscal Cyst",
+    "key": "x_msk_252",
+    "caption": "Anterior anatomy of the right knee menisci",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Baker Cyst",
+    "key": "x_msk_253",
+    "caption": "Baker cyst in the popliteal fossa",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Baker Cyst",
+    "key": "x_msk_254",
+    "caption": "Diagram of Baker cyst behind the knee",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Baker Cyst",
+    "key": "x_msk_255",
+    "caption": "Baker cyst at posterior knee",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Pilonidal Cyst",
+    "key": "x_msk_256",
+    "caption": "Pilonidal cyst with sinus tract",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Pilonidal Cyst",
+    "key": "x_msk_257",
+    "caption": "Pilonidal cyst in the natal cleft",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Pilonidal Cyst",
+    "key": "x_msk_258",
+    "caption": "Pilonidal cyst with hypoechoic tract",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Cellulitis",
+    "key": "x_msk_259",
+    "caption": "Cellulitis with cobblestoning and superficial abscess",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonographic Assessment of Foreign Bodies",
+    "key": "x_msk_260",
+    "caption": "Ultrasound of superficial foreign body with shadowing",
+    "kind": "sonogram"
+   },
+   {
+    "section": "Sonographic Assessment of Foreign Bodies",
+    "key": "x_msk_261",
+    "caption": "Foot radiograph showing superficial foreign body",
+    "kind": "anatomy",
+    "quiz": false
+   },
+   {
+    "section": "Sonographic Assessment of Foreign Bodies",
+    "key": "x_msk_262",
+    "caption": "Superficial foreign body with posterior shadowing",
+    "kind": "sonogram"
+   },
+   {
+    "section": "DDH",
+    "key": "x_msk_295",
+    "caption": "Ortolani and Barlow maneuvers for DDH assessment",
+    "kind": "diagram",
+    "quiz": false
+   },
+   {
+    "section": "Superficial Abscess",
+    "key": "x_msk_297",
+    "caption": "Superficial abscess within cellulitic soft tissues",
+    "kind": "sonogram",
+    "quiz": false
+   },
+   {
+    "section": "Superficial Abscess",
+    "key": "x_msk_298",
+    "caption": "Cellulitis with cobblestoning and superficial abscess",
+    "kind": "sonogram",
+    "quiz": false
+   }
+  ],
+  "imageCards": [
+   {
+    "key": "x_msk_226",
+    "back": "Achilles tendon region anatomy"
+   },
+   {
+    "key": "x_msk_232",
+    "back": "Hip joint effusion in transient synovitis"
+   },
+   {
+    "key": "x_msk_236",
+    "back": "Breast mastitis with subcutaneous edema"
+   },
+   {
+    "key": "x_msk_237",
+    "back": "Complex breast abscess fluid collection"
+   },
+   {
+    "key": "x_msk_238",
+    "back": "Breast abscess with sonographic needle drainage"
+   },
+   {
+    "key": "x_msk_239",
+    "back": "Breast seroma"
+   },
+   {
+    "key": "x_msk_240",
+    "back": "Breast hematoma on ultrasound"
+   },
+   {
+    "key": "x_msk_241",
+    "back": "Gynecomastia with subareolar hypoechoic nodule"
+   },
+   {
+    "key": "x_msk_248",
+    "back": "Ganglion cyst with internal debris or septations"
+   },
+   {
+    "key": "x_msk_249",
+    "back": "Ganglion cyst with internal debris near joint"
+   },
+   {
+    "key": "x_msk_250",
+    "back": "Subcutaneous lipoma with internal fibrous echoes"
+   },
+   {
+    "key": "x_msk_251",
+    "back": "Long-axis ultrasound of medial meniscal cyst"
+   },
+   {
+    "key": "x_msk_253",
+    "back": "Baker cyst in the popliteal fossa"
+   },
+   {
+    "key": "x_msk_255",
+    "back": "Baker cyst at posterior knee"
+   },
+   {
+    "key": "x_msk_258",
+    "back": "Pilonidal cyst with hypoechoic tract"
+   },
+   {
+    "key": "x_msk_259",
+    "back": "Cellulitis with cobblestoning and superficial abscess"
+   },
+   {
+    "key": "x_msk_260",
+    "back": "Ultrasound of superficial foreign body with shadowing"
+   },
+   {
+    "key": "x_msk_262",
+    "back": "Superficial foreign body with posterior shadowing"
+   }
+  ]
+ }
+}

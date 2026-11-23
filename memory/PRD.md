@@ -69,3 +69,4 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 - Midterm answer shuffle fix verified by testing agent (always-A scores ~20-25%).
 - Progress score trends split per mode: Quiz / Image quiz / Textbook (testIDs score-trend-{id}-{mode}).
 - Midterm missed-questions review (/quiz/midterm?topics=missed), kept separate from chapter weak spots; review lists rebuild once saved progress loads.
+- Section images expansion: 794 figures extracted from slides + 3rd ed. textbook (scripts/extract_candidates.py), AI-classified (classify_candidates.py, gpt-5.4 vision), up to 3 per section picked (select_images.py, fill_empty_sections.py). Data: src/data/extraMedia.json + extraSlides.ts, merged in media.ts/slides.ts. Diagrams/labelled images have quiz:false (excluded from image quiz). 294 new section images, 97 new image flashcards.

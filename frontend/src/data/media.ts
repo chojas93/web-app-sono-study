@@ -1,3 +1,4 @@
+import extraMedia from "./extraMedia.json";
 import type { TopicMedia } from "./types";
 
 export const media: Record<string, TopicMedia> = {
@@ -212,3 +213,10 @@ export const media: Record<string, TopicMedia> = {
     ],
   },
 };
+
+// Extra images matched to sections from the course slides and 3rd edition textbook (scripts/select_images.py).
+Object.entries(extraMedia as unknown as Record<string, TopicMedia>).forEach(([t, m]) => {
+  media[t] = media[t] ?? { sectionImages: [], imageCards: [] };
+  media[t].sectionImages.push(...m.sectionImages);
+  media[t].imageCards.push(...m.imageCards);
+});

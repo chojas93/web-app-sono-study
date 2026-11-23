@@ -33,7 +33,8 @@ export type RawTopic = {
 
 // Slide images per topic: attached to a section (by exact title) and/or turned into image flashcards.
 export type TopicMedia = {
-  sectionImages: { section: string; key: SlideKey; caption: string }[];
+  // quiz: false keeps diagrams / labelled images out of the "what does this show?" image quiz.
+  sectionImages: { section: string; key: SlideKey; caption: string; kind?: "sonogram" | "anatomy" | "diagram"; quiz?: boolean }[];
   imageCards: { key: SlideKey; front?: string; back: string }[];
 };
 

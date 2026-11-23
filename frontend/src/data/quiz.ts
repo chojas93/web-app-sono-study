@@ -14,16 +14,27 @@ export function shuffle<T>(arr: T[]) {
 
 // Diagrams, vague views, or slides with the answer printed on them are not quizzable.
 const EXCLUDE = new Set(["biliary_2", "biliary_3", "male_2", "pc_anatomy", "rt_psoas", "va_ivcthrombus", "ur_adpkd", "ur_dromedary"]);
-const quizzable = (t: string) => (media[t]?.sectionImages ?? []).filter((x) => !EXCLUDE.has(x.key));
+const quizzable = (t: string) => (media[t]?.sectionImages ?? []).filter((x) => !EXCLUDE.has(x.key) && x.quiz !== false);
 const allCaptions = Array.from(new Set(Object.keys(media).flatMap((t) => quizzable(t).map((x) => x.caption))));
+
+// Captions that say nearly the same thing (e.g. "septation" vs "septations") can't both be answer choices.
+const words = (s: string) => new Set(s.toLowerCase().replace(/[^a-z ]/g, " ").split(/\s+/).filter((w) => w.length > 2).map((w) => w.replace(/s$/, "")));
+function similar(a: string, b: string) {
+  const A = words(a);
+  const B = words(b);
+  const shared = [...A].filter((w) => B.has(w)).length;
+  return shared / Math.max(1, Math.min(A.size, B.size)) >= 0.75;
+}
 
 // "What does this image show?" questions made from the slide images.
 export function imageQuestions(topicIds: string[]): Question[] {
   return topicIds.flatMap((t) =>
     quizzable(t).map((img) => {
-      const same = shuffle(quizzable(t).map((x) => x.caption).filter((c) => c !== img.caption));
-      const others = shuffle(allCaptions.filter((c) => c !== img.caption && !same.includes(c)));
-      const distractors = [...same, ...others].slice(0, 3);
+      const ok = (c: string) => !similar(c, img.caption);
+      const same = shuffle(Array.from(new Set(quizzable(t).map((x) => x.caption))).filter(ok));
+      const others = shuffle(allCaptions.filter((c) => ok(c) && !same.includes(c)));
+      const distractors: string[] = [];
+      for (const c of [...same, ...others]) if (distractors.length < 3 && distractors.every((d) => !similar(d, c))) distractors.push(c);
       return {
         id: `${t}-iq-${img.key}`,
         topicId: t,
