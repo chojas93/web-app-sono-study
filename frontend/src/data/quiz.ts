@@ -1,3 +1,4 @@
+import captionGroups from "./captionGroups.json";
 import { topics } from "./index";
 import labelQuiz from "./labelQuiz.json";
 import { media } from "./media";
@@ -19,9 +20,12 @@ const EXCLUDE = new Set(["biliary_2", "biliary_3", "male_2", "pc_anatomy", "rt_p
 const quizzable = (t: string) => (media[t]?.sectionImages ?? []).filter((x) => !EXCLUDE.has(x.key) && x.quiz !== false);
 const allCaptions = Array.from(new Set(Object.keys(media).flatMap((t) => quizzable(t).map((x) => x.caption))));
 
-// Captions that say nearly the same thing (e.g. "septation" vs "septations") can't both be answer choices.
+// Choices that mean the same thing can't both be offered: same AI-tagged diagnosis (captionGroups.json, from
+// scripts/gen_caption_groups.py), or nearly the same wording (e.g. "septation" vs "septations").
+const groups = captionGroups as Record<string, string>;
 const words = (s: string) => new Set(s.toLowerCase().replace(/[^a-z ]/g, " ").split(/\s+/).filter((w) => w.length > 2).map((w) => w.replace(/s$/, "")));
 function similar(a: string, b: string) {
+  if (groups[a] && groups[a] === groups[b]) return true;
   const A = words(a);
   const B = words(b);
   const shared = [...A].filter((w) => B.has(w)).length;
