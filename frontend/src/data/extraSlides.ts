@@ -279,4 +279,5 @@ export const extraSlides = {
   x_msk_295: require("../../assets/slides/x_msk_295.jpg"),
   x_msk_297: require("../../assets/slides/x_msk_297.jpg"),
   x_msk_298: require("../../assets/slides/x_msk_298.jpg"),
+  x_male_299: require("../../assets/slides/x_male_299.jpg"),
 };

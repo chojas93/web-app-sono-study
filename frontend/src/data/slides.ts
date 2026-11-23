@@ -1,5 +1,6 @@
 // Ultrasound images extracted from the course slide PDFs (bundled for offline use).
 import { extraSlides } from "./extraSlides";
+import { labelSlides } from "./labelSlides";
 
 const baseSlides = {
   ov_comet: require("../../assets/slides/ov_comet.jpg"),
@@ -190,6 +191,6 @@ const baseSlides = {
   b3_neck_11: require("../../assets/slides/b3_neck_11.jpg"),
 };
 
-export const slides = { ...baseSlides, ...extraSlides };
+export const slides = { ...baseSlides, ...extraSlides, ...labelSlides };
 
 export type SlideKey = keyof typeof slides;

@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SlideStrip } from "@/src/components/slides";
 import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
-import { imageQuizCount, missedCount } from "@/src/data/quiz";
+import { imageQuizCount, labelQuizCount, missedCount } from "@/src/data/quiz";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
@@ -34,6 +34,8 @@ export default function TopicScreen() {
   const toggleAll = () => setCollapsed(allCollapsed ? {} : Object.fromEntries(topic.sections.map((s) => [s.id, true])));
   const imageQuiz = state.quizzes[`${topic.id}:image`];
   const nImageQ = imageQuizCount(topic.id);
+  const labelQuiz = state.quizzes[`${topic.id}:label`];
+  const nLabelQ = labelQuizCount(topic.id);
   const bookQuiz = state.quizzes[`${topic.id}:book`];
   const nBook = topic.quiz.filter((q) => q.source === "textbook").length;
   const nMissed = missedCount([topic.id], state.missed);
@@ -105,6 +107,16 @@ export default function TopicScreen() {
             <View style={{ flex: 1 }}>
               <Text style={styles.sectionTitle}>Image quiz</Text>
               <Text style={styles.progressLabel}>{imageQuiz ? `Best ${imageQuiz.best}/${imageQuiz.total}` : `Name the finding in ${nImageQ} slide images`}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color={colors.muted} />
+          </PressableScale>
+        ) : null}
+        {nLabelQ > 0 ? (
+          <PressableScale testID="open-label-quiz-button" onPress={() => router.push(`/quiz/${topic.id}?mode=label&count=20`)} style={[styles.imageQuizBtn, { borderColor: accent }]}>
+            <Ionicons name="git-network" size={22} color={accent} />
+            <View style={{ flex: 1 }}>
+              <Text style={styles.sectionTitle}>Label the diagram</Text>
+              <Text style={styles.progressLabel}>{labelQuiz ? `Best ${labelQuiz.best}/${labelQuiz.total}` : `${Math.min(20, nLabelQ)} of ${nLabelQ} numbered structures on anatomy diagrams`}</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color={colors.muted} />
           </PressableScale>

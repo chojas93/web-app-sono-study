@@ -1,0 +1,54 @@
+{
+  "summary": "Frontend-only test of the new Label the diagram quiz, tap-to-enlarge, progress tracking, the Adrenal Rests image and regressions (375x667 viewport). All flows work and there are no page errors. The open-label-quiz-button shows on liver/neck/male/msk/pancreas/urinary/gallbladder and opens /quiz/{id}?mode=label with the title 'Label the diagram', 4 options and the expected explanation. The zoom viewer shows the question as its caption in label mode and an empty caption in the image quiz, and slide-viewer-close works. Finishing a label quiz adds score-trend-gallbladder-label and the history row 'The Gallbladder · Diagram labels 2/7', and the topic button shows 'Best x/7'. Adrenal Rests shows x_male_299 (loaded). The other 10 listed sections have no images, as expected. Regressions pass: flashcards, textbook review, image quiz, mock exam, midterm and search. OCR of all 62 masked diagrams found 0 leftover label text, and 14 diagrams were checked by eye with mostly correct numbering. Content problems: liver_24 and liver_270 still show 'Caudate lobe' in panel C. neck_186 leaves levels III/IV unmasked and has awkward answers ('VII', 'Ao.'). Some labels were split or cut off ('Renal' + 'Vein', 'Leg'). vasculature_132 probably has boxes 4 and 5 swapped on the vein side. There are 4 duplicate diagram pairs. Dense diagrams can't be read even when enlarged (no pinch-zoom). The image quiz still mixes same-diagnosis options: 'Baker cyst at posterior knee' and 'Baker cyst in the popliteal fossa' appeared together in the msk quiz, and 'Hepatic metastases — target lesions' and 'Multiple hepatic metastases in right lobe' appeared together in the liver quiz. Deprecated packages detected: none (no expo-av, expo-barcode-scanner or expo-background-fetch).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Label quiz zoom (SlideViewer)", "issue": "The viewer only shows the image at screen width (343px for landscape diagrams), so it is no bigger than the inline image. Dense diagrams like lb_x_liver_24 and lb_x_liver_270 (26-29 labels) have unreadable number badges even when enlarged. There is no pinch-zoom or pan. Reference: src/components/slides.tsx", "testID": "quiz-image-zoom-button", "priority": "HIGH"}
+    ],
+    "integration_issues": [
+      {"flow": "Label quiz -> Weak spots", "issue": "markAnswer records misses on label questions, but weakQuestions() and missedCount() only include written and image questions. After 4 wrong label answers the topic still says 'No missed questions'. Reference: src/data/quiz.ts:89-98", "affected_testIDs": ["open-weak-review-button", "topic-missed-count"]},
+      {"flow": "Label quiz length", "issue": "buildQuiz returns every label with no count limit: liver 85, msk 86, male 81, urinary 72. The score is only saved after the last question, so leaving partway loses all progress. Reference: src/data/quiz.ts:107", "affected_testIDs": ["open-label-quiz-button", "quiz-counter"]}
+    ],
+    "design_issues": [
+      {"screen": "Label quiz content (labelQuiz.json and assets/labels)", "issues": [
+        "Answer leak: lb_x_liver_24 and lb_x_liver_270 panel C still show the small rotated text 'Caudate lobe' (the answer for label 8) and part of 'Bare' (Bare Area). OCR missed this text.",
+        "lb_x_neck_186: level numerals III and IV are left unmasked while the other levels are quizzed. Answers like 'VII', 'IIA' and 'Ao.' make the explanation read 'Label 17 is the VII', and muscle distractors give the answer away. Rename to 'Level VII' etc. and 'Aorta', and mask III/IV.",
+        "lb_x_urinary_108: 'Renal vein' was split into two labels, 'Renal' (#1) and 'Vein' (#3). Box 1 sits on top of box 3 and has no leader line.",
+        "Cut-off two-line labels: lb_x_msk_230 and lb_x_msk_295 #1 'Leg' (probably 'Leg abducted'), lb_x_vasculature_132 #1 'Artery' and #2 'Vein' (titles with no leader line).",
+        "lb_x_vasculature_132: bottom boxes on the vein side are probably swapped. The 5 points to the vein's red middle layer (tunica media) and the 4 to its outer layer (externa). Please verify against the original.",
+        "lb_x_adrenal_130: labels 'Right Lobe' and 'Left Lobe' are unclear without 'of liver', while RK, LK and A stay visible.",
+        "Duplicate diagrams that repeat questions with different numbering: liver_24/liver_270, urinary_110/urinary_273, neck_174/neck_279, msk_230/msk_295. Keep one of each pair.",
+        "Overlapping badges with no visible leader line: lb_x_male_212 boxes 6 and 8, and lb_x_msk_222 boxes 14 and 15."
+      ]},
+      {"screen": "Image quiz options", "issues": [
+        "msk: 'Baker cyst at posterior knee' and 'Baker cyst in the popliteal fossa' appeared together as options in the same question.",
+        "liver: 'Hepatic metastases — target lesions' and 'Multiple hepatic metastases in right lobe' appeared together. 'Portal vein thrombosis on color Doppler' and '... sonographic appearance' can also appear together (word overlap 0.6, below the 0.75 cutoff). 'Fatty liver' and 'Diffuse hepatic steatosis' are synonyms.",
+        "urinary: 'Renal angiomyolipoma adjacent to kidney' and 'Renal angiomyolipomas in tuberous sclerosis' can appear together. Other urinary options looked distinct.",
+        "Minor: x_male_286 ('Intratesticular seminoma mass', quiz:false) still looks almost the same as x_male_204 (mean pixel difference about 9/255)."
+      ]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/check_label_leak.py", "/app/backend/tests/check_image_quiz_options.py"],
+  "action_items": [
+    "Mask the leftover 'Caudate lobe' and 'Bare' text in lb_x_liver_24 and lb_x_liver_270, or drop one of the two duplicate diagrams.",
+    "Remove duplicate diagrams (liver_270 or liver_24, urinary_273, neck_279, msk_295).",
+    "Fix the label data: urinary_108 'Renal' + 'Vein' -> one 'Renal Vein' label; msk_230 and msk_295 'Leg' -> the full label; neck_186 -> 'Level IA'...'Level VII', 'Aorta', and mask III/IV; adrenal_130 -> 'Right lobe of liver' and 'Left lobe of liver'; check that vasculature_132 vein-side boxes 4 and 5 are correct.",
+    "Add pinch-zoom or pan to SlideViewer (or show landscape diagrams rotated or at a larger scale) so dense diagrams can be read.",
+    "Add a question count or per-diagram option to the label quiz (for example 20 questions), or save partial progress.",
+    "Include label questions in weak spots (weakQuestions/missedCount), or don't record label misses.",
+    "Image quiz: add a diagnosis-level check (for example the first two key words, like 'baker cyst' or 'hepatic metastase') or set quiz:false on one of each pair: Baker cyst, hepatic metastases, PVT, renal AML."
+  ],
+  "critical_code_review_comments": [
+    "quiz.ts similar() uses word overlap divided by the shorter caption, so synonym or same-diagnosis captions with different wording pass the 0.75 cutoff.",
+    "labelQuestions ignores config.count, while the other modes slice to count.",
+    "gen_label_quiz.py relies on RapidOCR, which misses small or rotated text inside drawings (liver_24 'Caudate lobe'), so leaked answers go undetected."
+  ],
+  "updated_files": ["/app/backend/tests/check_label_leak.py", "/app/backend/tests/check_image_quiz_options.py"],
+  "success_rate": {"backend": "N/A (frontend only)", "frontend": "about 90% (all flows work; content and data-quality issues above)"},
+  "seed_data_creation": "None. Only local device progress in throwaway browser contexts.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Label quiz data is in src/data/labelQuiz.json (62 diagrams, 669 labels) and the masked images are in assets/labels. Run backend/tests/check_label_leak.py (OCR leak check, about 2 minutes) and check_image_quiz_options.py (option pairs that can co-appear). Progress is saved in localStorage per browser context, so do the quiz and check Progress in the same script. Use page.goto to /progress. quiz-history-0 shows the latest entry.",
+  "rca_of_issue": "Masking is driven only by OCR, so small or rotated labels are missed, and the AI cleanup split or cut off multi-line labels. The image-quiz similarity filter is lexical, so same-diagnosis captions worded differently are not filtered."
+}

@@ -1,0 +1,1083 @@
+[
+ {
+  "topic": "overview",
+  "key": "lb_x_overview_6",
+  "section": "Clinical History & Key Labs",
+  "caption": "Referred abdominal pain patterns by organ",
+  "labels": [
+   "Duodenum, Head Of Pancreas",
+   "Gallbladder",
+   "Stomach",
+   "Spleen",
+   "Liver",
+   "Small Intestine",
+   "Appendix",
+   "Cecum And Ascending Colon",
+   "Sigmoid Colon",
+   "Kidney And Ureter"
+  ]
+ },
+ {
+  "topic": "overview",
+  "key": "lb_x_overview_10",
+  "section": "Body Systems & Peritoneum",
+  "caption": "Paracolic gutters and infracolic spaces",
+  "labels": [
+   "Transverse Colon",
+   "Supracolic Compartment",
+   "Transverse Mesocolon",
+   "Phrenicocolic Ligament",
+   "Left Colic Flexure",
+   "Right Colic Flexure",
+   "Tenia Coli",
+   "Root Of Mesentery Of Small Intestine",
+   "Ascending Colon",
+   "Descending Colon",
+   "Right Paracolic Gutter",
+   "Right Infracolic Space",
+   "Left Infracolic Space",
+   "Left Paracolic Gutter",
+   "Infracolic Compartment"
+  ]
+ },
+ {
+  "topic": "overview",
+  "key": "lb_x_overview_11",
+  "section": "Body Systems & Peritoneum",
+  "caption": "Normal abdominal CT anatomy at multiple levels",
+  "labels": [
+   "Transverse Colon",
+   "Right Kidney",
+   "Left Kidney",
+   "Ascending Colon",
+   "Celiac Axis"
+  ]
+ },
+ {
+  "topic": "liver",
+  "key": "lb_x_liver_18",
+  "section": "Dual Blood Supply",
+  "caption": "Portal and hepatic venous liver vasculature",
+  "labels": [
+   "Middle Hepatic Vein",
+   "Right Hepatic Vein",
+   "Left Hepatic Vein",
+   "Left Branch, Portal Vein",
+   "Portal Vein",
+   "Splenic Vein",
+   "Right Branch, Portal Vein",
+   "Inferior Mesenteric Vein",
+   "Right Renal Vein",
+   "Left Renal Vein",
+   "Superior Mesenteric Vein",
+   "Right Common Iliac Vein",
+   "Left Common Iliac Vein"
+  ]
+ },
+ {
+  "topic": "liver",
+  "key": "lb_x_liver_24",
+  "section": "Ligaments & Fissures",
+  "caption": "Surfaces and ligaments of the liver",
+  "labels": [
+   "Coronary Ligament",
+   "Left Triangular Ligament",
+   "Falciform Ligament",
+   "Left Lobe",
+   "Bare Area",
+   "Right Lobe",
+   "Hepatic Veins",
+   "Caudate Lobe",
+   "Right Triangular Ligament",
+   "Round Ligament",
+   "Inferior Vena Cava",
+   "Ligament Of IVC",
+   "Gallbladder",
+   "Right Subphrenic Space",
+   "Left Subphrenic Space",
+   "Caudate Process",
+   "Lesser Omentum",
+   "Gastric Area",
+   "Ligamentum Venosum",
+   "Duodenal Area",
+   "Round Ligament Of Liver",
+   "Portal Triad",
+   "Renal Area",
+   "Portal Vein",
+   "Hepatic Artery",
+   "Bile Passages"
+  ]
+ },
+ {
+  "topic": "liver",
+  "key": "lb_x_liver_30",
+  "section": "Cirrhosis & Portal Hypertension",
+  "caption": "Clinical signs of cirrhosis and portal hypertension",
+  "labels": [
+   "Hepatic Encephalopathy",
+   "Facial Telangiectasia",
+   "Jaundice",
+   "Fetor Hepaticus",
+   "Spider Nevi",
+   "Esophageal Varices",
+   "Muscle Wasting",
+   "Gynecomastia",
+   "Splenomegaly",
+   "Fibrotic Liver Changes",
+   "Periumbilical Caput Medusae",
+   "Palmar Erythema",
+   "Ascites",
+   "Hemorrhoids",
+   "Testicular Atrophy",
+   "Purpura",
+   "Edema"
+  ]
+ },
+ {
+  "topic": "gallbladder",
+  "key": "lb_x_gallbladder_49",
+  "section": "Biliary Spectrum",
+  "caption": "Locations of gallstones in the biliary tree",
+  "labels": [
+   "Right Hepatic Duct",
+   "Left Hepatic Duct",
+   "Cystic Duct",
+   "Common Bile Duct",
+   "Ampulla Of Vater",
+   "Pancreatic Duct",
+   "Sphincter Of Oddi"
+  ]
+ },
+ {
+  "topic": "biliary",
+  "key": "lb_x_biliary_58",
+  "section": "Sonography of the Bile Ducts",
+  "caption": "ERCP of biliary tree and common bile duct",
+  "labels": [
+   "Liver",
+   "Esophagus",
+   "Gallbladder",
+   "Stomach",
+   "Endoscope",
+   "Pancreas",
+   "Papilla",
+   "Duodenum",
+   "Pancreatic Duct",
+   "Common Bile Duct"
+  ]
+ },
+ {
+  "topic": "pancreas",
+  "key": "lb_x_pancreas_68",
+  "section": "Anatomy & Physiology",
+  "caption": "Pancreatic and biliary duct anatomy",
+  "labels": [
+   "Right Hepatic Duct",
+   "Left Hepatic Duct",
+   "Common Hepatic Duct",
+   "Gallbladder",
+   "Cystic Duct",
+   "Common Bile Duct",
+   "Pancreas",
+   "Pyloric Sphincter",
+   "Minor Duodenal Papilla",
+   "Pancreatic Duct",
+   "Accessory Pancreatic Duct",
+   "Major Duodenal Papilla",
+   "Duodenum",
+   "Circular Fold"
+  ]
+ },
+ {
+  "topic": "pancreas",
+  "key": "lb_x_pancreas_69",
+  "section": "Vascular Anatomy",
+  "caption": "Pancreatic arterial and venous anatomy",
+  "labels": [
+   "Celiac Artery",
+   "Aorta",
+   "Common Hepatic Artery",
+   "Gastroduodenal Artery",
+   "Right Gastro-Omental Artery",
+   "Greater Pancreatic Artery",
+   "Inferior Pancreatico-Duodenal Artery",
+   "Uncinate Process",
+   "Anterior And Posterior Superior Pancreatico-Duodenal Arteries",
+   "Superior Mesenteric Artery",
+   "Short Gastric Vein",
+   "Hepatic Portal Vein",
+   "Superior Pancreatico-Duodenal Vein",
+   "Pancreatic Veins",
+   "Splenic Vein",
+   "Inferior Mesenteric Vein",
+   "Uncinate Process Of Pancreas",
+   "Head Of Pancreas",
+   "Inferior Pancreatico-Duodenal Vein",
+   "Superior Mesenteric Vein"
+  ]
+ },
+ {
+  "topic": "pancreas",
+  "key": "lb_x_pancreas_73",
+  "section": "Congenital Anomalies",
+  "caption": "Annular pancreas encircling the duodenum",
+  "labels": [
+   "Gallbladder",
+   "Stomach",
+   "Duodenum",
+   "Pancreas",
+   "Annular Portion Of Pancreas"
+  ]
+ },
+ {
+  "topic": "pancreas",
+  "key": "lb_x_pancreas_74",
+  "section": "Congenital Anomalies",
+  "caption": "Normal pancreatic ducts and pancreas divisum",
+  "labels": [
+   "Common Bile Duct",
+   "Accessory Papilla And Duct Of Santorini",
+   "Pancreas",
+   "Pancreas Divisum",
+   "Ampulla Of Vater"
+  ]
+ },
+ {
+  "topic": "pancreas",
+  "key": "lb_x_pancreas_80",
+  "section": "Pancreatic Transplant",
+  "caption": "Pancreatic transplant anatomy and enteric drainage configurations",
+  "labels": [
+   "Inferior Vena Cava",
+   "Aorta",
+   "Pancreas",
+   "Kidney",
+   "Iliac Vein",
+   "Portal Vein",
+   "Iliac Y-Graft",
+   "Ureter",
+   "Iliac Artery",
+   "Duodenal Stump",
+   "Bladder",
+   "Small Bowel"
+  ]
+ },
+ {
+  "topic": "spleen",
+  "key": "lb_x_spleen_82",
+  "section": "Anatomy & Physiology",
+  "caption": "Splenic anatomy and rib intercostal location",
+  "labels": [
+   "Left Lung",
+   "Costodiaphragmatic Recess",
+   "Diaphragm",
+   "Liver",
+   "Spleen",
+   "Stomach",
+   "Transverse Colon"
+  ]
+ },
+ {
+  "topic": "spleen",
+  "key": "lb_x_spleen_84",
+  "section": "Vascular Anatomy",
+  "caption": "Splenic vascular anatomy and hilar vessels",
+  "labels": [
+   "Renal Impression",
+   "Gastric Impression",
+   "Aorta",
+   "Celiac Trunk",
+   "Splenic Artery",
+   "Portal Vein",
+   "Hilus",
+   "Splenic Vein",
+   "Inferior Mesenteric Vein",
+   "Superior Mesenteric Vein"
+  ]
+ },
+ {
+  "topic": "spleen",
+  "key": "lb_x_spleen_92",
+  "section": "Sickle Cell Anemia",
+  "caption": "Systemic manifestations of sickle cell anemia",
+  "labels": [
+   "Cerebral Infarcts",
+   "Retinal Infarcts",
+   "Cardiomegaly",
+   "Pulmonary Infarcts",
+   "Pneumonia",
+   "Early Splenomegaly",
+   "Renal Infarcts",
+   "Hematuria",
+   "Gallstones",
+   "Bone Marrow Hyperplasia",
+   "Bone Deformities",
+   "Bone Infarct",
+   "Infection",
+   "Vascular Occlusions",
+   "Skin Ulcers",
+   "Sickled Cells",
+   "Gangrene On Toes Or Fingers"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_93",
+  "section": "Kidney Anatomy & Physiology",
+  "caption": "Labeled gross anatomy of the kidney",
+  "labels": [
+   "Interlobar Arteries And Veins",
+   "Cortex",
+   "Arcuate Arteries And Veins",
+   "Interlobular Arteries And Veins",
+   "Nephron",
+   "Renal Artery",
+   "Renal Vein",
+   "Renal Pelvis",
+   "Renal Hilum",
+   "Renal Column",
+   "Ureter",
+   "Major Calyx",
+   "Medullary Pyramid",
+   "Minor Calyx"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_102",
+  "section": "Polycystic & Cystic Diseases",
+  "caption": "Features of von Hippel\u2013Lindau syndrome",
+  "labels": [
+   "Cerebellar Hemangioblastoma",
+   "Retinal Angiomata",
+   "Spinal Cord Hemangioblastoma",
+   "Endolymphatic Sac Tumors",
+   "Pulmonary Hemangiomas",
+   "Liver Hemangiomas",
+   "Pheochromocytoma",
+   "Multiple Pancreatic Cysts",
+   "Renal Hemangioblastoma",
+   "Renal Cell Carcinoma",
+   "Multiple Renal Cysts",
+   "Pancreatic Hemangioblastoma",
+   "Bilateral Papillary Cystadenoma Of The Epididymis",
+   "Bilateral Papillary Cystadenomas Of The Broad Ligament",
+   "Epididymal Cysts"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_104",
+  "section": "Renal Infection",
+  "caption": "Progressive scarring in chronic pyelonephritis",
+  "labels": [
+   "Progressive Scarring",
+   "Atrophied Parenchyma",
+   "Narrowed Calyx Neck",
+   "Focal Parenchymal Scarring"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_105",
+  "section": "Obstruction & Hydronephrosis",
+  "caption": "Causes and sites of urinary tract obstruction",
+  "labels": [
+   "Kidney",
+   "Pregnancy",
+   "Tumor",
+   "Scar",
+   "Tissue",
+   "Ureterovesicle",
+   "Junction",
+   "Stricture",
+   "Neurogenic",
+   "Bladder"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_108",
+  "section": "Malignant Renal Masses",
+  "caption": "Renal cell carcinoma staging diagram",
+  "labels": [
+   "Renal",
+   "Lung",
+   "Vein",
+   "Liver",
+   "IVC"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_110",
+  "section": "Renal Vascular Disease",
+  "caption": "Progression of renal artery stenosis",
+  "labels": [
+   "Normal Cortex",
+   "Right Kidney",
+   "Left Kidney",
+   "Right Renal Artery",
+   "Left Renal Artery",
+   "Aorta",
+   "Cortical Thinning"
+  ]
+ },
+ {
+  "topic": "urinary",
+  "key": "lb_x_urinary_116",
+  "section": "Urinary Bladder & Urethra",
+  "caption": "Urachal anomalies: fistula, cyst, and sinus",
+  "labels": [
+   "Umbilicus",
+   "Urachal Fistula",
+   "Urachal Sinus",
+   "Median Umbilical Ligament",
+   "Urachal Cyst",
+   "Bladder",
+   "Urinary Bladder",
+   "Pubic Symphysis",
+   "Urethra"
+  ]
+ },
+ {
+  "topic": "adrenal",
+  "key": "lb_x_adrenal_118",
+  "section": "Anatomy & Physiology",
+  "caption": "Adrenal glands above kidneys",
+  "labels": [
+   "Right Adrenal Gland",
+   "Left Adrenal Gland",
+   "Perinephric Fat",
+   "Aorta",
+   "IVC",
+   "Left Kidney",
+   "Right Kidney"
+  ]
+ },
+ {
+  "topic": "adrenal",
+  "key": "lb_x_adrenal_119",
+  "section": "Anatomy & Physiology",
+  "caption": "Hypothalamic-pituitary-adrenal axis diagram",
+  "labels": [
+   "Brain",
+   "Hypothalamus",
+   "Anterior Pituitary Gland",
+   "Adrenal Gland",
+   "Bloodstream"
+  ]
+ },
+ {
+  "topic": "adrenal",
+  "key": "lb_x_adrenal_120",
+  "section": "Vascular Anatomy",
+  "caption": "Vascular anatomy of the adrenal glands",
+  "labels": [
+   "Inferior Phrenic Arteries",
+   "Left Superior Suprarenal Artery",
+   "Right Superior Suprarenal Artery",
+   "Left Inferior Phrenic Vein",
+   "Left Middle Suprarenal Artery",
+   "Right Suprarenal Vein",
+   "Left Inferior Suprarenal Artery",
+   "Right Middle Suprarenal Artery",
+   "Right Inferior Suprarenal Artery",
+   "Aorta",
+   "IVC"
+  ]
+ },
+ {
+  "topic": "adrenal",
+  "key": "lb_x_adrenal_124",
+  "section": "Adrenal Adenoma",
+  "caption": "Coronal MRI showing adrenal adenoma",
+  "labels": [
+   "Right Lobe Of Liver",
+   "Spleen",
+   "Right Kidney",
+   "Left Kidney"
+  ]
+ },
+ {
+  "topic": "adrenal",
+  "key": "lb_x_adrenal_130",
+  "section": "Adrenal Hemorrhage",
+  "caption": "Right adrenal hemorrhage near upper kidney",
+  "labels": [
+   "Right Lobe",
+   "Gallbladder",
+   "Left Lobe"
+  ]
+ },
+ {
+  "topic": "vasculature",
+  "key": "lb_x_vasculature_132",
+  "section": "Abdominal Aorta Anatomy",
+  "caption": "Artery and vein wall layers",
+  "labels": [
+   "Artery",
+   "Vein",
+   "Tunica Intima",
+   "Tunica Media",
+   "Tunica Externa"
+  ]
+ },
+ {
+  "topic": "vasculature",
+  "key": "lb_x_vasculature_133",
+  "section": "Abdominal Aorta Anatomy",
+  "caption": "Abdominal aorta and major branch arteries",
+  "labels": [
+   "Splenic Artery",
+   "Left Renal Artery",
+   "Superior Mesenteric Artery",
+   "Left Gonadal Artery",
+   "Celiac Trunk",
+   "Left Common Iliac Artery",
+   "Hepatic Artery",
+   "Right Renal Artery",
+   "Right Gonadal Artery",
+   "Right Common Iliac Artery"
+  ]
+ },
+ {
+  "topic": "vasculature",
+  "key": "lb_x_vasculature_136",
+  "section": "SMA & Other Branches",
+  "caption": "Abdominal aorta branches to mesenteric and hepatic arteries",
+  "labels": [
+   "Left Hepatic Artery",
+   "Celiac Trunk",
+   "Right Hepatic Artery",
+   "Proper Hepatic Artery",
+   "Left Gastric Artery",
+   "Common Hepatic Artery",
+   "Splenic Artery",
+   "Gastroduodenal Artery",
+   "Superior Mesenteric Artery",
+   "Gastro-Omental Artery",
+   "Pancreaticoduodenal Artery",
+   "Middle Colic Artery",
+   "Inferior Mesenteric Artery",
+   "Left Colic Artery",
+   "Right Colic Artery",
+   "Sigmoid Arteries",
+   "Ileocolic Artery",
+   "Superior Rectal Artery"
+  ]
+ },
+ {
+  "topic": "vasculature",
+  "key": "lb_x_vasculature_137",
+  "section": "SMA & Other Branches",
+  "caption": "Superior mesenteric artery anatomy and surrounding vessels",
+  "labels": [
+   "Liver",
+   "Pancreas",
+   "Superior Mesenteric Artery",
+   "Portal Confluence",
+   "Splenic Vein",
+   "Left Renal Vein",
+   "Inferior Vena Cava",
+   "Aorta",
+   "Vertebra"
+  ]
+ },
+ {
+  "topic": "vasculature",
+  "key": "lb_x_vasculature_141",
+  "section": "Abdominal Aortic Aneurysm",
+  "caption": "Types of arterial aneurysms",
+  "labels": [
+   "Adventitia",
+   "Media",
+   "Intima"
+  ]
+ },
+ {
+  "topic": "vasculature",
+  "key": "lb_x_vasculature_145",
+  "section": "Inferior Vena Cava",
+  "caption": "Inferior vena cava and tributary veins",
+  "labels": [
+   "Azygos Vein",
+   "Hepatic Veins",
+   "Right Inferior Phrenic Vein",
+   "Hemi-Azygos Vein",
+   "Left Inferior Phrenic Vein",
+   "Inferior Vena Cava",
+   "Posterior Intercostal Veins",
+   "Right Suprarenal Vein",
+   "Right Renal Vein",
+   "Left Suprarenal Vein",
+   "Left Renal Vein",
+   "Left Gonadal Vein",
+   "Lumbar Veins",
+   "Right Gonadal Vein",
+   "Ascending Lumbar Vein",
+   "Left Common Iliac Vein",
+   "Left External Iliac Vein",
+   "Left Internal Iliac Vein",
+   "Median Sacral Vein",
+   "Right Common Iliac Vein"
+  ]
+ },
+ {
+  "topic": "gi",
+  "key": "lb_x_gi_149",
+  "section": "Anatomy of the GI Tract",
+  "caption": "Labeled anatomy of the gastrointestinal tract",
+  "labels": [
+   "Mouth",
+   "Salivary Glands",
+   "Parotid Gland",
+   "Pharynx",
+   "Sublingual Gland",
+   "Submandibular Gland",
+   "Esophagus",
+   "Diaphragm",
+   "Stomach",
+   "Liver",
+   "Spleen",
+   "Gallbladder",
+   "Pancreas",
+   "Duodenum",
+   "Small Intestine",
+   "Pyloric Sphincter",
+   "Colon",
+   "Common Bile Duct",
+   "Descending Colon",
+   "Ascending Colon",
+   "Jejunum",
+   "Cecum",
+   "Ileum",
+   "Appendix",
+   "Rectum",
+   "Anus",
+   "Sigmoid Colon"
+  ]
+ },
+ {
+  "topic": "gi",
+  "key": "lb_x_gi_152",
+  "section": "Acute Appendicitis",
+  "caption": "Appendix surface anatomy and McBurney point",
+  "labels": [
+   "McBurney Point",
+   "Umbilicus",
+   "Anterior Superior Iliac Spine",
+   "Cecum",
+   "Appendix",
+   "Left Lower Quadrant",
+   "Right Lower Quadrant"
+  ]
+ },
+ {
+  "topic": "gi",
+  "key": "lb_x_gi_157",
+  "section": "Intestinal Obstruction & Bezoars",
+  "caption": "Causes of mechanical intestinal obstruction",
+  "labels": [
+   "Umbilical Hernia",
+   "Vascular Pedicle",
+   "Ischemic Infarction",
+   "Inguinal Hernia"
+  ]
+ },
+ {
+  "topic": "gi",
+  "key": "lb_x_gi_161",
+  "section": "Anterior Abdominal Wall",
+  "caption": "Common abdominal wall hernia locations",
+  "labels": [
+   "Umbilical",
+   "Incisional",
+   "Inguinal",
+   "Femoral"
+  ]
+ },
+ {
+  "topic": "gi",
+  "key": "lb_x_gi_162",
+  "section": "Anterior Abdominal Wall",
+  "caption": "Diagram of abdominal wall hernial sac",
+  "labels": [
+   "Neck Of Hernial Sac",
+   "Peritoneum",
+   "Abdominal Wall",
+   "Body Of Hernial Sac",
+   "Hernial Coverings",
+   "Loop Of Ileum",
+   "Hernial Sac"
+  ]
+ },
+ {
+  "topic": "chest",
+  "key": "lb_x_chest_163",
+  "section": "Noncardiac Chest Anatomy",
+  "caption": "Lung lobes and fissures anatomy",
+  "labels": [
+   "Apex",
+   "Anterior Border",
+   "Oblique Fissure",
+   "Superior Lobe",
+   "Horizontal Fissure",
+   "Middle Lobe",
+   "Inferior Lobe",
+   "Cardiac Notch",
+   "Notch",
+   "Inferior Border",
+   "Lingula",
+   "Right Lung",
+   "Left Lung"
+  ]
+ },
+ {
+  "topic": "neck",
+  "key": "lb_x_neck_171",
+  "section": "Anatomy and Physiology of the Salivary Glands",
+  "caption": "Oral cavity with major salivary glands",
+  "labels": [
+   "Soft Palate",
+   "Hard Palate",
+   "Teeth",
+   "Parotid Gland",
+   "Tongue",
+   "Oropharynx",
+   "Mandible",
+   "Epiglottis",
+   "Esophagus",
+   "Sublingual Gland",
+   "Submandibular Gland",
+   "Trachea"
+  ]
+ },
+ {
+  "topic": "neck",
+  "key": "lb_x_neck_174",
+  "section": "Anatomy and Physiology of the Thyroid Gland",
+  "caption": "Transverse neck anatomy at the thyroid isthmus",
+  "labels": [
+   "Thyroid Gland Isthmus",
+   "Sternohyoid Muscle",
+   "Sternothyroid Muscle",
+   "Sternocleidomastoid Muscle",
+   "Trachea",
+   "Esophagus",
+   "Neurovascular Bundle",
+   "Cervical Vertebra",
+   "Internal Jugular Vein",
+   "Longus Colli Muscle",
+   "Common Carotid Artery"
+  ]
+ },
+ {
+  "topic": "neck",
+  "key": "lb_x_neck_186",
+  "section": "Cervical Lymph Nodes",
+  "caption": "Cervical lymph node level map",
+  "labels": [
+   "Mandible",
+   "Digastric Muscle",
+   "IB",
+   "IIA",
+   "IA",
+   "IIB",
+   "Inferior Border Of Hyoid Bone",
+   "Posterior Border Of Submandibular Gland",
+   "Internal Jugular Vein And Carotid Artery",
+   "Sternohyoid Muscle",
+   "Sternocleidomastoid Muscle",
+   "Inferior Border Of Cricoid",
+   "VA",
+   "Trapezius Muscle",
+   "VB",
+   "Clavicle",
+   "VII",
+   "Ao."
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_188",
+  "section": "Anatomy and Physiology of the Male Pelvis",
+  "caption": "Lateral view of right testis and epididymis",
+  "labels": [
+   "Spermatic Cord",
+   "Testicular Artery",
+   "Pampiniform Venous Plexus",
+   "Parietal Layer Of Tunica Vaginalis",
+   "Head Of Epididymis",
+   "Efferent Ductules Of Testis",
+   "Cavity Of Tunica Vaginalis",
+   "Visceral Layer Of Tunica Vaginalis",
+   "Rete Testis",
+   "Straight Tubules",
+   "Septa Of Testis",
+   "Body Of Epididymis",
+   "Seminiferous Tubules",
+   "Duct Of Epididymis",
+   "Tunica Albuginea",
+   "Ductus Deferens",
+   "Tail Of Epididymis"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_189",
+  "section": "Anatomy and Physiology of the Male Pelvis",
+  "caption": "Male pelvis and testicular anatomy",
+  "labels": [
+   "Urinary Bladder",
+   "Prostatic Urethra",
+   "Seminal Vesicle",
+   "Pubic Bone",
+   "Vas Deferens",
+   "Penis",
+   "Ejaculatory Duct",
+   "Urethra",
+   "Corpus Cavernosum",
+   "Prostate Gland",
+   "Bulbourethral Gland",
+   "Epididymis",
+   "Tunica Albuginea",
+   "Caput (Head)",
+   "Corpus (Body)",
+   "Cauda (Tail)",
+   "Seminiferous Tubules",
+   "Rete Testis"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_190",
+  "section": "Torsion of the Testicular Appendages",
+  "caption": "Testicular and epididymal appendages anatomy",
+  "labels": [
+   "Paradidymis",
+   "Vas Aberrans Of Haller",
+   "Appendix Epididymis",
+   "Appendix Testis"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_193",
+  "section": "Varicocele",
+  "caption": "Varicocele with dilated tortuous scrotal veins",
+  "labels": [
+   "Dilated And Tortuous Veins",
+   "Epididymis",
+   "Testis",
+   "Scrotal Sac"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_208",
+  "section": "Inguinal Hernias",
+  "caption": "Inguinal hernia extending into the scrotum",
+  "labels": [
+   "Peritoneum",
+   "Inguinal Canal",
+   "Small Intestine",
+   "Testis"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_211",
+  "section": "Anatomy and Physiology of the Penis",
+  "caption": "Anterior and cross-sectional penile anatomy",
+  "labels": [
+   "Urinary Bladder",
+   "Prostate",
+   "Opening Of Ejaculatory Ducts",
+   "Bulbourethral Gland And Duct",
+   "Urogenital Diaphragm",
+   "Bulb Of Penis",
+   "Crus Of Penis",
+   "Superficial Vein Of Penis",
+   "Deep Dorsal Vein Of Penis",
+   "Corpus Cavernosum",
+   "Dorsal Artery, Nerve Of Penis",
+   "Superficial Fascia Of Penis",
+   "Corpus Spongiosum",
+   "Deep Fascia Of Penis",
+   "Subcutaneous Lateral Vein",
+   "Penile Urethra",
+   "Deep Artery Of Penis"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_212",
+  "section": "Anatomy and Physiology of the Penis",
+  "caption": "Cross section of the penis anatomy",
+  "labels": [
+   "Subcutaneous Median Dorsal Vein",
+   "Superficial Fascia Of Penis",
+   "Deep Dorsal Vein Of Penis",
+   "Dorsal Artery And Nerve Of Penis",
+   "Deep Fascia Of Penis",
+   "Tunica Albuginea",
+   "Subcutaneous Lateral Vein",
+   "Corpus Cavernosum",
+   "Deep Artery Of Penis",
+   "Corpus Spongiosum",
+   "Intercavernous Septum Of Deep Fascia",
+   "Penile Urethra"
+  ]
+ },
+ {
+  "topic": "male",
+  "key": "lb_x_male_214",
+  "section": "Sonography of the Penis",
+  "caption": "Penile implants: semirigid and inflatable prostheses",
+  "labels": [
+   "Reservoir",
+   "Malleable Rods",
+   "Inflatable Cylinders",
+   "Pump",
+   "Release Valve"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_222",
+  "section": "Sonographic Appearance of Muscles, Tendons, and Ligaments",
+  "caption": "Posterior superficial muscle anatomy",
+  "labels": [
+   "Epicranial Aponeurosis",
+   "Trapezius",
+   "Sternocleidomastoid",
+   "Deltoid",
+   "Teres Minor",
+   "Teres Major",
+   "Latissimus Dorsi",
+   "Triceps Brachii",
+   "Lumbodorsal Fascia",
+   "Olecranon Of Ulna",
+   "Gluteus Medius",
+   "Gluteus Maximus",
+   "Iliotibial Tract",
+   "Hamstring Group",
+   "Biceps Femoris",
+   "Semitendinosus",
+   "Semimembranosus",
+   "Gastrocnemius",
+   "Peroneus Longus",
+   "Achilles Tendon"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_223",
+  "section": "Sonographic Appearance of Muscles, Tendons, and Ligaments",
+  "caption": "Anterior muscular anatomy of the body",
+  "labels": [
+   "Temporalis",
+   "Sternocleidomastoid",
+   "Orbicularis Oculi",
+   "Orbicularis Oris",
+   "Deltoid",
+   "Masseter",
+   "Pectoralis Major",
+   "Trapezius",
+   "Serratus Anterior",
+   "Intercostals",
+   "Biceps Brachii",
+   "Brachioradialis",
+   "External Oblique",
+   "Internal Oblique",
+   "Flexor Carpi",
+   "Abdominal Aponeurosis",
+   "Rectus Abdominis",
+   "Adductors Of Thigh",
+   "Sartorius",
+   "Quadriceps Femoris",
+   "Gastrocnemius",
+   "Peroneus Longus",
+   "Tibialis Anterior",
+   "Soleus"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_227",
+  "section": "Achilles Tendon",
+  "caption": "Posterior and lateral Achilles tendon anatomy",
+  "labels": [
+   "Gastrocnemius Muscle",
+   "Soleus Muscle",
+   "Achilles Tendon"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_230",
+  "section": "Developmental Hip Dysplasia (DDH)",
+  "caption": "Ortolani and Barlow maneuvers for DDH assessment",
+  "labels": [
+   "Leg",
+   "Hip Reduced",
+   "Leg Adducted",
+   "Femoral Head",
+   "Hip Dislocated"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_234",
+  "section": "Breast Sonography",
+  "caption": "Breast quadrant and clockface annotation",
+  "labels": [
+   "RUOQ",
+   "RUIQ",
+   "LUIQ",
+   "LUOQ",
+   "RLOQ",
+   "RLIQ",
+   "LLIQ",
+   "LLOQ"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_252",
+  "section": "Meniscal Cyst",
+  "caption": "Anterior anatomy of the right knee menisci",
+  "labels": [
+   "Femur",
+   "Medial Condyle Of Femur",
+   "Lateral Condyle Of Femur",
+   "Posterior Cruciate Ligament",
+   "Anterior Cruciate Ligament",
+   "Tibial Collateral Ligament",
+   "Fibular Collateral Ligament",
+   "Lateral Meniscus",
+   "Medial Meniscus",
+   "Transverse Intermeniscal Ligament",
+   "Mid-Third Capsular Ligament",
+   "Anterior Capsule Of Proximal Tibiofibular Joint",
+   "Anterior Menisco-Femoral Ligament",
+   "Medial Condyle Of Tibia",
+   "Head Of Fibula",
+   "Fibula",
+   "Tibia",
+   "Tibial Tuberosity"
+  ]
+ },
+ {
+  "topic": "msk",
+  "key": "lb_x_msk_254",
+  "section": "Baker Cyst",
+  "caption": "Diagram of Baker cyst behind the knee",
+  "labels": [
+   "Baker Cyst",
+   "Joint Capsule",
+   "Synovial Fluid"
+  ]
+ }
+]

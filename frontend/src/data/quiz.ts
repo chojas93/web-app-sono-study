@@ -1,6 +1,8 @@
 import { topics } from "./index";
+import labelQuiz from "./labelQuiz.json";
 import { media } from "./media";
 import { midtermQuestions } from "./midterm";
+import type { SlideKey } from "./slides";
 import type { Question } from "./types";
 
 export function shuffle<T>(arr: T[]) {
@@ -48,7 +50,35 @@ export function imageQuestions(topicIds: string[]): Question[] {
   );
 }
 
-export type QuizMode = "mixed" | "image" | "book" | "weak" | "midterm";
+// "Name the numbered structure" questions from labelled diagrams (labels covered by numbered badges).
+type LabelDiagram = { topic: string; key: string; section: string; caption: string; labels: string[] };
+const diagrams = labelQuiz as LabelDiagram[];
+
+export function labelQuestions(topicIds: string[]): Question[] {
+  return diagrams
+    .filter((d) => topicIds.includes(d.topic))
+    .flatMap((d) => {
+      const topicPool = diagrams.filter((o) => o.topic === d.topic && o.key !== d.key).flatMap((o) => o.labels);
+      return d.labels.map((name, i) => {
+        const others: string[] = [];
+        for (const c of [...shuffle(d.labels), ...shuffle(topicPool)])
+          if (others.length < 3 && c !== name && !similar(c, name) && others.every((o) => !similar(o, c))) others.push(c);
+        return {
+          id: `${d.topic}-lb-${d.key}-${i + 1}`,
+          topicId: d.topic,
+          q: `Which structure is labelled ${i + 1}?`,
+          options: [name, ...others],
+          answer: 0,
+          explanation: `Label ${i + 1} is the ${name} — from the diagram “${d.caption}” (${d.section}).`,
+          image: d.key as SlideKey,
+        };
+      });
+    });
+}
+
+export const labelQuizCount = (t: string) => diagrams.filter((d) => d.topic === t).reduce((n, d) => n + d.labels.length, 0);
+
+export type QuizMode = "mixed" | "image" | "book" | "weak" | "midterm" | "label";
 export type QuizConfig = { topicIds: string[]; count: number; mode: QuizMode; missed?: Record<string, boolean> };
 
 function writtenPool(topicIds: string[]) {
@@ -74,6 +104,7 @@ export function buildQuiz({ topicIds, count, mode, missed }: QuizConfig): Questi
     return midtermQuestions.filter((q) => key === "all" || q.section === key);
   }
   if (mode === "book") return writtenPool(topicIds).filter((q) => q.source === "textbook");
+  if (mode === "label") return shuffle(labelQuestions(topicIds)).slice(0, count);
   const pool = mode === "image" ? imageQuestions(topicIds) : mode === "weak" ? weakQuestions(topicIds, missed ?? {}) : writtenPool(topicIds);
   return shuffle(pool).slice(0, count);
 }

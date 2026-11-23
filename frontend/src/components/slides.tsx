@@ -1,6 +1,6 @@
 import { Image } from "expo-image";
 import { useState } from "react";
-import { Modal, Pressable, ScrollView, Text, View } from "react-native";
+import { Modal, Pressable, ScrollView, Text, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { IconButton, PressableScale } from "@/src/components/ui";
@@ -35,12 +35,15 @@ export function SlideViewer({
   index,
   onClose,
   onIndex,
+  zoomable = false,
 }: {
   images: SlideImage[];
   index: number | null;
   onClose: () => void;
   onIndex?: (i: number) => void;
+  zoomable?: boolean;
 }) {
+  const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   const { colors } = useTheme();
@@ -52,9 +55,18 @@ export function SlideViewer({
           <Text style={styles.viewerCount}>{index !== null && images.length > 1 ? `${index + 1} / ${images.length}` : ""}</Text>
           <IconButton testID="slide-viewer-close" name="close" onPress={onClose} color="#FFFFFF" bg="rgba(255,255,255,0.15)" />
         </View>
-        <Pressable style={styles.viewerBody} onPress={onClose}>
-          {img ? <Image source={slides[img.key]} style={styles.full} contentFit="contain" /> : null}
-        </Pressable>
+        {zoomable && img ? (
+          <ScrollView horizontal style={styles.viewerBody} maximumZoomScale={4} minimumZoomScale={1} testID="slide-viewer-zoom">
+            <ScrollView>
+              <Image source={slides[img.key]} style={{ width: width * 2.5, height: width * 2.5 * 0.75, backgroundColor: "#FFFFFF" }} contentFit="contain" />
+            </ScrollView>
+          </ScrollView>
+        ) : (
+          <Pressable style={styles.viewerBody} onPress={onClose}>
+            {img ? <Image source={slides[img.key]} style={styles.full} contentFit="contain" /> : null}
+          </Pressable>
+        )}
+        {zoomable ? <Text style={styles.viewerCount}>Drag to move around the diagram · pinch to zoom</Text> : null}
         {img ? (
           <Text style={styles.viewerCaption} testID="slide-viewer-caption">
             {img.caption}

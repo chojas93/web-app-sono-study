@@ -1868,6 +1868,12 @@
     "caption": "Hypoechoic peripheral zone prostate mass",
     "kind": "sonogram",
     "quiz": false
+   },
+   {
+    "section": "Adrenal Rests",
+    "key": "x_male_299",
+    "caption": "Color Doppler sonogram of intratesticular adrenal rest tumor",
+    "kind": "sonogram"
    }
   ],
   "imageCards": [
@@ -1950,6 +1956,10 @@
    {
     "key": "x_male_220",
     "back": "Enlarged heterogeneous prostate from benign prostatic hyperplasia"
+   },
+   {
+    "key": "x_male_299",
+    "back": "Color Doppler sonogram of intratesticular adrenal rest tumor"
    }
   ]
  },

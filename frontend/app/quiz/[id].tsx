@@ -5,6 +5,7 @@ import { ScrollView, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { SlideViewer } from "@/src/components/slides";
 import { Button, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
 import { buildQuiz, QuizMode, shuffle } from "@/src/data/quiz";
@@ -38,12 +39,12 @@ export default function QuizScreen() {
     () => ({
       topicIds: isMidterm ? [tp ?? "all"] : isMock ? (tp ?? "").split(",").filter(Boolean) : [id],
       count: Number(cp) || 20,
-      mode: (isMidterm ? "midterm" : mp === "image" || mp === "book" || mp === "weak" ? mp : "mixed") as QuizMode,
+      mode: (isMidterm ? "midterm" : mp === "image" || mp === "book" || mp === "weak" || mp === "label" ? mp : "mixed") as QuizMode,
     }),
     [isMock, isMidterm, tp, id, cp, mp],
   );
-  const recordId = isMidterm ? (config.topicIds[0] === "all" ? "midterm" : `midterm:${config.topicIds[0]}`) : config.mode === "weak" ? "weak" : isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : config.mode === "book" ? `${id}:book` : id;
-  const title = isMidterm ? "Midterm Quiz 1" : config.mode === "weak" ? "Weak spot review" : isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : config.mode === "book" ? "Textbook review" : "Quiz";
+  const recordId = isMidterm ? (config.topicIds[0] === "all" ? "midterm" : `midterm:${config.topicIds[0]}`) : config.mode === "weak" ? "weak" : isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : config.mode === "label" ? `${id}:label` : config.mode === "book" ? `${id}:book` : id;
+  const title = isMidterm ? "Midterm Quiz 1" : config.mode === "weak" ? "Weak spot review" : isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : config.mode === "label" ? "Label the diagram" : config.mode === "book" ? "Textbook review" : "Quiz";
   const subtitle = isMidterm
     ? config.topicIds[0] === "all" ? "Personal review · all sections" : config.topicIds[0] === "missed" ? "Missed questions review" : `Personal review · ${config.topicIds[0]}`
     : isMock && config.topicIds.length !== 1 ? `${config.topicIds.length} chapters` : (topic?.title ?? getTopic(config.topicIds[0])?.title ?? "");
@@ -64,6 +65,7 @@ export default function QuizScreen() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
   const recorded = useRef(false);
+  const [zoom, setZoom] = useState(false);
 
   // Saved misses load from device storage asynchronously; rebuild once they arrive (before any answer).
   useEffect(() => {
@@ -159,7 +161,16 @@ export default function QuizScreen() {
         </Text>
       </View>
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: spacing.xl }]}>
-        {q.image ? <Image source={slides[q.image]} style={styles.qImage} contentFit="contain" testID="quiz-question-image" /> : null}
+        {q.image ? (
+          <PressableScale testID="quiz-image-zoom-button" onPress={() => setZoom(true)}>
+            <Image source={slides[q.image]} style={[styles.qImage, config.mode === "label" && styles.qDiagram]} contentFit="contain" testID="quiz-question-image" />
+            <View style={styles.zoomHint}>
+              <Ionicons name="expand" size={14} color="#FFFFFF" />
+              <Text style={styles.zoomText}>Tap to enlarge</Text>
+            </View>
+          </PressableScale>
+        ) : null}
+        {q.image ? <SlideViewer images={[{ key: q.image, caption: config.mode === "label" ? q.q : "" }]} index={zoom ? 0 : null} zoomable={config.mode === "label"} onClose={() => setZoom(false)} /> : null}
         {q.source === "textbook" ? <Text style={styles.sourceTag} testID="quiz-source-textbook">Textbook review question</Text> : null}
         <Animated.Text key={q.id} entering={FadeInDown} style={styles.question} testID="quiz-question-text">
           {q.q}
@@ -224,6 +235,9 @@ const useStyles = makeStyles((c) => ({
   counter: { fontFamily: fonts.display, fontSize: 16, fontWeight: "500", color: c.onSurface },
   content: { padding: spacing.lg, gap: spacing.md },
   qImage: { width: "100%", height: 220, borderRadius: radius.md, backgroundColor: "#000000" },
+  qDiagram: { height: 300, backgroundColor: "#FFFFFF" },
+  zoomHint: { position: "absolute", right: spacing.sm, bottom: spacing.sm, flexDirection: "row", alignItems: "center", gap: 4, backgroundColor: "rgba(0,0,0,0.6)", borderRadius: radius.sm, paddingHorizontal: spacing.sm, paddingVertical: 4 },
+  zoomText: { fontFamily: fonts.text, fontSize: 12, color: "#FFFFFF" },
   sourceTag: { fontFamily: fonts.text, fontSize: 12, fontWeight: "700", color: c.muted, textTransform: "uppercase", letterSpacing: 1 },
   optionWhy: { fontFamily: fonts.text, fontSize: 13, lineHeight: 18, color: c.onSurfaceTertiary },
   question: { fontFamily: fonts.display, fontSize: 22, fontWeight: "500", color: c.onSurface, lineHeight: 30, marginBottom: spacing.sm },

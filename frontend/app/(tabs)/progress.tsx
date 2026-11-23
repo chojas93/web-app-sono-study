@@ -13,6 +13,7 @@ const TREND_MODES = [
   { key: "quiz", label: "Quiz" },
   { key: "image", label: "Image quiz" },
   { key: "book", label: "Textbook" },
+  { key: "label", label: "Diagram labels" },
 ] as const;
 
 
@@ -98,7 +99,7 @@ export default function ProgressScreen() {
           state.history.slice(0, 8).map((h, i) => (
             <View key={h.at + i} style={styles.historyRow} testID={`quiz-history-${i}`}>
               <Text style={styles.historyTopic}>
-                {h.topicId.startsWith("midterm") ? `Midterm Quiz 1${h.topicId === "midterm:missed" ? " · Missed review" : h.topicId.includes(":") ? ` · ${h.topicId.split(":")[1]}` : ""}` : h.topicId === "weak" ? `Weak spot review (${h.total})` : h.topicId.startsWith("mock") ? `Mock exam (${h.total})` : `${getTopic(h.topicId.split(":")[0])?.title ?? ""}${h.topicId.endsWith(":image") ? " · Image quiz" : h.topicId.endsWith(":book") ? " · Textbook" : ""}`}
+                {h.topicId.startsWith("midterm") ? `Midterm Quiz 1${h.topicId === "midterm:missed" ? " · Missed review" : h.topicId.includes(":") ? ` · ${h.topicId.split(":")[1]}` : ""}` : h.topicId === "weak" ? `Weak spot review (${h.total})` : h.topicId.startsWith("mock") ? `Mock exam (${h.total})` : `${getTopic(h.topicId.split(":")[0])?.title ?? ""}${h.topicId.endsWith(":image") ? " · Image quiz" : h.topicId.endsWith(":book") ? " · Textbook" : h.topicId.endsWith(":label") ? " · Diagram labels" : ""}`}
               </Text>
               <Text style={[styles.historyScore, { color: h.score / h.total >= 0.7 ? colors.success : colors.onSurface }]}>
                 {h.score}/{h.total}
