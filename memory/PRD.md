@@ -48,6 +48,12 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 ## Update (Jun 2026): Textbook answer explanations
 - All 420 textbook questions now have a 1–2 sentence explanation (src/data/bookExplanations.json), written once by AI with /app/scripts/gen_explanations.py and bundled in the app; the app makes no AI calls when used
 
+## Update (Jun 2026): Switched to the 3rd edition textbook
+- First-edition questions replaced by 3rd edition (Examination Review for Ultrasound, 9781975185480) review questions: 60 per chapter for Ch 1–14 (840 total), keys from the book's answer section; 86 figure questions include the textbook figure (assets/slides/b3_*)
+- New AI explanations for all 840 (/app/scripts/gen_explanations.py → bookExplanations.json)
+- Every study section rewritten in more detail from the 3rd edition chapter text (/app/scripts/gen_detailed_notes.py → detailedNotes.json, overrides section points by title); about 2,500 bullet points in total
+- Content is written once and bundled in the app; no AI calls at runtime
+
 ## Backlog
 - OB/GYN chapters (waiting on PDFs from user)
 - P1: Spaced repetition (show learning cards sooner), timed exam mode mixing all topics

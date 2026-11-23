@@ -1,0 +1,37 @@
+{
+  "summary": "Frontend-only test at 390x844 of the new 3rd-edition question bank and the expanded notes. Every requested flow works. Textbook review shows 'All 60 chapter questions' and gives 60 questions (1/60) in all 14 topics. I completed the full Liver run (60/60 tagged 'Textbook review question'): 11 figure images rendered (220px, loaded), the results screen works, and no generic fallback explanations appeared. Notes are expanded: Liver > Hepatitis has 12 points. Single-section and minimize-all collapse/expand both work. The mock exam shows larger row counts (Overview 73, Liver 75, Male 60) and '100 questions from 977 available', and starts at 1/100. Weak spots (1/3 after misses), search, bookmarks and flashcards show no regressions. No page errors. A static check of the data files found 2 wrong answer keys, 2 questions with duplicate options and 3 figure questions with no image. No bank question has 5 options (A-E); ten legitimate 2-option questions render correctly. No deprecated Expo packages were detected.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Quiz results", "issues": ["When the score is below 70%, the results card uses light onSuccess text on the salmon brandPrimary background. The 'Keep practicing' and 'Best' lines have low contrast. This is not new in this iteration."]}
+    ],
+    "react_native_issues": [],
+    "data_issues": [
+      {"item": "biliary-b1", "issue": "Wrong answer key. The question asks for 'narrowing or obliteration of the bile ducts', which is biliary atresia (option index 3). The key has answer 0 (Caroli disease), and the explanation tries to justify it ('Caroli disease is the keyed answer'). Reference: src/data/bookQuestions.json and bookExplanations.json"},
+      {"item": "adrenal-b9", "issue": "Wrong answer key. 'Conn syndrome results from' should be 'high levels of aldosterone' (index 2). The key has 'high levels of cortisol' (index 1), which describes Cushing syndrome. Fix the explanation as well."},
+      {"item": "spleen-b39", "issue": "Duplicate option: 'Inferior mesenteric artery' appears twice. This looks like an OCR/extraction error; the missing option was probably 'Inferior mesenteric vein'."},
+      {"item": "vasculature-b48", "issue": "Duplicate option: 'Aortic rupture' appears twice."},
+      {"item": "spleen-b54, vasculature-b16, neck-b11", "issue": "The question text refers to a figure (Figure 6-16, 9-29, 12-26) but has no image field, so the user cannot see the figure."}
+    ]
+  },
+  "test_report_links": [".screenshots/liver_book_img.jpg", ".screenshots/liver_results.jpg", ".screenshots/hepatitis.jpg", ".screenshots/search.jpg"],
+  "action_items": [
+    "MEDIUM: Fix the answer keys and explanations for biliary-b1 (answer is biliary atresia) and adrenal-b9 (answer is high levels of aldosterone).",
+    "LOW: Fix the duplicate options in spleen-b39 (the second IMA is probably 'Inferior mesenteric vein') and vasculature-b48.",
+    "LOW: Add figure images for spleen-b54, vasculature-b16 and neck-b11, or drop the 'Figure X' wording from the question.",
+    "LOW: Raise the text contrast on the results card when the score is below 70%."
+  ],
+  "critical_code_review_comments": [
+    "index.ts falls back to the generic text 'Review question N ... answer from the book's answer key' when an explanation is missing. All 840 keys are present, so the fallback never shows.",
+    "quiz/[id].tsx still calls useProgress() twice (lines 39 and 43). This is redundant.",
+    "Answer positions are evenly spread across options (0:229, 1:197, 2:203, 3:211), and options are shuffled at runtime."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (no backend)", "frontend": "100% of requested UI flows; 7 of 840 questions have data defects"},
+  "seed_data_creation": "None. localStorage was cleared before the regression run.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Book bank: src/data/bookQuestions.json, 60 questions for each of 14 topics, with ids {topic}-b{n}. Images use b3_* keys in slides.ts (86 images, all resolve). Notes in detailedNotes.json are keyed by section title and override the raw points. Mock pool is 977 questions (840 book + 137 guide). Textbook route: /quiz/{id}?mode=book&count=60."
+}

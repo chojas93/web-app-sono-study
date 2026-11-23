@@ -2,6 +2,7 @@ import { adrenal } from "./adrenal";
 import { biliary } from "./biliary";
 import bookExplanations from "./bookExplanations.json";
 import bookQuestions from "./bookQuestions.json";
+import detailedNotes from "./detailedNotes.json";
 import { chest } from "./chest";
 import { gallbladder } from "./gallbladder";
 import { gi } from "./gi";
@@ -13,6 +14,7 @@ import { neck } from "./neck";
 import { overview } from "./overview";
 import { pancreas } from "./pancreas";
 import { spleen } from "./spleen";
+import type { SlideKey } from "./slides";
 import type { Flashcard, Mnemonic, RawTopic, Section, Topic } from "./types";
 import { urinary } from "./urinary";
 import { vasculature } from "./vasculature";
@@ -36,19 +38,21 @@ function build(raw: RawTopic): Topic {
       id: `${t}-s${i + 1}`,
       topicId: t,
       ...s,
+      points: (detailedNotes as Record<string, Record<string, string[]>>)[t]?.[s.title] ?? s.points,
       images: m.sectionImages.filter((x) => x.section === s.title).map(({ key, caption }) => ({ key, caption })),
     })),
     flashcards,
     quiz: [
       ...raw.quiz.map((q, i) => ({ id: `${t}-q${i + 1}`, topicId: t, ...q, source: "guide" as const })),
-      ...((bookQuestions as Record<string, { q: string; options: string[]; answer: number; n: number }[]>)[t] ?? []).map((q) => ({
+      ...((bookQuestions as Record<string, { q: string; options: string[]; answer: number; n: number; image?: string }[]>)[t] ?? []).map((q) => ({
         id: `${t}-b${q.n}`,
         topicId: t,
         q: q.q,
         options: q.options,
         answer: q.answer,
-        explanation: (bookExplanations as Record<string, string>)[`${t}-b${q.n}`] ?? `Textbook review question ${q.n} (${raw.chapter}) — answer from the book's answer key.`,
+        explanation: (bookExplanations as Record<string, string>)[`${t}-b${q.n}`] ?? `Review question ${q.n} (${raw.chapter}, 3rd ed.) — answer from the book's answer key.`,
         source: "textbook" as const,
+        image: q.image as SlideKey | undefined,
       })),
     ],
     mnemonics: raw.mnemonics.map((mn, i) => ({ id: `${t}-m${i + 1}`, topicId: t, ...mn })),

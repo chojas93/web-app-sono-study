@@ -83,7 +83,7 @@ export default function TopicScreen() {
           </PressableScale>
         </View>
         <View style={styles.extraRow}>
-          <PressableScale testID="open-textbook-review-button" onPress={() => router.push(`/quiz/${topic.id}?mode=book&count=30`)} style={[styles.extraBtn, { borderColor: accent }]}>
+          <PressableScale testID="open-textbook-review-button" onPress={() => router.push(`/quiz/${topic.id}?mode=book&count=60`)} style={[styles.extraBtn, { borderColor: accent }]}>
             <Ionicons name="book" size={20} color={accent} />
             <Text style={styles.extraTitle}>Textbook review</Text>
             <Text style={styles.progressLabel}>{bookQuiz ? `Best ${bookQuiz.best}/${bookQuiz.total}` : `All ${nBook} chapter questions`}</Text>
