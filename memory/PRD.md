@@ -68,3 +68,4 @@ Build the same study guide app as "slide-study-1" from 5 PDFs (Abdominal Sonogra
 ## Update (Iteration 7)
 - Midterm answer shuffle fix verified by testing agent (always-A scores ~20-25%).
 - Progress score trends split per mode: Quiz / Image quiz / Textbook (testIDs score-trend-{id}-{mode}).
+- Midterm missed-questions review (/quiz/midterm?topics=missed), kept separate from chapter weak spots; review lists rebuild once saved progress loads.

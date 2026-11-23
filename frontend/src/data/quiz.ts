@@ -49,12 +49,19 @@ export function weakQuestions(topicIds: string[], missed: Record<string, boolean
   return [...writtenPool(topicIds), ...imageQuestions(topicIds)].filter((q) => missed[q.id]);
 }
 
+// Midterm questions answered wrong before (kept separate from chapter weak spots).
+export const midtermMissed = (missed: Record<string, boolean>) => midtermQuestions.filter((q) => missed[q.id]);
+
 export function missedCount(topicIds: string[], missed: Record<string, boolean>) {
   return weakQuestions(topicIds, missed).length;
 }
 
 export function buildQuiz({ topicIds, count, mode, missed }: QuizConfig): Question[] {
-  if (mode === "midterm") return midtermQuestions.filter((q) => topicIds[0] === "all" || q.section === topicIds[0]);
+  if (mode === "midterm") {
+    const key = topicIds[0];
+    if (key === "missed") return shuffle(midtermMissed(missed ?? {}));
+    return midtermQuestions.filter((q) => key === "all" || q.section === key);
+  }
   if (mode === "book") return writtenPool(topicIds).filter((q) => q.source === "textbook");
   const pool = mode === "image" ? imageQuestions(topicIds) : mode === "weak" ? weakQuestions(topicIds, missed ?? {}) : writtenPool(topicIds);
   return shuffle(pool).slice(0, count);

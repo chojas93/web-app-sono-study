@@ -1,6 +1,6 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { Image } from "expo-image";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -45,14 +45,18 @@ export default function QuizScreen() {
   const recordId = isMidterm ? (config.topicIds[0] === "all" ? "midterm" : `midterm:${config.topicIds[0]}`) : config.mode === "weak" ? "weak" : isMock ? `mock:${config.count}` : config.mode === "image" ? `${id}:image` : config.mode === "book" ? `${id}:book` : id;
   const title = isMidterm ? "Midterm Quiz 1" : config.mode === "weak" ? "Weak spot review" : isMock ? "Mock exam" : config.mode === "image" ? "Image quiz" : config.mode === "book" ? "Textbook review" : "Quiz";
   const subtitle = isMidterm
-    ? config.topicIds[0] === "all" ? "Personal review · all sections" : `Personal review · ${config.topicIds[0]}`
+    ? config.topicIds[0] === "all" ? "Personal review · all sections" : config.topicIds[0] === "missed" ? "Missed questions review" : `Personal review · ${config.topicIds[0]}`
     : isMock && config.topicIds.length !== 1 ? `${config.topicIds.length} chapters` : (topic?.title ?? getTopic(config.topicIds[0])?.title ?? "");
-  const { state: progressState, markAnswer } = useProgress();
+  const { state: progressState, markAnswer, loaded } = useProgress();
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   const { colors } = useTheme();
   const { state, recordQuiz } = useProgress();
-  const [questions, setQuestions] = useState<Question[]>(() => (isMidterm ? buildQuiz(config).map(shuffleOptions) : prepare(buildQuiz({ ...config, missed: progressState.missed }))));
+  const load = () => {
+    const qs = buildQuiz({ ...config, missed: progressState.missed });
+    return isMidterm ? qs.map(shuffleOptions) : prepare(qs);
+  };
+  const [questions, setQuestions] = useState<Question[]>(load);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -61,12 +65,18 @@ export default function QuizScreen() {
   const [finished, setFinished] = useState(false);
   const recorded = useRef(false);
 
+  // Saved misses load from device storage asynchronously; rebuild once they arrive (before any answer).
+  useEffect(() => {
+    if (loaded && (config.mode === "weak" || config.topicIds[0] === "missed")) setQuestions(load());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaded]);
+
   if (!topic && !isMock && !isMidterm) return <StackHeader title="Topic not found" />;
   if (questions.length === 0)
     return (
       <View style={styles.root} testID="quiz-empty">
         <StackHeader title={title} subtitle={subtitle} />
-        <Text style={[styles.explain, { padding: spacing.xl, textAlign: "center" }]}>{config.mode === "weak" ? "No missed questions — great job! Answer quizzes and any wrong answers will show up here." : "No questions available for this selection yet."}</Text>
+        <Text style={[styles.explain, { padding: spacing.xl, textAlign: "center" }]}>{isMidterm && config.topicIds[0] === "missed" ? "No missed midterm questions — nice work! Any midterm question you get wrong will show up here." : config.mode === "weak" ? "No missed questions — great job! Answer quizzes and any wrong answers will show up here." : "No questions available for this selection yet."}</Text>
       </View>
     );
   const accent = topic ? colors[topic.colorKey] : colors.brandPrimary;
@@ -93,7 +103,7 @@ export default function QuizScreen() {
     setSubmitted(false);
   };
   const retry = () => {
-    setQuestions(isMidterm ? buildQuiz(config).map(shuffleOptions) : prepare(buildQuiz({ ...config, missed: progressState.missed })));
+    setQuestions(load());
     setIndex(0);
     setSelected(null);
     setSubmitted(false);

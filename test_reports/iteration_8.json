@@ -1,0 +1,33 @@
+{
+  "summary": "Tested the Midterm Weak Spots (missed-question review) feature on the frontend at a 375x667 viewport using Playwright on the public URL. Everything requested passed. (1) On fresh storage, midterm-missed-count reads 'Midterm questions you miss will appear here', and tapping the row opens quiz-empty with the 'No missed midterm questions — nice work!...' message. (2) Took the Spleen section (16 questions) and answered 5 wrong on purpose: the score was 11/16 and the count read 'Retry 5 midterm questions you got wrong'. (3) The missed review showed title 'Midterm Quiz 1' and subtitle 'MISSED QUESTIONS REVIEW' with counter 1/5. The 5 questions exactly matched the 5 missed (question order was shuffled: ids 10,15,4,1,6). After submit, every question showed 4 quiz-option-why-i explanations, and the options were shuffled. (4) Answered 2 correctly and 3 wrong in the review: the score was 2/5 and the count dropped to 'Retry 3...'. Answering all remaining ones correctly set the count back to the empty text. Tapping Retry with nothing left shows quiz-empty. (5) In Progress > Recent quizzes, the latest entry reads 'Midterm Quiz 1 · Missed review 3/3'. (6) Separation, checked with seeded storage (3 midterm misses + spleen-q1): home-missed-count = 'Retry 1 question you missed', and the home weak-spot quiz is 1/1 with the chapter spleen question. The midterm review held only the 3 midterm questions. (7) Regression: full midterm 1/102, Pancreas 1/14, the Spleen best score shows on its row, and there were no page errors. One edge-case bug: opening /quiz/midterm?topics=missed directly or refreshing it (cold load) shows quiz-empty even when misses exist.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "QuizScreen missed/weak review (cold load)", "issue": "On a direct load or refresh of /quiz/midterm?topics=missed with 2 stored misses, the screen shows quiz-empty. The cause is in quiz/[id].tsx:59: useState(load) runs once, before ProgressProvider has finished its async storage read (progress.tsx:84), so state.missed is still {}. The quiz is never rebuilt after loaded becomes true. /quiz/weak has the same issue, and so does a native deep link or a web refresh. In-app navigation works fine.", "testID": "quiz-empty", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Midterm results", "issues": ["The secondary button on the midterm results screen says 'Back to topic', but it goes back to the Midterm screen. Use 'Back' (as for mock) when isMidterm. Reference: app/quiz/[id].tsx:136"]},
+      {"screen": "Midterm screen", "issues": ["The empty-state missed row uses opacity 0.6 on top of muted grey subtitle text, so contrast is low (the subtitle is hard to read). Consider full opacity with a muted icon instead. Reference: app/midterm.tsx:34"]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": [".screenshots/i8_midterm_fresh.jpeg", ".screenshots/i8_midterm_after.jpeg", ".screenshots/i8_review_q1.jpeg", ".screenshots/i8_review_results.jpeg", ".screenshots/i8_history.jpeg"],
+  "action_items": [
+    "Fix cold-load empty review: in quiz/[id].tsx, read `loaded` from useProgress() and rebuild the question list once loaded becomes true for midterm-missed and weak modes, before the user has answered anything. Another option is to show a loader until loaded.",
+    "Optional: when isMidterm, change the results button label from 'Back to topic' to 'Back'.",
+    "Optional: improve the contrast of the empty-state missed row on the midterm screen."
+  ],
+  "critical_code_review_comments": [
+    "quiz/[id].tsx still calls useProgress() twice (lines 50 and 54). Merge them.",
+    "progress.tsx:101: the history label nested ternary keeps growing (now includes midterm:missed). Extract it into a helper.",
+    "No loaded gate anywhere in the app (no screen checks `loaded`). Any screen that builds initial state from progress inside useState will be wrong on cold load."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend only)", "frontend": "95% (all 8 requested flows pass; 1 edge-case cold-load bug)"},
+  "seed_data_creation": "Only browser localStorage in the Playwright sessions (key sono_study_progress_v1, double JSON-encoded) was used.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Several screens stay mounted in the stack, so use the ':visible' filter with testIDs (for example header-back-button). The midterm answer key is in src/data/midterm.json; match by option text, because options are shuffled. Midterm missed ids are 'midterm-N' (1-based). Chapter ids look like 'spleen-q1'. To seed storage, run localStorage.setItem('sono_study_progress_v1', JSON.stringify(JSON.stringify(state))) and then reload.",
+  "rca_of_issue": "Cold-load empty review: the quiz's initial questions are built once from progressState.missed (useState(load)). On a fresh page load the provider starts with the empty state and fills it from AsyncStorage asynchronously, so the filter returns []. Mitigation: gate on `loaded` or re-run load() in an effect when loaded changes, while index is 0 and nothing has been submitted."
+}
