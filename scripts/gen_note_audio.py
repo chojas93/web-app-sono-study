@@ -1,5 +1,5 @@
 # One-time offline script: record every study-notes section with a natural AI voice and bundle the audio in the app.
-# Uses gpt-4o-mini-tts (voice "coral", warm delivery). Output: frontend/assets/audio/<sectionId>.mp3 (mono, 32 kbps)
+# Uses gpt-4o-mini-tts (voice "fable", soft cosy British storyteller delivery, chosen by the user). Output: frontend/assets/audio/<sectionId>.mp3 (mono, 32 kbps)
 # and frontend/src/data/noteAudio.ts. Safe to re-run: sections already recorded are skipped.
 import asyncio, json, os, re, subprocess, tempfile
 from dotenv import load_dotenv
@@ -13,8 +13,10 @@ os.makedirs(OUT, exist_ok=True)
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 sections = json.load(open('/tmp/sections_text.json'))
 tts = OpenAITextToSpeech(api_key=os.environ['EMERGENT_LLM_KEY'])
-INSTR = ("Warm, calm and friendly female tutor reading study notes to a sonography student. Clear, unhurried pace, "
-         "natural pauses between points, pronounce medical terms carefully.")
+INSTR = ("Voice: a soft, light, kind young British woman with a gentle Received Pronunciation accent. "
+         "Tone: warm, cosy and reassuring, as if smiling while telling a peaceful story to a friend - never stern, formal or serious. "
+         "Delivery: relaxed and flowing, gentle rise and fall, soft endings to sentences, calm natural pauses. "
+         "Pronounce medical terms clearly but lightly.")
 
 SPOKEN = [(r'(\d)\s*%', r'\1 percent'), (r'(\d)\s*°', r'\1 degrees'), (r'(\d)\s*×\s*(\d)', r'\1 by \2'), (r'×', ' times '),
           (r'\bcm/s\b', 'centimeters per second'), (r'\bmm\b', 'millimeters'), (r'\bcm\b', 'centimeters'), (r'\bMHz\b', 'megahertz'),
@@ -48,7 +50,7 @@ async def record(s, sem):
         for c in chunks(parts):
             for attempt in range(3):
                 try:
-                    raw.append(await asyncio.wait_for(tts.generate_speech(text=c, model='gpt-4o-mini-tts', voice='coral', instructions=INSTR, response_format='mp3'), 180))
+                    raw.append(await asyncio.wait_for(tts.generate_speech(text=c, model='gpt-4o-mini-tts', voice='fable', instructions=INSTR, response_format='mp3'), 180))
                     break
                 except Exception as e:
                     print('retry', s['id'], attempt, str(e)[:120], flush=True)
