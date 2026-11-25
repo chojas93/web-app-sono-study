@@ -208,8 +208,46 @@ export default function SketchScreen() {
             (x, y, w, h) => (box.current = { x, y, w, h }),
           );
           if (pen.current.mode === "text") {
-            // Text tool: press on a label to drag it (or tap to edit it); press elsewhere to add a new label.
             const p = point(e);
+            // Placing an arrow: this press sets the tip (keep dragging to fine-tune).
+            const target = arrowForRef.current;
+            if (target) {
+              snapshot();
+              setLabels((all) =>
+                all.map((l) =>
+                  l.id === target ? { ...l, ax: p[0], ay: p[1] } : l,
+                ),
+              );
+              setArrowFor(null);
+              drag.current = {
+                id: target,
+                start: p,
+                moved: true,
+                off: [0, 0],
+                tip: true,
+              };
+              return;
+            }
+            // Press on an arrow tip to drag it.
+            const tipHit = [...labelsRef.current]
+              .reverse()
+              .find(
+                (l) =>
+                  l.ax != null &&
+                  Math.hypot(p[0] - l.ax, p[1] - (l.ay ?? 0)) <= 40,
+              );
+            if (tipHit) {
+              snapshot();
+              drag.current = {
+                id: tipHit.id,
+                start: p,
+                moved: false,
+                off: [0, 0],
+                tip: true,
+              };
+              return;
+            }
+            // Text tool: press on a label to drag it (or tap to edit it); press elsewhere to add a new label.
             const hit = [...labelsRef.current].reverse().find((l) => {
               const b = labelBox(l);
               return (
@@ -222,6 +260,7 @@ export default function SketchScreen() {
               start: p,
               moved: false,
               off: hit ? [hit.x - p[0], hit.y - p[1]] : [0, 0],
+              tip: false,
             };
             if (hit) snapshot();
             return;
@@ -242,6 +281,15 @@ export default function SketchScreen() {
           if (pen.current.mode === "text") {
             const dr = drag.current;
             const p = point(e);
+            if (dr.tip && dr.id) {
+              dr.moved = true;
+              setLabels((all) =>
+                all.map((l) =>
+                  l.id === dr.id ? { ...l, ax: p[0], ay: p[1] } : l,
+                ),
+              );
+              return;
+            }
             if (
               dr.id &&
               (dr.moved ||
@@ -277,6 +325,12 @@ export default function SketchScreen() {
     setLive(null);
     if (pen.current.mode === "text") {
       const dr = drag.current;
+      if (dr.tip) {
+        if (dr.moved) setDirty(true);
+        else history.current.pop(); // tapped a tip without moving it
+        setCanUndo(history.current.length > 0);
+        return;
+      }
       if (dr.id && dr.moved) setDirty(true);
       else {
         if (dr.id) history.current.pop(); // just a tap: drop the drag snapshot
@@ -311,11 +365,24 @@ export default function SketchScreen() {
     start: number[];
     moved: boolean;
     off: number[];
-  }>({ id: null, start: [0, 0], moved: false, off: [0, 0] });
+    tip: boolean;
+  }>({ id: null, start: [0, 0], moved: false, off: [0, 0], tip: false });
 
-  const saveLabel = () => {
+  // Label waiting for its arrow tip (set from the label box's "Add arrow").
+  const [arrowFor, setArrowFor] = useState<string | null>(null);
+  const arrowForRef = useRef<string | null>(null);
+  arrowForRef.current = arrowFor;
+  const editingLabel = editing?.id
+    ? labels.find((l) => l.id === editing.id)
+    : undefined;
+
+  const saveLabel = (withArrow = false) => {
     if (!editing) return;
     const text = editing.text.trim();
+    const newId = `lb-${Date.now()}`;
+    if (withArrow && text) setArrowFor(editing.id ?? newId);
+    const unchanged = editing.id && text === editingLabel?.text;
+    if (unchanged) return setEditing(null);
     snapshot();
     setLabels((all) =>
       editing.id
@@ -326,7 +393,7 @@ export default function SketchScreen() {
           ? [
               ...all,
               {
-                id: `lb-${Date.now()}`,
+                id: newId,
                 x: editing.x,
                 y: editing.y,
                 text,
@@ -338,6 +405,18 @@ export default function SketchScreen() {
     if (text || editing.id) setDirty(true);
     else history.current.pop();
     setCanUndo(history.current.length > 0);
+    setEditing(null);
+  };
+
+  const removeArrow = () => {
+    if (!editing?.id) return;
+    snapshot();
+    setLabels((all) =>
+      all.map((l) =>
+        l.id === editing.id ? { ...l, ax: undefined, ay: undefined } : l,
+      ),
+    );
+    setDirty(true);
     setEditing(null);
   };
 
@@ -430,7 +509,9 @@ export default function SketchScreen() {
         testID={mode === "text" ? "sketch-text-hint" : undefined}
       >
         {mode === "text"
-          ? "Tap to add a label · drag to move · tap a label to edit"
+          ? arrowFor
+            ? "Now tap the structure this label points to"
+            : "Tap to add a label · drag to move · tap a label to edit"
           : " "}
       </Text>
       <View style={styles.canvasWrap}>
@@ -640,8 +721,38 @@ export default function SketchScreen() {
               style={styles.labelInput}
               maxLength={40}
               returnKeyType="done"
-              onSubmitEditing={saveLabel}
+              onSubmitEditing={() => saveLabel()}
             />
+            <View style={styles.row}>
+              <PressableScale
+                testID="sketch-label-arrow"
+                disabled={!editing?.text.trim()}
+                onPress={() => saveLabel(true)}
+                style={[
+                  styles.arrowBtn,
+                  !editing?.text.trim() && { opacity: 0.4 },
+                ]}
+              >
+                <Ionicons
+                  name="arrow-forward"
+                  size={18}
+                  color={colors.brandPrimary}
+                />
+                <Text style={[styles.toolText, { color: colors.brandPrimary }]}>
+                  {editingLabel?.ax != null ? "Move arrow" : "Add arrow"}
+                </Text>
+              </PressableScale>
+              {editingLabel?.ax != null ? (
+                <PressableScale
+                  testID="sketch-label-remove-arrow"
+                  onPress={removeArrow}
+                  style={styles.arrowBtn}
+                >
+                  <Ionicons name="close" size={18} color={colors.onSurface} />
+                  <Text style={styles.toolText}>Remove arrow</Text>
+                </PressableScale>
+              ) : null}
+            </View>
             <View style={styles.row}>
               {editing?.id ? (
                 <PressableScale
@@ -666,7 +777,7 @@ export default function SketchScreen() {
                 testID="sketch-label-save"
                 label="Done"
                 icon="checkmark"
-                onPress={saveLabel}
+                onPress={() => saveLabel()}
               />
             </View>
           </Pressable>
@@ -678,6 +789,15 @@ export default function SketchScreen() {
 
 const useStyles = makeStyles((c) => ({
   root: { flex: 1, backgroundColor: c.surface },
+  arrowBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.xs,
+    minHeight: 44,
+    paddingHorizontal: spacing.md,
+    borderRadius: radius.pill,
+    backgroundColor: c.surfaceTertiary,
+  },
   titleWrap: {
     flexDirection: "row",
     alignItems: "center",

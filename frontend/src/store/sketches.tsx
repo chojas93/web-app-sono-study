@@ -6,7 +6,7 @@ import { storage } from "@/src/utils/storage";
 const KEY = "sono_study_sketches_v1";
 
 export type Stroke = { d: string; color: string; width: number };
-export type SketchLabel = { id: string; x: number; y: number; text: string; color: string };
+export type SketchLabel = { id: string; x: number; y: number; text: string; color: string; ax?: number; ay?: number }; // ax/ay = arrow tip
 export type Sketch = {
   id: string;
   sectionId: string;
