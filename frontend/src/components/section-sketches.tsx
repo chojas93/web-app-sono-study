@@ -36,7 +36,12 @@ export function SectionSketches({ section }: { section: Section }) {
         </PressableScale>
         {list.map((s) => (
           <PressableScale key={s.id} testID={`section-sketch-${s.id}`} onPress={() => router.push(`/sketch/${section.id}?sketch=${s.id}`)} style={styles.thumb}>
-            <SketchView bg={s.bg} strokes={s.strokes} />
+            <SketchView bg={s.bg} strokes={s.strokes} labels={s.labels} />
+            {s.title ? (
+              <Text style={styles.thumbTitle} numberOfLines={1}>
+                {s.title}
+              </Text>
+            ) : null}
           </PressableScale>
         ))}
       </ScrollView>
@@ -71,6 +76,7 @@ const useStyles = makeStyles((c) => ({
   strip: { gap: spacing.sm, paddingVertical: 2 },
   newBtn: { width: 84, height: 112, borderRadius: radius.md, borderWidth: 1.5, borderStyle: "dashed", borderColor: c.brandPrimary, alignItems: "center", justifyContent: "center", gap: 4 },
   newText: { fontFamily: fonts.text, fontSize: 12 },
+  thumbTitle: { fontFamily: fonts.text, fontSize: 11, color: c.onSurface, paddingHorizontal: 4, paddingVertical: 2, backgroundColor: c.surfaceSecondary },
   thumb: { width: 84, borderRadius: radius.md, overflow: "hidden", borderWidth: 1, borderColor: c.border },
   backdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "flex-end" },
   sheet: { backgroundColor: c.surface, borderTopLeftRadius: radius.lg, borderTopRightRadius: radius.lg, padding: spacing.lg, paddingBottom: spacing.xl, gap: spacing.md },

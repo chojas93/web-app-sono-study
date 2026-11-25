@@ -1,11 +1,12 @@
 import { router } from "expo-router";
-import { ScrollView, Text, useWindowDimensions, View } from "react-native";
+import { useState } from "react";
+import { ScrollView, Text, TextInput, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SketchView } from "@/src/components/sketch-canvas";
 import { Ionicons, PressableScale, StackHeader } from "@/src/components/ui";
 import { sectionById, topics } from "@/src/data";
-import { useSketches } from "@/src/store/sketches";
+import { type Sketch, useSketches } from "@/src/store/sketches";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
 // All saved sketches in one place, grouped by chapter (in chapter order), newest first.
@@ -16,20 +17,48 @@ export default function SketchGallery() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const cardW = (Math.min(width, 600) - spacing.lg * 2 - spacing.sm * 2) / 3;
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+  // Search matches the sketch name, its labels, the section and the chapter.
+  const matches = (sk: Sketch, topicTitle: string) =>
+    !q || [sk.title ?? "", sectionById[sk.sectionId]?.title ?? "", topicTitle, ...(sk.labels ?? []).map((l) => l.text)].some((t) => t.toLowerCase().includes(q));
 
   const groups = topics
     .map((t) => ({
       topic: t,
-      items: t.sections.flatMap((s) => sketches[s.id] ?? []).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
+      items: t.sections
+        .flatMap((s) => sketches[s.id] ?? [])
+        .filter((sk) => matches(sk, t.title))
+        .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
     }))
     .filter((g) => g.items.length);
-  const total = groups.reduce((n, g) => n + g.items.length, 0);
+  const total = Object.values(sketches).reduce((n, l) => n + l.length, 0);
 
   return (
     <View style={styles.root} testID="sketch-gallery-screen">
       <StackHeader title="My sketches" subtitle={loaded ? `${total} saved sketch${total === 1 ? "" : "es"}` : undefined} />
-      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xl }]}>
-        {loaded && !groups.length ? (
+      {total ? (
+        <View style={styles.search}>
+          <Ionicons name="search" size={18} color={colors.muted} />
+          <TextInput
+            testID="sketch-gallery-search"
+            value={query}
+            onChangeText={setQuery}
+            placeholder="Search sketch names and labels"
+            placeholderTextColor={colors.muted}
+            style={styles.searchInput}
+            autoCorrect={false}
+            returnKeyType="search"
+          />
+        </View>
+      ) : null}
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xl }]} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
+        {loaded && total > 0 && !groups.length ? (
+          <Text style={styles.emptyText} testID="sketch-gallery-no-results">
+            No sketches match “{query.trim()}”.
+          </Text>
+        ) : null}
+        {loaded && !total ? (
           <View style={styles.empty} testID="sketch-gallery-empty">
             <View style={styles.emptyIcon}>
               <Ionicons name="brush" size={36} color={colors.brandPrimary} />
@@ -54,11 +83,16 @@ export default function SketchGallery() {
                 {items.map((s) => (
                   <PressableScale key={s.id} testID={`sketch-gallery-item-${s.id}`} onPress={() => router.push(`/sketch/${s.sectionId}?sketch=${s.id}`)} style={{ width: cardW }}>
                     <View style={[styles.thumb, { borderColor: accent + "66" }]}>
-                      <SketchView bg={s.bg} strokes={s.strokes} />
+                      <SketchView bg={s.bg} strokes={s.strokes} labels={s.labels} />
                     </View>
-                    <Text style={styles.caption} numberOfLines={2}>
-                      {sectionById[s.sectionId]?.title ?? "Notes"}
+                    <Text style={styles.caption} numberOfLines={2} testID={`sketch-gallery-title-${s.id}`}>
+                      {s.title || sectionById[s.sectionId]?.title || "Notes"}
                     </Text>
+                    {s.title ? (
+                      <Text style={styles.date} numberOfLines={1}>
+                        {sectionById[s.sectionId]?.title}
+                      </Text>
+                    ) : null}
                     <Text style={styles.date}>{new Date(s.updatedAt).toLocaleDateString(undefined, { day: "numeric", month: "short" })}</Text>
                   </PressableScale>
                 ))}
@@ -73,6 +107,8 @@ export default function SketchGallery() {
 
 const useStyles = makeStyles((c) => ({
   root: { flex: 1, backgroundColor: c.surface },
+  search: { flexDirection: "row", alignItems: "center", gap: spacing.sm, marginHorizontal: spacing.lg, paddingHorizontal: spacing.md, minHeight: 44, borderRadius: radius.pill, backgroundColor: c.surfaceTertiary },
+  searchInput: { flex: 1, fontFamily: fonts.text, fontSize: 15, color: c.onSurface, paddingVertical: spacing.sm },
   content: { padding: spacing.lg, gap: spacing.xl, width: "100%", maxWidth: 600, alignSelf: "center" },
   group: { gap: spacing.md },
   groupHead: { flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44 },

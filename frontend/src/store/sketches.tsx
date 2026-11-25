@@ -6,7 +6,18 @@ import { storage } from "@/src/utils/storage";
 const KEY = "sono_study_sketches_v1";
 
 export type Stroke = { d: string; color: string; width: number };
-export type Sketch = { id: string; sectionId: string; topicId: string; bg: string | null; strokes: Stroke[]; createdAt: string; updatedAt: string };
+export type SketchLabel = { id: string; x: number; y: number; text: string; color: string };
+export type Sketch = {
+  id: string;
+  sectionId: string;
+  topicId: string;
+  title?: string;
+  bg: string | null;
+  strokes: Stroke[];
+  labels?: SketchLabel[];
+  createdAt: string;
+  updatedAt: string;
+};
 
 type Ctx = {
   sketches: Record<string, Sketch[]>; // by section id, newest first
