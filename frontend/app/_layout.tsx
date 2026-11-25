@@ -10,6 +10,7 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { ErrorBoundary } from "@/src/components/error-boundary";
 import { queryClient } from "@/src/query-client";
 import { ProgressProvider } from "@/src/store/progress";
+import { SketchProvider } from "@/src/store/sketches";
 import { loadSavedScheme, useTheme } from "@/src/theme";
 
 // Disable logbox errors etc so that users can see the app
@@ -43,8 +44,10 @@ export default function RootLayout() {
         <QueryClientProvider client={queryClient}>
           <KeyboardProvider>
             <ProgressProvider>
+              <SketchProvider>
               <StatusBar style={scheme === "dark" ? "light" : "dark"} />
               <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.surface } }} />
+              </SketchProvider>
             </ProgressProvider>
           </KeyboardProvider>
         </QueryClientProvider>

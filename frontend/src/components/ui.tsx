@@ -88,12 +88,12 @@ export function IconButton({
   );
 }
 
-export function StackHeader({ title, subtitle, right }: { title: string; subtitle?: string; right?: ReactNode }) {
+export function StackHeader({ title, subtitle, right, onBack }: { title: string; subtitle?: string; right?: ReactNode; onBack?: () => void }) {
   const insets = useSafeAreaInsets();
   const styles = useStyles();
   return (
     <View style={[styles.header, { paddingTop: insets.top + spacing.sm }]}>
-      <IconButton testID="header-back-button" name="chevron-back" onPress={() => (router.canGoBack() ? router.back() : router.replace("/"))} />
+      <IconButton testID="header-back-button" name="chevron-back" onPress={onBack ?? (() => (router.canGoBack() ? router.back() : router.replace("/")))} />
       <View style={styles.headerText}>
         {subtitle ? (
           <Text style={styles.subtitle} numberOfLines={1}>

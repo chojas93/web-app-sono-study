@@ -19,7 +19,11 @@ export type ProgressState = {
   bookmarks: Bookmark[];
   streak: { count: number; lastDate: string | null };
   missed: Record<string, boolean>;
+  // Resume listening: where narration last stopped in each chapter.
+  listen: Record<string, ListenSpot>;
 };
+
+export type ListenSpot = { sectionId: string; position: number; at: string };
 
 const empty: ProgressState = {
   readSections: {},
@@ -29,6 +33,7 @@ const empty: ProgressState = {
   bookmarks: [],
   streak: { count: 0, lastDate: null },
   missed: {},
+  listen: {},
 };
 
 function fmt(d: Date) {
@@ -72,6 +77,7 @@ type Ctx = {
   isBookmarked: (refId: string) => boolean;
   resetAll: () => void;
   markAnswer: (questionId: string, correct: boolean) => void;
+  setListenSpot: (topicId: string, spot: ListenSpot | null) => void;
 };
 
 const ProgressContext = createContext<Ctx | null>(null);
@@ -151,9 +157,18 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const setListenSpot = useCallback((topicId: string, spot: ListenSpot | null) => {
+    setState((s) => {
+      const listen = { ...s.listen };
+      if (spot) listen[topicId] = spot;
+      else delete listen[topicId];
+      return { ...s, listen };
+    });
+  }, []);
+
   const value = useMemo(
-    () => ({ state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll, markAnswer }),
-    [state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll, markAnswer],
+    () => ({ state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll, markAnswer, setListenSpot }),
+    [state, loaded, toggleRead, setCard, recordQuiz, toggleBookmark, isBookmarked, resetAll, markAnswer, setListenSpot],
   );
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

@@ -9,11 +9,13 @@ import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "
 import { getTopic } from "@/src/data";
 import type { Section } from "@/src/data/types";
 import { hasNarration, useReadAloud } from "@/src/hooks/read-aloud";
+import { SectionSketches } from "@/src/components/section-sketches";
 import { imageQuizCount, labelQuizCount, missedCount } from "@/src/data/quiz";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
 const NO_SECTIONS: Section[] = [];
+const fmtTime = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 
 export default function TopicScreen() {
   const { id, tab: initialTab } = useLocalSearchParams<{ id: string; tab?: string }>();
@@ -24,7 +26,7 @@ export default function TopicScreen() {
   const { state, toggleRead, toggleBookmark, isBookmarked } = useProgress();
   const [tab, setTab] = useState<"notes" | "mnemonics">(initialTab === "mnemonics" ? "mnemonics" : "notes");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
-  const reader = useReadAloud(topic?.sections ?? NO_SECTIONS);
+  const reader = useReadAloud(topic?.id ?? "", topic?.sections ?? NO_SECTIONS);
 
   if (!topic) {
     return (
@@ -69,6 +71,17 @@ export default function TopicScreen() {
             <Text style={[styles.collapseText, { color: colors.brandPrimary }]}>{allCollapsed ? "Expand all" : "Minimize all"}</Text>
           </PressableScale>
         </View>
+      ) : null}
+      {tab === "notes" && reader.resumeSpot && !reader.active ? (
+        <PressableScale testID="resume-listening-button" onPress={reader.resume} style={[styles.resumeBtn, { borderColor: accent }]}>
+          <Ionicons name="play-circle" size={22} color={accent} />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.collapseText}>Resume listening</Text>
+            <Text style={styles.progressLabel} numberOfLines={1} testID="resume-listening-spot">
+              {topic.sections.find((x) => x.id === reader.resumeSpot?.sectionId)?.title} · {fmtTime(reader.resumeSpot.position)}
+            </Text>
+          </View>
+        </PressableScale>
       ) : null}
       {tab === "notes" && reader.error ? (
         <Text style={[styles.collapseText, { color: colors.error, paddingHorizontal: spacing.lg }]} testID="read-aloud-error">
@@ -178,6 +191,7 @@ export default function TopicScreen() {
                     </View>
                   ))}
                   <SlideStrip images={s.images} testIDPrefix={`section-${s.id}`} />
+                  <SectionSketches section={s} />
                   <PressableScale
                     testID={`section-read-toggle-${s.id}`}
                     onPress={() => toggleRead(s.id)}
@@ -239,6 +253,7 @@ const useStyles = makeStyles((c) => ({
   extraTitle: { fontFamily: fonts.display, fontSize: 16, fontWeight: "500", color: c.onSurface },
   sectionHead: { flex: 1, flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44 },
   notesBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: spacing.lg, gap: spacing.sm },
+  resumeBtn: { flexDirection: "row", alignItems: "center", gap: spacing.sm, marginHorizontal: spacing.lg, marginTop: spacing.sm, minHeight: 48, paddingHorizontal: spacing.md, paddingVertical: spacing.sm, borderRadius: radius.md, borderWidth: 1.5 },
   listenAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44, paddingHorizontal: spacing.lg, borderRadius: radius.pill },
   collapseAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44, paddingHorizontal: spacing.sm },
   collapseText: { fontFamily: fonts.text, fontSize: 14, fontWeight: "700" },
