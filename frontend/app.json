@@ -18,7 +18,7 @@
       },
       "package": "com.emergent.iosstudylocal.g428xq"
     },
-        "web": {
+    "web": {
       "bundler": "metro",
       "output": "single",
       "favicon": "./assets/images/favicon.png",
@@ -28,7 +28,6 @@
       "backgroundColor": "#000000",
       "display": "standalone"
     },
-
     "plugins": [
       "expo-router",
       [
@@ -45,7 +44,9 @@
       "expo-secure-store",
       "expo-web-browser",
       "expo-status-bar",
-      "@react-native-vector-icons/ionicons"
+      "@react-native-vector-icons/ionicons",
+      "expo-audio",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true

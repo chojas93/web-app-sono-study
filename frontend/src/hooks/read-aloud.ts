@@ -1,86 +1,118 @@
-import * as Speech from "expo-speech";
+import { createAudioPlayer, setAudioModeAsync } from "expo-audio";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { AppState } from "react-native";
 
+import { noteAudio } from "@/src/data/noteAudio";
 import type { Section } from "@/src/data/types";
 
-// Reads study-notes sections aloud with the phone's built-in voice (on-device, free, works offline).
+// One shared player for the recorded AI narration bundled with the app (plays offline, no credits).
+const player = createAudioPlayer(null);
+let modeSet = false;
+
+export const hasNarration = (id: string) => id in noteAudio;
+
+// Reads study-notes sections aloud with the recorded voice. Used only on the notes screen.
 export function useReadAloud(sections: Section[]) {
   const [playingId, setPlayingId] = useState<string | null>(null);
+  const [loadingId, setLoadingId] = useState<string | null>(null);
   const [all, setAll] = useState(false);
-  const voice = useRef<string | undefined>(undefined);
-  const run = useRef(0); // bumps on every start/stop so callbacks from a stopped reading are ignored
-
-  useEffect(() => {
-    // Prefer the highest-quality English voice installed on the device.
-    Speech.getAvailableVoicesAsync()
-      .then((vs) => {
-        const en = vs.filter((v) => v.language?.startsWith("en"));
-        const best = en.find((v) => v.quality === Speech.VoiceQuality.Enhanced && v.language === "en-US") ?? en.find((v) => v.quality === Speech.VoiceQuality.Enhanced) ?? en.find((v) => v.language === "en-US");
-        voice.current = best?.identifier;
-      })
-      .catch(() => undefined);
-  }, []);
-
-  const speakFrom = useCallback(
-    (index: number, continueAll: boolean, token: number) => {
-      const s = sections[index];
-      if (!s || token !== run.current) return;
-      setPlayingId(s.id);
-      const parts = [s.title + ".", ...s.points];
-      parts.forEach((text, j) => {
-        const last = j === parts.length - 1;
-        Speech.speak(text, {
-          language: "en-US",
-          voice: voice.current,
-          rate: 0.95,
-          useApplicationAudioSession: false, // keeps playing when the iPhone silent switch is on
-          onDone: last
-            ? () => {
-                if (token !== run.current) return;
-                if (continueAll && index + 1 < sections.length) speakFrom(index + 1, true, token);
-                else {
-                  setPlayingId(null);
-                  setAll(false);
-                }
-              }
-            : undefined,
-          onError: last
-            ? () => {
-                if (token !== run.current) return;
-                setPlayingId(null);
-                setAll(false);
-              }
-            : undefined,
-        });
-      });
-    },
-    [sections],
-  );
+  const [error, setError] = useState<string | null>(null);
+  const queue = useRef<string[]>([]); // section ids still to play in "read all" mode
+  const current = useRef<string | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null); // safety net if a clip never starts
 
   const stop = useCallback(() => {
-    run.current++;
-    Speech.stop();
+    if (timer.current) clearTimeout(timer.current);
+    queue.current = [];
+    current.current = null;
+    player.pause();
     setPlayingId(null);
+    setLoadingId(null);
     setAll(false);
   }, []);
 
-  // Reading stays on the notes screen only: stop as soon as the user opens a quiz, flashcards, etc.
+  const play = useCallback(async (id: string) => {
+    current.current = id;
+    setLoadingId(id);
+    setPlayingId(null);
+    setError(null);
+    try {
+      if (!modeSet) {
+        await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false });
+        modeSet = true;
+      }
+      player.replace(noteAudio[id]);
+      player.seekTo(0);
+      player.play();
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = setTimeout(() => {
+        if (current.current !== id) return;
+        current.current = null;
+        queue.current = [];
+        player.pause();
+        setPlayingId(null);
+        setLoadingId(null);
+        setAll(false);
+        setError("Couldn't play this section. Tap to try again.");
+      }, 15000);
+    } catch (e) {
+      console.warn("narration playback failed", e);
+      setError("Couldn't play this section. Tap to try again.");
+      setLoadingId(null);
+      setAll(false);
+      queue.current = [];
+      current.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    const fail = () => {
+      console.warn("narration playback failed", current.current);
+      stop();
+      setError("Couldn't play this section. Tap to try again.");
+    };
+    const sub = player.addListener("playbackStatusUpdate", (s) => {
+      if (!current.current) return;
+      // Web reports load/play failures only through the status' error field.
+      if ((s as { error?: string }).error) return fail();
+      if (s.playing && s.currentTime > 0) {
+        // Only show "speaking" once audio has actually started.
+        if (timer.current) clearTimeout(timer.current);
+        setPlayingId(current.current);
+        setLoadingId(null);
+      }
+      if (s.didJustFinish) {
+        const next = queue.current.shift();
+        if (next) play(next);
+        else stop();
+      }
+    });
+    const app = AppState.addEventListener("change", (st) => st !== "active" && stop());
+    return () => {
+      sub.remove();
+      app.remove();
+    };
+  }, [play, stop]);
+
+  // Reading stays on the notes screen only: stop as soon as the user opens a quiz, flashcards, goes back, etc.
   useFocusEffect(useCallback(() => stop, [stop]));
 
-  const start = useCallback(
-    (index: number, continueAll: boolean) => {
-      run.current++;
-      const token = run.current;
-      Speech.stop();
-      setAll(continueAll);
-      speakFrom(index, continueAll, token);
-    },
-    [speakFrom],
-  );
+  const toggleSection = (id: string) => {
+    if (playingId === id || loadingId === id) return stop();
+    queue.current = [];
+    setAll(false);
+    play(id);
+  };
+  const toggleAll = () => {
+    if (all) return stop();
+    const ids = sections.map((s) => s.id).filter(hasNarration);
+    if (!ids.length) return;
+    queue.current = ids.slice(1);
+    setAll(true);
+    play(ids[0]);
+  };
+  const active = playingId ?? loadingId;
 
-  const toggleSection = (id: string) => (playingId === id && !all ? stop() : start(sections.findIndex((s) => s.id === id), false));
-  const toggleAll = () => (all ? stop() : start(0, true));
-
-  return { playingId, all, toggleSection, toggleAll, stop };
+  return { playingId, loadingId, active, all, error, toggleSection, toggleAll, stop };
 }

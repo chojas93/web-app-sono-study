@@ -8,7 +8,7 @@ import { SlideStrip } from "@/src/components/slides";
 import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
 import type { Section } from "@/src/data/types";
-import { useReadAloud } from "@/src/hooks/read-aloud";
+import { hasNarration, useReadAloud } from "@/src/hooks/read-aloud";
 import { imageQuizCount, labelQuizCount, missedCount } from "@/src/data/quiz";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
@@ -69,6 +69,11 @@ export default function TopicScreen() {
             <Text style={[styles.collapseText, { color: colors.brandPrimary }]}>{allCollapsed ? "Expand all" : "Minimize all"}</Text>
           </PressableScale>
         </View>
+      ) : null}
+      {tab === "notes" && reader.error ? (
+        <Text style={[styles.collapseText, { color: colors.error, paddingHorizontal: spacing.lg }]} testID="read-aloud-error">
+          {reader.error}
+        </Text>
       ) : null}
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xl }]}>
         <View style={styles.progressCard}>
@@ -138,7 +143,7 @@ export default function TopicScreen() {
               const read = !!state.readSections[s.id];
               const saved = isBookmarked(s.id);
               const isCollapsed = !!collapsed[s.id];
-              const speaking = reader.playingId === s.id;
+              const speaking = reader.active === s.id;
               return (
                 <Animated.View entering={FadeIn.delay(Math.min(i, 10) * 30)} key={s.id} style={[styles.section, read && { borderColor: colors.success }, speaking && { borderColor: accent }]} testID={`section-card-${s.id}`}>
                   <View style={styles.rowBetween}>
@@ -147,13 +152,15 @@ export default function TopicScreen() {
                       <Text style={styles.sectionTitle}>{s.title}</Text>
                       {read && isCollapsed ? <Ionicons name="checkmark-circle" size={18} color={colors.success} /> : null}
                     </PressableScale>
-                    <IconButton
-                      testID={`section-speak-${s.id}`}
-                      name={speaking ? "stop" : "volume-high-outline"}
-                      color={speaking ? colors.onBrandPrimary : colors.onSurfaceTertiary}
-                      bg={speaking ? colors.brandPrimary : colors.surfaceTertiary}
-                      onPress={() => reader.toggleSection(s.id)}
-                    />
+                    {hasNarration(s.id) ? (
+                      <IconButton
+                        testID={`section-speak-${s.id}`}
+                        name={speaking ? (reader.loadingId === s.id ? "hourglass-outline" : "stop") : "volume-high-outline"}
+                        color={speaking ? colors.onBrandPrimary : colors.onSurfaceTertiary}
+                        bg={speaking ? colors.brandPrimary : colors.surfaceTertiary}
+                        onPress={() => reader.toggleSection(s.id)}
+                      />
+                    ) : null}
                     <IconButton
                       testID={`section-bookmark-${s.id}`}
                       name={saved ? "bookmark" : "bookmark-outline"}

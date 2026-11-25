@@ -1,0 +1,30 @@
+{
+  "summary": "Frontend-only test of the recorded-voice read-aloud (bundled mp3 played with expo-audio) on the topic Notes tab, at 375x667 with Playwright. I wrapped window.Audio so I could read the real media element state (src, currentTime, paused, duration). PASSED: every one of the 14 topics shows exactly one speaker per section card (204 in total, matching 204 entries in noteAudio and 204 mp3 files). All 204 mp3s are served by the public URL (HTTP 206). Their duration-to-text ratios are consistent (11.8 to 16.2 characters per second), so none look truncated. Tapping a section speaker requests the bundled asset (/assets/?unstable_path=./assets/audio/liver-s1.mp3, media 206). The icon goes from volume to hourglass (glyph f386) to stop (f59e), the card border turns accent rgb(255,159,67), and currentTime advances (~3s after 3s; duration 94.2s). Tapping again pauses and clears the border. 'Listen to all notes' changes to 'Stop reading'. I seeked each section near its end: overview played s1 to s14 in order with no skips or duplicates, and the label went back to 'Listen to all notes' after the last one. A single section that finishes stops and does not move on. Switching between sections, including fast taps while loading, always leaves exactly one playing media element, and the highlight moves with it. Reading stops on the Mnemonics tab, Quiz, Flashcards, Image quiz, Label quiz, Textbook review and header back to home. No speaker buttons on Mnemonics, /quiz, /flashcards, image/label quiz, /midterm or /mock. No read-aloud-error and no page errors under normal use. Regression passed: Minimize/Expand all (also while playing, audio keeps going), single collapse, bookmark toggle, Mark as read (0% to 3% and back), and the picture strip opening the slide-viewer. FAILED (error path): with mp3 requests blocked, the button stays on the hourglass forever, read-all stays on 'Stop reading', and read-aloud-error never appears. No deprecated packages (expo-av and expo-speech are absent).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "read-aloud error handling", "issue": "If the mp3 fails to load or play() is rejected (for example NotAllowedError autoplay block, or a network or decode error), expo-audio web reports it only through a playbackStatusUpdate event that has the 'error' field set. It does not throw. useReadAloud ignores s.error, so the try/catch never runs. Result: the hourglass spins forever, 'Stop reading' stays, and read-aloud-error is never shown. Reproduced by blocking **/*.mp3. Reference: src/hooks/read-aloud.ts:57-69", "testID": "section-speak-{id} / read-aloud-error", "priority": "MEDIUM"},
+      {"component": "section speaker during read-all", "issue": "While 'Listen to all notes' is playing, the current section's button shows a stop icon. Tapping it restarts that section from 0 as a single play instead of stopping, because toggleSection skips stop when all=true. The user has to tap a second time to stop. Reference: src/hooks/read-aloud.ts:81", "testID": "section-speak-{id}", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": [],
+    "react_native_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "In the playbackStatusUpdate listener (read-aloud.ts), handle s.error: show the error with setError, clear loadingId and playingId, and reset all, the queue and current.current. Consider a load timeout (for example 10s without currentTime > 0) as a safety net.",
+    "toggleSection: if the tapped id is the one currently active (playingId or loadingId), call stop() even when all=true, to match the stop icon.",
+    "Optional, web only: on iOS Safari each replace() creates a new Audio element, and calling play() from the didJustFinish callback (no user gesture) may be blocked, which stalls read-all. Not a concern for the native Expo build."
+  ],
+  "critical_code_review_comments": [
+    "read-aloud.ts: the module-level shared player plus current.current guard works. Stop on blur, tab switch and AppState background is correct, and old media handlers are cleared in replace(), so there are no double didJustFinish advances (verified: 14/14 in order).",
+    "68MB of bundled audio adds directly to app binary and OTA update size. Acceptable per the user's choice, but worth noting for EAS updates.",
+    "No hardcoded URLs. All 204 noteAudio keys match file names, and all files exist."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "94% (all requested flows pass; the error-path state is broken)"},
+  "seed_data_creation": "None (only browser-local progress toggled and reverted in an ephemeral context)",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "To verify playback in headless Chromium, wrap window.Audio in an init script and push instances to window.__audios. To simulate a section ending, seek a.currentTime = a.duration - 0.3. Topic screens stay mounted in the DOM after push, so count only visible elements on quiz screens. Assets load from /assets/?unstable_path=.%2Fassets%2Faudio/<id>.mp3. To test the error path, use page.route('**/*.mp3', abort)."
+}
