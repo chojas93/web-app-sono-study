@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only test of the expo-speech read-aloud feature on the topic Notes tab (/topic/liver), at 375x667 and 320x640. Headless Chromium has 0 voices, so real web speech fails with 'synthesis-failed'. That fires onError and the UI goes back to idle within about 20ms. This is the expected fallback and is not counted as a failure. To check the UI states reliably I replaced window.speechSynthesis with a stub (init script) that holds utterances until the test finishes or cancels them. Everything passed: the 'Listen to all notes' and 'Stop reading' labels toggle; a section speaker toggles between the volume and stop icons and adds the accent border (rgb(255,159,67)); only one section is highlighted at a time; read-all moves from s1 to s2 to s3 as each section finishes; a single section returns to idle when done and does not move on. Reading stops (Speech.stop is called) when switching to Mnemonics, opening Quiz, Flashcards, Image quiz, Label quiz or Textbook review, and on back navigation. The Mnemonics, quiz, flashcards, /midterm and /mock screens have no speaker or read-aloud buttons. Read-aloud is only imported by app/topic/[id].tsx. Regression checks passed for Expand/Minimize all (also while reading), single-section collapse, bookmark toggle, Mark as read (progress went 0% to 2% and back), and the picture strip opening and closing the viewer. No page errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "topic/[id] notes bar", "issues": ["At 320px width (iPhone SE 1st gen), read-all (175px) + 'Minimize all' (121px) + gap + 32px padding = 336px. 'Minimize all' ends exactly at x=320 with no right padding, so the bar overflows by about 16px. Consider flexShrink or a shorter label (e.g. 'Listen') on narrow screens. Fine at 375px."]}
+    ],
+    "react_native_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Optional (minor): make the notes bar fit at 320px width (flexShrink or wrap on the listen-all and collapse-all buttons)",
+    "Optional: on web, expo-speech's speak() awaits getVoices() when options.voice is a string. If the voice list is empty and onvoiceschanged never fires, the speak call can hang silently. Currently harmless because voice.current stays undefined when there are no voices."
+  ],
+  "critical_code_review_comments": [
+    "read-aloud.ts: the token (run ref) check correctly ignores onDone/onError from cancelled runs. Verified with a stub that fires onerror('canceled') on cancel; no stale state.",
+    "useFocusEffect cleanup = stop. This covers both blur (push to quiz or flashcards) and unmount (back). Verified.",
+    "Real-device audio not verifiable in headless web; the UI state logic is verified with a stub."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None. Bookmark and Mark-as-read were each toggled on then off again (local device storage restored).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Headless Chromium has no TTS voices, so speech fails at once with 'synthesis-failed'. To test read-aloud UI states, use page.add_init_script to replace window.speechSynthesis with a stub. Its speak should queue utterances; its cancel should fire onerror on the queue; finish only a snapshot of the queue length each time, because draining in a loop also finishes the next section's newly queued utterances. Section IDs: liver-s1..liver-s17."
+}

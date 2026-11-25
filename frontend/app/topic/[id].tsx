@@ -7,9 +7,13 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SlideStrip } from "@/src/components/slides";
 import { IconButton, Ionicons, PressableScale, ProgressBar, StackHeader } from "@/src/components/ui";
 import { getTopic } from "@/src/data";
+import type { Section } from "@/src/data/types";
+import { useReadAloud } from "@/src/hooks/read-aloud";
 import { imageQuizCount, labelQuizCount, missedCount } from "@/src/data/quiz";
 import { topicProgress, useProgress } from "@/src/store/progress";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
+
+const NO_SECTIONS: Section[] = [];
 
 export default function TopicScreen() {
   const { id, tab: initialTab } = useLocalSearchParams<{ id: string; tab?: string }>();
@@ -20,6 +24,7 @@ export default function TopicScreen() {
   const { state, toggleRead, toggleBookmark, isBookmarked } = useProgress();
   const [tab, setTab] = useState<"notes" | "mnemonics">(initialTab === "mnemonics" ? "mnemonics" : "notes");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const reader = useReadAloud(topic?.sections ?? NO_SECTIONS);
 
   if (!topic) {
     return (
@@ -47,17 +52,23 @@ export default function TopicScreen() {
         {(["notes", "mnemonics"] as const).map((k) => {
           const active = tab === k;
           return (
-            <PressableScale key={k} testID={`topic-tab-${k}`} onPress={() => setTab(k)} style={[styles.seg, active && { backgroundColor: colors.surface }]}>
+            <PressableScale key={k} testID={`topic-tab-${k}`} onPress={() => { reader.stop(); setTab(k); }} style={[styles.seg, active && { backgroundColor: colors.surface }]}>
               <Text style={[styles.segText, active && { color: colors.onSurface }]}>{k === "notes" ? `Notes (${topic.sections.length})` : `Mnemonics (${topic.mnemonics.length})`}</Text>
             </PressableScale>
           );
         })}
       </View>
       {tab === "notes" ? (
-        <PressableScale testID="toggle-collapse-all-button" onPress={toggleAll} style={styles.collapseAll}>
-          <Ionicons name={allCollapsed ? "expand" : "contract"} size={18} color={colors.brandPrimary} />
-          <Text style={[styles.collapseText, { color: colors.brandPrimary }]}>{allCollapsed ? "Expand all sections" : "Minimize all sections"}</Text>
-        </PressableScale>
+        <View style={styles.notesBar}>
+          <PressableScale testID="read-all-notes-button" onPress={reader.toggleAll} style={[styles.listenAll, { backgroundColor: reader.all ? colors.brandPrimary : colors.surfaceTertiary }]}>
+            <Ionicons name={reader.all ? "stop" : "volume-high"} size={18} color={reader.all ? colors.onBrandPrimary : colors.brandPrimary} />
+            <Text style={[styles.collapseText, { color: reader.all ? colors.onBrandPrimary : colors.brandPrimary }]}>{reader.all ? "Stop reading" : "Listen to all notes"}</Text>
+          </PressableScale>
+          <PressableScale testID="toggle-collapse-all-button" onPress={toggleAll} style={styles.collapseAll}>
+            <Ionicons name={allCollapsed ? "expand" : "contract"} size={18} color={colors.brandPrimary} />
+            <Text style={[styles.collapseText, { color: colors.brandPrimary }]}>{allCollapsed ? "Expand all" : "Minimize all"}</Text>
+          </PressableScale>
+        </View>
       ) : null}
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xl }]}>
         <View style={styles.progressCard}>
@@ -127,14 +138,22 @@ export default function TopicScreen() {
               const read = !!state.readSections[s.id];
               const saved = isBookmarked(s.id);
               const isCollapsed = !!collapsed[s.id];
+              const speaking = reader.playingId === s.id;
               return (
-                <Animated.View entering={FadeIn.delay(Math.min(i, 10) * 30)} key={s.id} style={[styles.section, read && { borderColor: colors.success }]} testID={`section-card-${s.id}`}>
+                <Animated.View entering={FadeIn.delay(Math.min(i, 10) * 30)} key={s.id} style={[styles.section, read && { borderColor: colors.success }, speaking && { borderColor: accent }]} testID={`section-card-${s.id}`}>
                   <View style={styles.rowBetween}>
                     <PressableScale testID={`section-collapse-${s.id}`} onPress={() => setCollapsed((c) => ({ ...c, [s.id]: !c[s.id] }))} style={styles.sectionHead}>
                       <Ionicons name={isCollapsed ? "chevron-forward" : "chevron-down"} size={18} color={colors.muted} />
                       <Text style={styles.sectionTitle}>{s.title}</Text>
                       {read && isCollapsed ? <Ionicons name="checkmark-circle" size={18} color={colors.success} /> : null}
                     </PressableScale>
+                    <IconButton
+                      testID={`section-speak-${s.id}`}
+                      name={speaking ? "stop" : "volume-high-outline"}
+                      color={speaking ? colors.onBrandPrimary : colors.onSurfaceTertiary}
+                      bg={speaking ? colors.brandPrimary : colors.surfaceTertiary}
+                      onPress={() => reader.toggleSection(s.id)}
+                    />
                     <IconButton
                       testID={`section-bookmark-${s.id}`}
                       name={saved ? "bookmark" : "bookmark-outline"}
@@ -212,7 +231,9 @@ const useStyles = makeStyles((c) => ({
   extraBtn: { flex: 1, padding: spacing.lg, borderRadius: radius.lg, borderWidth: 1.5, backgroundColor: c.surfaceSecondary, gap: spacing.xs },
   extraTitle: { fontFamily: fonts.display, fontSize: 16, fontWeight: "500", color: c.onSurface },
   sectionHead: { flex: 1, flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44 },
-  collapseAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, alignSelf: "flex-end", minHeight: 44, paddingHorizontal: spacing.lg },
+  notesBar: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: spacing.lg, gap: spacing.sm },
+  listenAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44, paddingHorizontal: spacing.lg, borderRadius: radius.pill },
+  collapseAll: { flexDirection: "row", alignItems: "center", gap: spacing.sm, minHeight: 44, paddingHorizontal: spacing.sm },
   collapseText: { fontFamily: fonts.text, fontSize: 14, fontWeight: "700" },
   imageQuizBtn: { flexDirection: "row", alignItems: "center", gap: spacing.md, padding: spacing.lg, borderRadius: radius.lg, borderWidth: 1.5, backgroundColor: c.surfaceSecondary },
   sectionTitle: { fontFamily: fonts.display, fontSize: 18, fontWeight: "500", color: c.onSurface, flex: 1 },
