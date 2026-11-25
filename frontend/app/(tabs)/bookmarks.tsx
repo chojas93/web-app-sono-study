@@ -9,6 +9,7 @@ import { cardById, getTopic, mnemonicById, sectionById } from "@/src/data";
 import { slides, type SlideKey } from "@/src/data/slides";
 import { usesNativeTabs } from "@/src/navigation";
 import { Bookmark, BookmarkType, useProgress } from "@/src/store/progress";
+import { useSketches } from "@/src/store/sketches";
 import { fonts, makeStyles, radius, spacing, useTheme } from "@/src/theme";
 
 const FILTERS: { key: "all" | BookmarkType; label: string }[] = [
@@ -26,11 +27,18 @@ export default function Bookmarks() {
   const { state } = useProgress();
   const [filter, setFilter] = useState<"all" | BookmarkType>("all");
   const items = state.bookmarks.filter((b) => filter === "all" || b.type === filter);
+  const { sketches } = useSketches();
+  const nSketches = Object.values(sketches).reduce((n, l) => n + l.length, 0);
 
   return (
     <View style={styles.root} testID="bookmarks-screen">
       <View style={{ paddingTop: insets.top + spacing.sm, backgroundColor: colors.surface }}>
         <Text style={styles.title}>Saved</Text>
+        <PressableScale testID="open-sketch-gallery-button" onPress={() => router.push("/sketches")} style={styles.sketchEntry}>
+          <Ionicons name="brush" size={20} color={colors.brandPrimary} />
+          <Text style={styles.sketchEntryText}>My sketches{nSketches ? ` (${nSketches})` : ""}</Text>
+          <Ionicons name="chevron-forward" size={18} color={colors.muted} />
+        </PressableScale>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.chipRow} contentContainerStyle={styles.chipContent}>
           {FILTERS.map((f) => {
             const active = f.key === filter;
@@ -118,6 +126,8 @@ function BookmarkRow({ b }: { b: Bookmark }) {
 const useStyles = makeStyles((c) => ({
   root: { flex: 1, backgroundColor: c.surface },
   title: { fontFamily: fonts.display, fontSize: 30, fontWeight: "500", color: c.onSurface, paddingHorizontal: spacing.lg },
+  sketchEntry: { flexDirection: "row", alignItems: "center", gap: spacing.sm, marginHorizontal: spacing.lg, marginTop: spacing.sm, minHeight: 48, paddingHorizontal: spacing.md, borderRadius: radius.md, backgroundColor: c.surfaceTertiary },
+  sketchEntryText: { flex: 1, fontFamily: fonts.text, fontSize: 15, fontWeight: "600", color: c.onSurface },
   chipRow: { height: 56, flexGrow: 0 },
   chipContent: { gap: spacing.sm, paddingHorizontal: spacing.lg, alignItems: "center" },
   chip: {

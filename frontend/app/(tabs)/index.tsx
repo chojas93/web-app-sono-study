@@ -10,6 +10,7 @@ import { topics } from "@/src/data";
 import { missedCount } from "@/src/data/quiz";
 import { usesNativeTabs } from "@/src/navigation";
 import { topicProgress, useProgress } from "@/src/store/progress";
+import { useSketches } from "@/src/store/sketches";
 import { fonts, makeStyles, radius, setColorScheme, spacing, useTheme } from "@/src/theme";
 
 export default function Home() {
@@ -24,6 +25,8 @@ export default function Home() {
   const [compact, setCompact] = useState(false);
   const searching = query.trim().length > 0;
   const nMissed = missedCount(topics.map((t) => t.id), state.missed);
+  const { sketches } = useSketches();
+  const nSketches = Object.values(sketches).reduce((n, l) => n + l.length, 0);
 
   return (
     <View style={styles.root} testID="home-screen">
@@ -87,6 +90,14 @@ export default function Home() {
           <View style={{ flex: 1 }}>
             <Text style={styles.weakTitle}>Midterm Quiz 1</Text>
             <Text style={styles.weakSub}>Personal review with explanations for every answer choice</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={22} color={colors.muted} />
+        </PressableScale>
+        <PressableScale testID="home-open-sketches-button" onPress={() => router.push("/sketches")} style={styles.weak}>
+          <Ionicons name="brush" size={24} color={colors.brandPrimary} />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.weakTitle}>My sketches</Text>
+            <Text style={styles.weakSub}>{nSketches ? `${nSketches} saved sketch${nSketches === 1 ? "" : "es"} across your chapters` : "Your drawings from the study notes appear here"}</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color={colors.muted} />
         </PressableScale>
